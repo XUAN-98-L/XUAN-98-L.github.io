@@ -24,8 +24,9 @@
 <meta property="og:description" content="Monocle2的学习笔记及代码分享">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/scRNA_pseudotime_estimation_problem.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/banana.png">
 <meta property="article:published_time" content="2023-05-19T05:31:28.000Z">
-<meta property="article:modified_time" content="2023-05-19T09:28:28.409Z">
+<meta property="article:modified_time" content="2023-05-19T09:36:38.718Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -223,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          531 words
+          1.4k words
         
       </span>
     
@@ -234,7 +235,7 @@
         
         
         
-          5 mins
+          12 mins
         
       </span>
     
@@ -281,11 +282,16 @@
 <span id="more"></span>
 <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>在研究胚胎发育，细胞转化以及干细胞在再生和疾病中的功能等领域，通过<a target="_blank" rel="noopener" href="https://www.molcells.org/journal/view.html?doi=10.14348/molcells.2019.0006">谱系追踪</a>来研究单个细胞及其后代的命运是常见的研究方法。传统的谱系追踪涉及用染料显微注射到单个细胞或细胞群中以观察细胞迁移，或用利用Cre-LoxP 位点特异性重组系统对细胞命运进行追踪展示等基于成像的方法（Imageing-gased approaches）。</p>
 <p>在NGS测序出现后，使用计算手段来追踪或重建细胞谱系对谱系追踪领域影响巨大。基于scRNA-seq，还可以在进行建立细胞谱系的同时分析基因表达模式。</p>
-<p>由于细胞分化或细胞成熟等细胞进程在生物进程中并不总是以一种分散的状态，比如clustering，进行的，而更多是一种动态的，连续的发育状态。因此，<a target="_blank" rel="noopener" href="https://github.com/agitter/single-cell-pseudotime">很多计算方法</a>致力于将细胞投射到一个连续路径上（Pseudotime）来展示细胞的发育轨迹。</p>
+<p>由于细胞分化或细胞成熟等细胞进程在生物进程中并不总是以一种分散的状态，比如clustering，进行的，而更多是一种动态的，连续的发育状态。因此，很多<a target="_blank" rel="noopener" href="https://github.com/agitter/single-cell-pseudotime">计算方法</a>致力于将细胞投射到一个连续路径上（Pseudotime）来展示细胞的发育轨迹。</p>
 <p>下图为拟时序分析的简单<a target="_blank" rel="noopener" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005212">示例图</a><br><img src="/2023/05/19/Monocle2/scRNA_pseudotime_estimation_problem.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="Monocle介绍"><a href="#Monocle介绍" class="headerlink" title="Monocle介绍"></a>Monocle介绍</h2><h3 id="软件目的"><a href="#软件目的" class="headerlink" title="软件目的:"></a>软件目的:</h3><p>1: 对从细胞身份转化的过程进行建模（从一个clusters进展到另一个cluster），研究分化过程。</p>
 <p>2: 可以使用轨迹之间的差异来识别与轨迹转变相关的基因</p>
 <p>注意：推断的轨迹过程有时不一定反应真实的生物学过程，需要结合其他生物学先验知识和证据来对轨迹进行解释。</p>
+<h3 id="研发历史"><a href="#研发历史" class="headerlink" title="研发历史"></a>研发历史</h3><h4 id="2014年-Nature-Biotechnology"><a href="#2014年-Nature-Biotechnology" class="headerlink" title="2014年 Nature Biotechnology"></a>2014年 Nature Biotechnology</h4><p>monocle的概念版本发表在2014年，在nature biotechnology上，这个时间点，基于微流控的高通量的单细胞测序技术，比如droplet-based的scRNA-seq技术都还没有发表，商业化的10X单细胞测序也还未出现，此时的单细胞测序还是通过显微成像或者流式细胞技术进行细胞水平的研究。因此这个版本的Monocle针对的其实是低细胞数的轨迹（trajectory）分析。虽然和现在的10X单细胞测序动辄能测上万细胞的通量相比，当时用作分析的细胞数也就是几百个，相比之下低了太多，但就算如此，bulk RNA seq转录组测序的差异表达基因算法仍然不适用与单细胞测序。因为Bulk RNA-seq测序数据的差异分析通常采用基于平均值或方差的假设检验方法，无法捕捉到单个细胞水平的表达动态。</p>
+<p>Monocle1，Monocle的初始版本，是第一个发布的单细胞RNA测序数据分析软件包之一，它认为就算单细胞测序是在同一时间捕获到的细胞群体，它也可能包括许多不同的中间分化状态，传统转录组那种只考虑其平均值的算法会掩盖在单个细胞中发生的趋势。</p>
+<p><img src="/2023/05/19/Monocle2/banana.png" srcset="/img/loading.gif" lazyload></p>
+<p>Monocle基于一个基本假设：scRNA - Seq中的所有细胞存在潜在的时间顺序，由于分化不同步使得细胞的基因表达水平存在很强的差异性，那就可以根据这个潜在的动态过程对细胞进行排序。Monocle的算法源自先前的基于bulk RNASeq重构样本间的时间顺序的算法，但将其扩展到单细胞层面，并允许单个祖细胞类型存在多个细胞命运。</p>
+<p>Monocle引入了一个概念： “pseudotime”， 即通过生物过程进展的定量测量，在’pseudotime拟时间’中排序单细胞表达谱。或者说是细胞在发育过程中的时间顺序。monocle1可以根据基因表达数据生成拓扑图，确定基因表达水平的变化趋势，并可视化地展示出细胞发育轨迹，从而更容易理解和解释单细胞RNA-seq数据的结果。</p>
 
                 
               </div>
