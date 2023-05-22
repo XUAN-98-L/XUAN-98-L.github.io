@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xuan Liu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于SCENIC的单细胞转录因子分析原理讲解与实操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于SCENIC的转录因子分析原理讲解与实操">
+<meta property="og:url" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基于SCENIC的单细胞转录因子分析原理讲解与实操">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p1.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p2.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p4.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p3.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p5.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p6.png">
+<meta property="article:published_time" content="2023-05-22T08:30:03.000Z">
+<meta property="article:modified_time" content="2023-05-22T09:05:59.366Z">
+<meta property="article:author" content="Xuan Liu">
+<meta property="article:tag" content="个人成长">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p1.png">
+  
+  
+  
+  <title>基于SCENIC的转录因子分析原理讲解与实操 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuan-98-l.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xuan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基于SCENIC的转录因子分析原理讲解与实操"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-22 16:30" pubdate>
+          May 22, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于SCENIC的转录因子分析原理讲解与实操</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>基于SCENIC的单细胞转录因子分析原理讲解与实操</p>
+<span id="more"></span>
+<h2 id="转录因子的定义"><a href="#转录因子的定义" class="headerlink" title="转录因子的定义"></a>转录因子的定义</h2><p>转录因子, transcription factor(TF), 是调节基因转录的蛋白质，它们通常是由蛋白质，或者短的非编码 RNA 组成。转录因子通常以复合体的形式工作，形成多重相互作用，允许对转录速率进行不同程度的控制。</p>
+<p>它们的功能是调节（打开和关闭）基因，以确保基因在细胞和生物体的整个生命过程中在正确的时间以正确的数量在正确的细胞中表达。TF在整个生命过程中协调指导细胞分裂、细胞生长和细胞死亡；指导胚胎发育过程中的细胞迁移和组织发育；或间歇性地响应来自细胞外的信号，例如激素。人类基因组中有多达 2600 个转录因子。</p>
+<p>真核生物通常在基因上游有一个启动子区域，或者在基因上游或下游有一个增强子区域，具有被各种类型的 TF 识别的某些特定基序(<strong>motif</strong>)。转录因子结合、吸引其他转录因子并形成一个复合物，最终促进 RNA 聚合酶的结合，从而开始转录过程。<br><img src="/2023/05/22/SCENIC/p1.png" srcset="/img/loading.gif" lazyload></p>
+<p>细胞的转录状态来源于潜在的基因调控网络（GRN），它包括一定数量的转录因子（TFs）和辅因子及其下游靶基因。SCENIC可识别TFs与潜在靶基因的共表达模块（Regulon），进而推断基因调控网络及细胞状态。</p>
+<p><strong>Tips:Regulon是受同一个TF调控的靶基因的集合。</strong></p>
+<h2 id="SCENIC简介"><a href="#SCENIC简介" class="headerlink" title="SCENIC简介"></a>SCENIC简介</h2><p>SCENIC开创性的工作是在R中完成的，结果于<a target="_blank" rel="noopener" href="https://www.nature.com/articles/nmeth.4463">2017年发表在nature methods上</a>，后来研究人员对其进行了python的实现，开发了<a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41596-020-0336-2">pyscenic</a>。</p>
+<p>pyscenic的一大优点是使用了基于分布式计算的框架，因此对运行速度有了极大的提升，但由于R版本的SCENIC更方便进行与seurat包的对接，产生比较多的中间文件，方便个性化分析和下游的可视化处理。<br>若需使用pyscenic, 可以参考natrue protocal中的论述和<a target="_blank" rel="noopener" href="https://pyscenic.readthedocs.io/en/latest/tutorial.html">官方链接</a>进行学习,pyscenic可以使用nextflow或者docker直接进行安装使用，流程也是比较简单。</p>
+<h2 id="SCENIC代码实操"><a href="#SCENIC代码实操" class="headerlink" title="SCENIC代码实操"></a>SCENIC代码实操</h2><ol start="0">
+<li><p>Pre-processing<br>由于R版本的SCENIC需要使用GENIE3算法，它基于随机森林，运行时间较长长，因此在demo数据分析时需要对数据集进行降采样的处理，也就是抽出其中的一部分细胞和基因进行分析，以减少内存和cpu消耗(此操作不适合正式分析)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#由于细胞数过多，所以将我们的demo数据抽取一部分细胞（需根据硬件配置决定是否抽取细胞）</span><br>seurat_ob <span class="hljs-operator">=</span> readRDS<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;demo_ob_2000_add_celltype.rds&quot;</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#使用set.seed()用于设定随机数种子，每个独特的随机数种子会生成一个和它匹配的伪随机序列，主要用于在调试程序的时候保证结果的可重复性。</span><br>set.seed<span class="hljs-punctuation">(</span><span class="hljs-number">123</span><span class="hljs-punctuation">)</span><br><br>target_cell<span class="hljs-operator">=</span><span class="hljs-number">200</span><br>sample_ratio<span class="hljs-operator">=</span>target_cell<span class="hljs-operator">/</span><span class="hljs-built_in">dim</span><span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span><span class="hljs-number">2</span><span class="hljs-punctuation">]</span><br>groupby<span class="hljs-operator">=</span><span class="hljs-string">&quot;celltype&quot;</span><br>sampled_cellmeta <span class="hljs-operator">=</span> seurat_ob<span class="hljs-operator">@</span>meta.data <span class="hljs-operator">%&gt;%</span> rownames_to_column<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span><br>                    group_by<span class="hljs-punctuation">(</span> .dots<span class="hljs-operator">=</span> groupby <span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span><br>                    sample_frac<span class="hljs-punctuation">(</span> size <span class="hljs-operator">=</span> sample_ratio<span class="hljs-punctuation">,</span>replace <span class="hljs-operator">=</span> <span class="hljs-built_in">F</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">%&gt;%</span> column_to_rownames<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br>seurat_ob<span class="hljs-operator">@</span>meta.data<span class="hljs-operator">$</span>Barcodes <span class="hljs-operator">=</span> rownames<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-operator">@</span>meta.data<span class="hljs-punctuation">)</span><br>seurat_ob <span class="hljs-operator">=</span> seurat_ob<span class="hljs-punctuation">[</span><span class="hljs-punctuation">,</span>seurat_ob<span class="hljs-operator">@</span>meta.data<span class="hljs-operator">$</span>Barcodes <span class="hljs-operator">%in%</span> rownames<span class="hljs-punctuation">(</span>sampled_cellmeta<span class="hljs-punctuation">)</span><span class="hljs-punctuation">]</span><br><br><span class="hljs-comment">#由于基因数过多，所以将我们的demo数据抽取一部分基因（请勿在正式分析中进行）</span><br>genelist <span class="hljs-operator">=</span> read.delim<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;./DATABASE/hs_hgnc_tfs.txt&quot;</span><span class="hljs-punctuation">,</span>header <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span><br>genelist <span class="hljs-operator">=</span> intersect<span class="hljs-punctuation">(</span>genelist<span class="hljs-operator">$</span>V1<span class="hljs-punctuation">,</span>rownames<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>genelist_append <span class="hljs-operator">=</span> sample<span class="hljs-punctuation">(</span>setdiff<span class="hljs-punctuation">(</span>rownames<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> genelist<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span><span class="hljs-number">1000</span><span class="hljs-punctuation">)</span><br>genelist <span class="hljs-operator">=</span> append<span class="hljs-punctuation">(</span>genelist<span class="hljs-punctuation">,</span> genelist_append<span class="hljs-punctuation">)</span><br>seurat_ob <span class="hljs-operator">=</span> seurat_ob<span class="hljs-punctuation">[</span>genelist<span class="hljs-punctuation">,</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>共表达(Co-expression)<br>SCENIC正式工作流程的第一步是根据表达数据推断所有转录因子的潜在靶标。为此，我们使用GENIE3或GRNBoost。</p>
+</li>
+</ol>
+<p>输入文件是过滤后的表达矩阵（可以是csv格式 ，loom格式或者Seurat对象里的counts矩阵）。</p>
+<p>GENIE3&#x2F;GRNBoost使用了不同的机器学习算法，GENIE3使用了基于决策树的bagging算法，使用了随机森林整合多个决策树。 GRNBoost使用了boosting 。但两者的输出结果是相似的，都是一个矩阵，包括转录因子，靶标基因和权重(Importance)构成的表格，我们将其称之为共表达模块(moudle)。</p>
+<p>图中有N个基因，将会以每个基因作为输出（靶基因表达量），其余基因作为输入（调控基因表达量）来构建N个随机森林模型。进而计算每一个模型中，每个调控基因对靶基因的重要性，从而得出它们之间的调控关系。然后根据所有模型的调控关系进行排序。权重是转录因子对每个基因表达情况的影响的一个程度。<br><img src="/2023/05/22/SCENIC/p2.png" srcset="/img/loading.gif" lazyload></p>
+<p>为了在SCENIC的多个步骤中保持一致的设定和输出结果文件的命名，SCENIC包中的大多数函数使用<em>scenicOptions</em>作为公共对象，它存储当前运行的选项并使用默认参数代替大多数函数的“参数”，从而保证了一致性。这一步需要在SCENIC运行之初就使用initializeScenic进行设置，需要设置的内容包括org（也就是物种），dbDir（数据库的路径）等。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#对SCENIC进行初始化 </span><br><span class="hljs-comment">#由于feather进行过版本更新，请从如下链接下载数据库</span><br><span class="hljs-comment">#https://resources.aertslab.org/cistarget/databases/old/</span><br>dbs <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;hg38__refseq-r80__500bp_up_and_100bp_down_tss.mc9nr.feather&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;hg38__refseq-r80__10kb_up_and_down_tss.mc9nr.feather&quot;</span><span class="hljs-punctuation">)</span><br><span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>dbs<span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;500bp&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;10kb&quot;</span><span class="hljs-punctuation">)</span> <br>scenicOptions <span class="hljs-operator">&lt;-</span> initializeScenic<span class="hljs-punctuation">(</span>org<span class="hljs-operator">=</span><span class="hljs-string">&quot;hgnc&quot;</span><span class="hljs-punctuation">,</span> dbDir<span class="hljs-operator">=</span><span class="hljs-string">&quot;D:/Data/Scenic/DATABASE&quot;</span><span class="hljs-punctuation">,</span>dbs <span class="hljs-operator">=</span> dbs<span class="hljs-punctuation">,</span>nCores <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-punctuation">)</span> <br></code></pre></td></tr></table></figure>
+
+<p>接下来我们对基因进行过滤，目的是去除最可能是噪音的基因。</p>
+<p>主要是根据两个点对基因进行过滤：该基因的count数，和在多少细胞中被检出。具体的阈值是case by case, 我们这里是使用minCountsPerGene保留在所有样品中至少有1个counts的基因。minSamples设置为保证保留下来的基因能在至少1％的细胞中检测得到。使用geneFiltering函数对基因进行过滤。</p>
+<p>可以看到SCENIC生成的中间文件和图文件将会保存到int文件夹中，并且会按顺序整齐排列好。可以使用这些中间文件来检查之前做过的每个步骤，或者是以一些不同的设置重新运行其中的分析。重要的输出结果会保存到output文件夹中。</p>
+<p>这步生成的过滤之后的基因列表就被保存在1.1geneKept.rds中了。使用保留下来的这些基因对矩阵的行进行筛选，最终的这个exprMat_filtered对象所保存的count matrix就是GRN的输入文件。 </p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#对基因进行过滤 </span><br><span class="hljs-comment">#本次的过滤标准是过滤掉基因表达于少于1%的细胞中的基因 </span><br>minCell4gene <span class="hljs-operator">=</span> <span class="hljs-built_in">round</span><span class="hljs-punctuation">(</span><span class="hljs-number">0.01</span> <span class="hljs-operator">*</span> ncol<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <br><span class="hljs-comment">#提取counts矩阵</span><br>exprMat <span class="hljs-operator">=</span> seurat_ob<span class="hljs-operator">@</span>assays<span class="hljs-operator">$</span>RNA<span class="hljs-operator">@</span>counts <br>genesKept <span class="hljs-operator">&lt;-</span> geneFiltering<span class="hljs-punctuation">(</span>as.matrix<span class="hljs-punctuation">(</span>exprMat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <br>		scenicOptions<span class="hljs-operator">=</span>scenicOptions<span class="hljs-punctuation">,</span> <br>		minCountsPerGene<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span> <br>		minSamples<span class="hljs-operator">=</span>minCell4gene<span class="hljs-punctuation">)</span> <br><br><span class="hljs-comment">#GRN的输入文件是对基因过滤后的count matrix </span><br>exprMat_filtered <span class="hljs-operator">&lt;-</span> exprMat<span class="hljs-punctuation">[</span>genesKept<span class="hljs-punctuation">,</span> <span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/SCENIC/p4.png" srcset="/img/loading.gif" lazyload></p>
+<p>Tips:</p>
+<p>RcisTarget数据库只支持三个物种</p>
+<ul>
+<li>小鼠 mgi</li>
+<li>人类 hgnc</li>
+<li>果蝇 dmel</li>
+</ul>
+<p>dbDir下存放四个文件：</p>
+<ul>
+<li>feather文件：保存<a target="_blank" rel="noopener" href="https://resources.aertslab.org/cistarget/databases/">Gene-motif排名</a>数据库，为每个motif提供所有gene的排名，在接下来的motif富集分析中会用到</li>
+<li>hs_hgnc_tfs.txt: 保存<a target="_blank" rel="noopener" href="https://github.com/aertslab/pySCENIC/tree/master/resources/">转录因子列表</a>，这个文件在构建共表达矩阵的时候就要用到，因为要告诉SCENIC，你的输入矩阵里哪些基因是转录因子。<br>-tbl文件：<a target="_blank" rel="noopener" href="https://resources.aertslab.org/cistarget/motif2tf/">转录因子的Motif注释文件</a>，该文件对每一个motif注释其所对应的TF，这也是motif富集用到。<br><img src="/2023/05/22/SCENIC/p3.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>注意下feather羽毛文件的版本，由于在SCENIC在20220816日更新，现在pyscenic仅支持 Feather v2 格式的数据库 ( ctxcore )，它允许使用最新版本的 pyarrow ( ) 而不是旧版文件。我们在使用R版本的Scenic时，由于arrow包无法读入最新版本的feather格式，因此在下载数据库的时候需要下载<a target="_blank" rel="noopener" href="https://resources.aertslab.org/cistarget/databases/old/">旧版文件</a>。</p>
+<p>读取转录因子列表文件（在数据库路径下），使用Seurat包的CaseMatch函数，对转录因子名称进行过滤，仅保留匹配到矩阵中的基因名。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#从初始化时指定的dbDir里，根据指定的物种调取tbl文件里的TFs的名字并去重 </span><br>tf_names <span class="hljs-operator">=</span> getDbTfs<span class="hljs-punctuation">(</span> scenicOptions <span class="hljs-punctuation">)</span> <br><br><span class="hljs-comment">#使用Seurat包的CaseMatch函数，对tf_names进行过滤，仅保留匹配到gene matrix中的基因名 </span><br>tf_names <span class="hljs-operator">=</span> CaseMatch<span class="hljs-punctuation">(</span>search<span class="hljs-operator">=</span>tf_names<span class="hljs-punctuation">,</span> match <span class="hljs-operator">=</span> rownames<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <br></code></pre></td></tr></table></figure>
+
+
+<p>现在我们正式开始构建共表达网络。R scenic默认的方式是使用GENIE3进行共表达网络的构建。GENIE3使用的是随机森林的方法，他对样本和特征的选取是随机的，所以每次运行的结果可能会稍有不同。因此，我们可以使用Seed随机数种子来保证结果的一致性。GENIE3的运行速度较慢，适合5千细胞以下的数据集。</p>
+<p>另一种方法是使用grnboost2进行共表达网络的构建。可以从R中切出去直接运行pyscenic，或者如演示代码所示，使用reticulate R包直接调用Arboreto模块来直接执行grnboost2，由于pyscenic需要配置额外的python环境，我们在这里只使用genie3进行演示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#方法一：直接运行GENIE3 （适合5k以下细胞） </span><br>scenicOptions<span class="hljs-operator">@</span>settings<span class="hljs-operator">$</span>seed <span class="hljs-operator">=</span> <span class="hljs-number">123</span> <br>runGenie3<span class="hljs-punctuation">(</span>as.matrix<span class="hljs-punctuation">(</span>exprMat_filtered<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> scenicOptions<span class="hljs-punctuation">)</span> <br><br><span class="hljs-comment">#方法二：调用Grnboost2</span><br><span class="hljs-comment">#使用reticulate包调用基于python的arboreto模块 </span><br><span class="hljs-comment">#可以添加seed随机数种子，保证结果的可重复性seed=123 </span><br>arb.algo <span class="hljs-operator">=</span> import<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;arboreto.algo&quot;</span><span class="hljs-punctuation">)</span> <br>adjacencies <span class="hljs-operator">=</span> arb.algo<span class="hljs-operator">$</span>grnboost2<span class="hljs-punctuation">(</span>as.data.frame<span class="hljs-punctuation">(</span>t<span class="hljs-punctuation">(</span>as.matrix<span class="hljs-punctuation">(</span>exprMat_filtered<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> tf_names<span class="hljs-operator">=</span>tf_names，<span class="hljs-punctuation">,</span> seed<span class="hljs-operator">=</span><span class="hljs-number">123L</span><span class="hljs-punctuation">)</span> <br><br>colnames<span class="hljs-punctuation">(</span>adjacencies<span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span> <span class="hljs-string">&quot;TF&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Target&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;weight&quot;</span> <span class="hljs-punctuation">)</span> <br><span class="hljs-comment">#将生成的adjacencies保存到结果文件中</span><br>saveRDS<span class="hljs-punctuation">(</span> adjacencies<span class="hljs-punctuation">,</span> file <span class="hljs-operator">=</span> getIntName<span class="hljs-punctuation">(</span>scenicOptions<span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;genie3ll&quot;</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">)</span> <br></code></pre></td></tr></table></figure>
+
+<p>Tips:GENIE3和Grnboost运行结果的差异。<br>注意，grnboost2和Genie3的输出文件的表头不同，可以看到GENIE3的表头是weight，而Grnboost的表头是importance。为了让scenic识别我们用grnboost生成的文件，需要注意修改列名，变为weight。</p>
+<p>若是使用pyscenic进行共表达分析，后面可视化使用R语言，可以注意下这点区别。 Genie3的输出文件里还有一系列的1.3文件，但都不重要，这一步最重要的是1.4的矩阵。<br><img src="/2023/05/22/SCENIC/p5.png" srcset="/img/loading.gif" lazyload></p>
+<p>Tips:查看SCENIC默认的命名规范。左侧提醒我们这个文件里保存了什么信息，右侧是文件名，方便我们查找。<br><img src="/2023/05/22/SCENIC/p6.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95/" class="category-chain-item">软件算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基于SCENIC的转录因子分析原理讲解与实操</div>
+      <div>https://xuan-98-l.github.io/2023/05/22/SCENIC/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Xuan Liu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 22, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/22/Cellchat/" title="Cellchat">
+                        <span class="hidden-mobile">Cellchat</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
