@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion1.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion2.png">
 <meta property="article:published_time" content="2023-05-19T05:31:28.000Z">
-<meta property="article:modified_time" content="2023-05-22T05:03:55.987Z">
+<meta property="article:modified_time" content="2023-05-22T05:11:43.903Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -303,21 +303,21 @@
 <h2 id="Monocle介绍"><a href="#Monocle介绍" class="headerlink" title="Monocle介绍"></a>Monocle介绍</h2><h3 id="软件目的"><a href="#软件目的" class="headerlink" title="软件目的:"></a>软件目的:</h3><p>1: 对从细胞身份转化的过程进行建模（从一个clusters进展到另一个cluster），研究分化过程。</p>
 <p>2: 可以使用轨迹之间的差异来识别与轨迹转变相关的基因</p>
 <p>注意：推断的轨迹过程有时不一定反应真实的生物学过程，需要结合其他生物学先验知识和证据来对轨迹进行解释。</p>
-<h3 id="研发历史"><a href="#研发历史" class="headerlink" title="研发历史"></a>研发历史</h3><h4 id="2014年-Nature-Biotechnology"><a href="#2014年-Nature-Biotechnology" class="headerlink" title="2014年 Nature Biotechnology"></a>2014年 Nature Biotechnology</h4><p>monocle的概念版本发表在2014年，在nature biotechnology上，这个时间点，基于微流控的高通量的单细胞测序技术，比如droplet-based的scRNA-seq技术都还没有发表，商业化的10X单细胞测序也还未出现，此时的单细胞测序还是通过显微成像或者流式细胞技术进行细胞水平的研究。因此这个版本的Monocle针对的其实是低细胞数的轨迹（trajectory）分析。虽然和现在的10X单细胞测序动辄能测上万细胞的通量相比，当时用作分析的细胞数也就是几百个，相比之下低了太多，但就算如此，bulk RNA seq转录组测序的差异表达基因算法仍然不适用与单细胞测序。因为Bulk RNA-seq测序数据的差异分析通常采用基于平均值或方差的假设检验方法，无法捕捉到单个细胞水平的表达动态。</p>
+<h3 id="研发历史"><a href="#研发历史" class="headerlink" title="研发历史"></a>研发历史</h3><h4 id="2014年-Nature-Biotechnology"><a href="#2014年-Nature-Biotechnology" class="headerlink" title="2014年 Nature Biotechnology"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nbt.2859">2014年 Nature Biotechnology</a></h4><p>monocle的概念版本发表在2014年，这个时间点，基于微流控的高通量的单细胞测序技术，比如droplet-based的scRNA-seq技术都还没有发表，商业化的10X单细胞测序也还未出现，此时的单细胞测序还是通过显微成像或者流式细胞技术进行细胞水平的研究。因此这个版本的Monocle针对的其实是低细胞数的轨迹（trajectory）分析。虽然和现在的10X单细胞测序动辄能测上万细胞的通量相比，当时用作分析的细胞数也就是几百个，相比之下低了太多，但就算如此，bulk RNA seq转录组测序的差异表达基因算法仍然不适用与单细胞测序。因为Bulk RNA-seq测序数据的差异分析通常采用基于平均值或方差的假设检验方法，无法捕捉到单个细胞水平的表达动态。</p>
 <p>Monocle1，Monocle的初始版本，是第一个发布的单细胞RNA测序数据分析软件包之一，它认为就算单细胞测序是在同一时间捕获到的细胞群体，它也可能包括许多不同的中间分化状态，传统转录组那种只考虑其平均值的算法会掩盖在单个细胞中发生的趋势。</p>
 <p><img src="/2023/05/19/Monocle2/banana.png" srcset="/img/loading.gif" lazyload></p>
 <p>Monocle基于一个基本假设：scRNA - Seq中的所有细胞存在潜在的时间顺序，由于分化不同步使得细胞的基因表达水平存在很强的差异性，那就可以根据这个潜在的动态过程对细胞进行排序。Monocle的算法源自先前的基于bulk RNASeq重构样本间的时间顺序的算法，但将其扩展到单细胞层面，并允许单个祖细胞类型存在多个细胞命运。</p>
 <p>Monocle引入了一个概念： “pseudotime”， 即通过生物过程进展的定量测量，在’pseudotime拟时间’中排序单细胞表达谱。或者说是细胞在发育过程中的时间顺序。monocle1可以根据基因表达数据生成拓扑图，确定基因表达水平的变化趋势，并可视化地展示出细胞发育轨迹，从而更容易理解和解释单细胞RNA-seq数据的结果。</p>
 <p>热图展示了Monocle找到的差异基因(行)，细胞(列)按拟时间顺序排列。<br><img src="/2023/05/19/Monocle2/heatmap1.png" srcset="/img/loading.gif" lazyload></p>
 <p>工作原理图<br><img src="/2023/05/19/Monocle2/algorithm1.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2017年-Nature-Methods-3月"><a href="#2017年-Nature-Methods-3月" class="headerlink" title="2017年 Nature Methods (3月)"></a>2017年 Nature Methods (3月)</h4><p>随着测序技术的发展，高通量的单细胞测序技术产生了，单细胞测序可以检测到更多的细胞和更多的基因表达水平。为了适应这种变化，monocle2，在2017年被发表在nature methods上。这个版本的monocle对之前算法进行了进一步优化，增加了用于分支分析的BEAM算法。</p>
+<h4 id="2017年-Nature-Methods-1月"><a href="#2017年-Nature-Methods-1月" class="headerlink" title="2017年 Nature Methods (1月)"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nmeth.4150">2017年 Nature Methods (1月)</a></h4><p>随着测序技术的发展，高通量的单细胞测序技术产生了，单细胞测序可以检测到更多的细胞和更多的基因表达水平。为了适应这种变化，monocle2，在2017年被发表在nature methods上。这个版本的monocle对之前算法进行了进一步优化，增加了用于分支分析的BEAM算法。</p>
 <p><strong>Branched expression analysis modeling (BEAM)</strong></p>
 <p>为了以稳健的方式从学习到的轨迹中检测细胞命运依赖基因，作者开发了BEAM，一种广义线性模型，用于找到分支之间不同的所有基因，（其实就是一种差异分析方法）。什么是分支呢，就是当发育过程中，细胞执行不同的基因表达程序时，这个时候就是细胞做出命运抉择的时刻。当细胞做出命运选择时，分支就会出现在轨迹中: 一个发育谱系沿着一条路径前进，而另一个谱系产生第二条路径。BEAM算法就可以用来识别在每个谱系分岔过程中表现出显著差异的基因，帮助确定在复杂的生物学过程中细胞命运决定的时刻。</p>
 <p>BEAM方法接受一个已通过orderCells函数排序的CellDataSet以及发育轨迹中分支点的名称作为输入，返回每个基因的显着性得分表。得分显着的基因在其表达中被认为是分支依赖性的。</p>
 <p>下图展示了’pseudotime拟时间”排序后的细胞轨迹，可以看到上面有黑色的圆圈，是分支点1， branch_point 1，也就是细胞分化细胞命运决定的时刻。<br><img src="/2023/05/19/Monocle2/p1.png" srcset="/img/loading.gif" lazyload></p>
 <p>图中简单展示了Beam算法的原理，它使用广义线性模型对已知分支值的数据进行回归(alternative model)，为每个分支拟合单独的曲线。它还通过对所有数据拟合一条曲线来执行分支指派未知的回归(零模型)，然后通过似然比检验比较这些模型。 判断当细胞从树的左上角(E14.5)的早期发育阶段通过分支时，哪些基因发生了变化？哪些基因在分支之间差异表达？<br><img src="/2023/05/19/Monocle2/p2.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以看到分化的关键基因（marker基因）Pdpn and Sftpb在明显属于随不同branch变化的基因， 两个分支之间呈现出了显著差异的趋势，但housekeeping genes (Hprt and Pgk1)并未有明显差异。<br><img src="/2023/05/19/Monocle2/p3.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="2017年-Nature-Methods-10月"><a href="#2017年-Nature-Methods-10月" class="headerlink" title="2017年 Nature Methods (10月)"></a>2017年 Nature Methods (10月)</h4><p>这篇文献主要讲述了Monocle2的工作流程，介绍了如何将反向图嵌入引入细胞轨迹分析，并改为使用DDRTree的算法做降维。monocle2的稳定版本从此开发出来，它也成为了单细胞领域目前应用最广泛的轨迹推断方法。</p>
+<h4 id="2017年-Nature-Methods-8月"><a href="#2017年-Nature-Methods-8月" class="headerlink" title="2017年 Nature Methods (8月)"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/nmeth.4402">2017年 Nature Methods (8月)</a></h4><p>这篇文献主要讲述了Monocle2的工作流程，介绍了如何将反向图嵌入引入细胞轨迹分析，并改为使用DDRTree的算法做降维。monocle2的稳定版本从此开发出来，它也成为了单细胞领域目前应用最广泛的轨迹推断方法。</p>
 <p>monocle2的流程图<br><img src="/2023/05/19/Monocle2/p4.png" srcset="/img/loading.gif" lazyload></p>
 <p>关键步骤：</p>
 <ol>
@@ -327,7 +327,7 @@
 <p>2.每个细胞被表示为高维空间(x)中的一个点，其中每个维度对应一个基因的表达水平。数据从高维空间(X)被投影到低维空间(z)上，使用k - means聚类算法找到这些细胞的分群中心，然后通过反向图嵌入（默认是DDRTree）的流形学习算法，找到高维基因表达空间与低维空间的映射关系并构建最小生成树，将细胞投影到生成树上，并将找到的中心进行连接，构建初步的树形结构。</p>
 <p>基于新的细胞位置，更新细胞的分群中心和轨迹结构，将二维空间中的树（二维轨迹），重新投射到高维空间。迭代此过程，直至收敛（即获得稳定的树形结构，细胞轨迹可以反应原始数据的特征）。</p>
 <p>这里提到了两个关键词，dpFeature, 用于确认与生物过程相关的基因，也就是ordering gene。以及DDRTree，在monocle的reduceDimension函数中默认使用，用来推断基因表达动态变化，这两个算法是monocle2的主打点。</p>
-<p>其实目前monocle已经更新到3代了，但考虑到目前发表的文章还是使用monocle2的比较多，而且它的下游可视化方式还有待开发，我们仍然使用monocle2进行讲解。</p>
+<p>其实目前monocle已经更新到3代了，但考虑到目前发表的文章还是使用monocle2的比较多，而且monocle3的下游可视化方式还有待开发，我们仍然使用monocle2进行讲解。</p>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
 <li><p>挖掘细胞分化的关键基因：<br>在分化或发育研究中，可通过拟时序分析关键的分化节点，挖掘细胞不同分化路径命运选择的推动基因</p>
 </li>
@@ -375,7 +375,7 @@
 <li>对马尔可夫转移概率矩阵进行特征值分解， 获得特征向量（一般取前三维度），获得细胞在不同维度的坐标。</li>
 </ol>
 <p>通过扩散映射将空间距离转换为状态转移的概率，对不同分化路径中的细胞进行降维和排序，确定分化细胞的随机转移方向，进而预测细胞的发育轨迹并检测稀有种群。可以与RNA velocity共同进行分析，做相互验证。</p>
-<p>基于Diffusion maps算法开发的destiny软件发表在bioinformatics，因为destiny包可以兼容seurat包且与其他方法相比，diffusion map算法对噪声扰动具有鲁棒性并且计算成本低(内存消耗远小于monocle)。相关文献已经被引用超过1000次，也是一个稳定的分析方法了。</p>
+<p>基于Diffusion maps算法开发的<a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btv715">destiny软件</a>发表在bioinformatics，因为destiny包可以兼容seurat包且与其他方法相比，diffusion map算法对噪声扰动具有鲁棒性并且计算成本低(内存消耗远小于monocle)，可以将细胞间非线性的空间结构降维并映射维连续性结构。相关文献已经被引用超过1000次，也是一个稳定的分析方法了。</p>
 <p>结果展示：<br><img src="/2023/05/19/Monocle2/diffusion2.png" srcset="/img/loading.gif" lazyload></p>
 
                 
