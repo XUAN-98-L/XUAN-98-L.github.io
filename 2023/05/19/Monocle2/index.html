@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion1.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion2.png">
 <meta property="article:published_time" content="2023-05-19T05:31:28.000Z">
-<meta property="article:modified_time" content="2023-05-22T14:10:06.581Z">
+<meta property="article:modified_time" content="2023-05-25T07:52:19.826Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -371,7 +371,7 @@
 <ol>
 <li>输入细胞*基因的（n x G）矩阵，和monocle类似，变到高维空间</li>
 <li>通过高斯核函数，从G维基因空间中找到由较高概率密度的连续路径所组成的扩散路径。</li>
-<li>根据细胞对之间的转移概率，计算 n × n 的细胞间马尔可夫转移概率矩阵 。（如果对数据进行随机游走，则走到附近的数据点比走到远处的另一个数据点更有可能， 也就是概率更高）</li>
+<li>根据细胞对之间的转移概率，计算 n × n 的细胞间马尔可夫转移概率矩阵 。（如果对数据进行随机游走，则走到附近的数据点比走到远处的另一个数据点更有可能，也就是概率更高）</li>
 <li>对马尔可夫转移概率矩阵进行特征值分解， 获得特征向量（一般取前三维度），获得细胞在不同维度的坐标。</li>
 </ol>
 <p>通过扩散映射将空间距离转换为状态转移的概率，对不同分化路径中的细胞进行降维和排序，确定分化细胞的随机转移方向，进而预测细胞的发育轨迹并检测稀有种群。可以与RNA velocity共同进行分析，做相互验证。</p>
