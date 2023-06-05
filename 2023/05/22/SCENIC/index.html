@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p20.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p21.png">
 <meta property="article:published_time" content="2023-05-22T08:30:03.000Z">
-<meta property="article:modified_time" content="2023-05-22T14:10:33.402Z">
+<meta property="article:modified_time" content="2023-06-05T08:42:47.385Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -406,7 +406,7 @@
 <ul>
 <li>Connection Specificity Index（CSI）<br>第二个在scenic分析中常用的指标是CSI， <strong>该指标用来划分regulon module，展示不同Regulon之间的关联性，同时具有较高CSI的Regulon可能共同调控下游基因，并共同负责细胞功能。</strong></li>
 </ul>
-<p>CSI 的评估包括两个步骤，⾸先计算regulon配对的pearson correlation coefficient（PCC），接下来对于选<br>定的⼀对regulon pair，假设A和B，得到A与B的PCC值，针对其他与A或B相关的配对，统计其中PCC值低于A与B之间PCC值的⽐例，这⼀⽐例就是A与B配对的CSI值，CSI值越⼤表示regulon 配对中的两个regulon相关性越⾼。最后，对所有regulon配对的CSI矩阵进⾏层次聚类（Hierarchical clustering），划分regulon module，对于每⼀个regulon module，其在每种细胞类型中的活性得分等于该细胞类型内所有细胞类型对于该module内所有<br>regulon的RAS的平均值。</p>
+<p>CSI 的评估包括两个步骤，⾸先计算regulon配对的pearson correlation coefficient（PCC），接下来对于选定的⼀对regulon pair，假设A和B，得到A与B的PCC值，针对其他与A或B相关的配对，统计其中PCC值低于A与B之间PCC值的⽐例，这⼀⽐例就是A与B配对的CSI值，CSI值越⼤表示regulon 配对中的两个regulon相关性越⾼。最后，对所有regulon配对的CSI矩阵进⾏层次聚类（Hierarchical clustering），划分regulon module，对于每⼀个regulon module，其在每种细胞类型中的活性得分等于该细胞类型内所有细胞类型对于该module内所有regulon的RAS的平均值。</p>
 <p>各细胞群中CSI关联模块的活性热图。行表示根据CSI聚类热图进行手动划分的CSI模块，列表示不同细胞群。颜色由蓝变黄表示CSI模块活性由低到高。活性相似的CSI模块对应的细胞群可能具有相似的基因表达模式以及相似的调控网络。<br><img src="/2023/05/22/SCENIC/p19.png" srcset="/img/loading.gif" lazyload></p>
 <p>下图为Regulon模块的CSI关联性聚类热图，行列均表示regulon，颜色由蓝变黄表示CSI关联性值由低到高。CSI值都较高的regulon可能具有相似的细胞功能，共同调控下游基因。<br><img src="/2023/05/22/SCENIC/p20.png" srcset="/img/loading.gif" lazyload><br>美化后的Regulon模块的CSI关联性聚类热图如下图，<br><img src="/2023/05/22/SCENIC/p21.png" srcset="/img/loading.gif" lazyload></p>
 
