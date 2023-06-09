@@ -58,6 +58,35 @@
   
   
   <entry>
+    <title>WGCNA</title>
+    <link href="/2023/05/22/WGCNA/"/>
+    <url>/2023/05/22/WGCNA/</url>
+    
+    <content type="html"><![CDATA[<p>WGCNA文献和hdWGCNA文献阅读</p><span id="more"></span><h1 id="WGCNA介绍"><a href="#WGCNA介绍" class="headerlink" title="WGCNA介绍"></a>WGCNA介绍</h1><p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-559">WGCNA 文献</a></p><p><a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/">WGCNA 教程页面</a></p><h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>Weighted correlation network analysis （WGCNA）是一种系统生物学方法，用于描述bulk RNA-seq中基因之间的相关性模式。WGCNA可用于寻找高度相关基因的聚类(module)，使用模块的特征基因或模块内hub基因对基因聚类情况进行汇总，将模块相互关联并与外部样本性状(使用特征基因网络方法)相关联，计算模块隶属度指标（模块与性状的关联）。该方法为基于网络的基因筛选方法提供了便利，可用于识别候选生物标志物或治疗靶点。这些方法已成功应用于多种生物背景，如癌症、小鼠遗传学、酵母遗传学、脑成像数据分析等。WGCNA R软件包是R函数的综合集合，包括网络构建、模块检测、基因选择、拓扑性质计算、数据模拟、可视化以及与外部软件接口等功能。</p><p>R包流程图<br><a href="P1.png"></a></p><p>适配单细胞数据的WGCNA。<br><a href="https://smorabit.github.io/hdWGCNA/">github</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件算法</category>
+      
+      <category>生信</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>个人成长</tag>
+      
+      <tag>技术</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于SCENIC的转录因子分析原理讲解与实操</title>
     <link href="/2023/05/22/SCENIC/"/>
     <url>/2023/05/22/SCENIC/</url>
@@ -76,9 +105,9 @@
     
     <tags>
       
-      <tag>技术</tag>
-      
       <tag>个人成长</tag>
+      
+      <tag>技术</tag>
       
     </tags>
     
@@ -105,9 +134,9 @@
     
     <tags>
       
-      <tag>技术</tag>
-      
       <tag>个人成长</tag>
+      
+      <tag>技术</tag>
       
     </tags>
     
@@ -134,9 +163,9 @@
     
     <tags>
       
-      <tag>技术</tag>
-      
       <tag>个人成长</tag>
+      
+      <tag>技术</tag>
       
     </tags>
     
@@ -163,9 +192,9 @@
     
     <tags>
       
-      <tag>技术</tag>
-      
       <tag>个人成长</tag>
+      
+      <tag>技术</tag>
       
     </tags>
     
@@ -192,9 +221,9 @@
     
     <tags>
       
-      <tag>技术</tag>
-      
       <tag>个人成长</tag>
+      
+      <tag>技术</tag>
       
     </tags>
     
