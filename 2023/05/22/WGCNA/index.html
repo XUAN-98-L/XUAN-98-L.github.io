@@ -24,8 +24,11 @@
 <meta property="og:description" content="WGCNA文献和hdWGCNA文献阅读">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P1.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P3.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P4.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P2.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-09T09:14:35.089Z">
+<meta property="article:modified_time" content="2023-06-13T07:26:41.418Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -223,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          404 words
+          1.8k words
         
       </span>
     
@@ -234,7 +237,7 @@
         
         
         
-          4 mins
+          15 mins
         
       </span>
     
@@ -281,9 +284,51 @@
 <span id="more"></span>
 <h1 id="WGCNA介绍"><a href="#WGCNA介绍" class="headerlink" title="WGCNA介绍"></a>WGCNA介绍</h1><p><a target="_blank" rel="noopener" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-559">WGCNA 文献</a></p>
 <p><a target="_blank" rel="noopener" href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/">WGCNA 教程页面</a></p>
+<p><a target="_blank" rel="noopener" href="https://peterlangfelder.com/articles/">作者 Peter Langfelder 博客</a></p>
 <h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>Weighted correlation network analysis （WGCNA）是一种系统生物学方法，用于描述bulk RNA-seq中基因之间的相关性模式。WGCNA可用于寻找高度相关基因的聚类(module)，使用模块的特征基因或模块内hub基因对基因聚类情况进行汇总，将模块相互关联并与外部样本性状(使用特征基因网络方法)相关联，计算模块隶属度指标（模块与性状的关联）。该方法为基于网络的基因筛选方法提供了便利，可用于识别候选生物标志物或治疗靶点。这些方法已成功应用于多种生物背景，如癌症、小鼠遗传学、酵母遗传学、脑成像数据分析等。WGCNA R软件包是R函数的综合集合，包括网络构建、模块检测、基因选择、拓扑性质计算、数据模拟、可视化以及与外部软件接口等功能。</p>
-<p>R包流程图<br><img src="/2023/05/22/WGCNA/P1.png" srcset="/img/loading.gif" lazyload></p>
-<p>适配单细胞数据的WGCNA。<br><a target="_blank" rel="noopener" href="https://smorabit.github.io/hdWGCNA/">github</a></p>
+<p>流程图<br><img src="/2023/05/22/WGCNA/P1.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>构建基因共表达矩阵网络：计算基因间相关性<ul>
+<li>基于Spearman method计算基因的相关性矩阵(<strong>Similarity Matrix</strong>)</li>
+<li>将相关性矩阵转化为邻接矩阵(<strong>Adjacency Matrix</strong>)；Similarity Matrix被认为是undirected, weighted gene network，因此从Similarity Matrix转换到Adjacency Matrix的过程，被认为是从无向加权网络转移到scale-free network的过程。<ul>
+<li>此步骤需要选择网络的类型(官方更推荐Signed或者Signed hybrid)<ul>
+<li>Unsigned: Genes are similar if they are strongly correlated</li>
+<li>Signed: Only applied to genes that are similar if they are <strong>positively correlated</strong></li>
+<li>Signed hybrid: Negative associations are all treated as zero. (与signed network类似，与Signed network的差异可以很小)</li>
+</ul>
+</li>
+<li>根据两个标准，选择<strong>soft thresholding β值</strong> (Power selected)；soft thresholding β值用于将Similarity Matrix转换到Adjacency Matrix<ul>
+<li>Scale independence, 该图的点的纵坐标越高，越接近scale free network。</li>
+<li>Mean Connectivity；由于在scale free network中，大多数节点的连通性较差，因此平均连通性越低，越接近scale free network。<br> <img src="/2023/05/22/WGCNA/P3.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据Adjacency Matrix绘制TOM plot (<strong>topological overlap matrix</strong>)<ul>
+<li>基因网络的拓扑重叠热图(Heatmap plot of topological overlap in the gene network)是对基因相似性的评估。</li>
+<li>在热图中，每一行和每一列对应一个基因，浅色表示低拓扑重叠，渐变深的红色表示高拓扑重叠。如果基因在网络中与相似的一组基因相连，那么它们被认为具有高度的拓扑重叠。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模块寻找：基于矩阵的数值进行成对比较，进行层次聚类，并通过Dynamic tree cut对聚类树进行模块划分<ul>
+<li>模块的特征向量值signed module eigengene (ME)，反映了节点在模块内的隶属度。然后对特征基因高度相关的模块进行合并。<br><img src="/2023/05/22/WGCNA/P4.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+<li>将模块与表型相关联：寻找有生物学意义的模块<ul>
+<li>具有高性状显著性的模块可能代表与样本性状相关的通路。</li>
+</ul>
+</li>
+<li>模块间相关性研究（Optional）</li>
+<li>寻找模块内部的key drivers（Optional）</li>
+</ol>
+<p>Tips:</p>
+<p>Scale-free network 可轻易从无标度网络中寻找到hub genes（The highest-degree nodes）</p>
+<p><img src="/2023/05/22/WGCNA/P2.png" srcset="/img/loading.gif" lazyload></p>
+<p>官方建议删除Counts很低的基因（例如，删除所有在 90% 以上的样本中计数小于 10 的基因），因为这种低表达的Feature往往反映噪声,且基于计数的相关性大多为零并没有真正意义。实际阈值应基于实验设计、测序深度和样本计数。</p>
+<p>无论是使用 RPKM、FPKM 还是简单的归一化计数，只要所有样本都以相同的方式处理，对 WGCNA 分析并没有太大影响。</p>
+<p><a target="_blank" rel="noopener" href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html">WGCNA R包常见问题QA</a></p>
+<h1 id="hdWGCNA-————适配单细胞数据的WGCNA。"><a href="#hdWGCNA-————适配单细胞数据的WGCNA。" class="headerlink" title="hdWGCNA ————适配单细胞数据的WGCNA。"></a>hdWGCNA ————适配单细胞数据的WGCNA。</h1><p><a target="_blank" rel="noopener" href="https://smorabit.github.io/hdWGCNA/">github</a></p>
 
                 
               </div>
