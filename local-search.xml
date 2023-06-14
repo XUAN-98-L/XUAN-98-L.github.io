@@ -4,33 +4,6 @@
   
   
   <entry>
-    <title>Zotero配置</title>
-    <link href="/2023/06/05/Zotero/"/>
-    <url>/2023/06/05/Zotero/</url>
-    
-    <content type="html"><![CDATA[<p>本文保存Zotero常用插件</p><span id="more"></span><h2 id="ZotFile-附件管理"><a href="#ZotFile-附件管理" class="headerlink" title="ZotFile 附件管理"></a>ZotFile 附件管理</h2><p>结合360云盘进行pdf多端同步，用于管理文献附件，例如移动、重命名等。</p><p>移动附件到指定文件夹，文献条目上右键单击『Manage Attachments』→『Rename and Move』</p><h2 id="Zotero-gpt-辅助阅读"><a href="#Zotero-gpt-辅助阅读" class="headerlink" title="Zotero-gpt 辅助阅读"></a>Zotero-gpt 辅助阅读</h2><p><a href="https://github.com/MuiseDestiny/zotero-gpt">Zotero gpt下载链接</a></p><p>下载.xpi并安装，需要结合chatGPT的API key使用。</p><p>辅助进行内容提炼，总结，或部分翻译。</p><h2 id="zotero-pdf-translate-翻译神器"><a href="#zotero-pdf-translate-翻译神器" class="headerlink" title="zotero-pdf-translate 翻译神器"></a>zotero-pdf-translate 翻译神器</h2><p><a href="https://github.com/windingwind/zotero-pdf-translate">下载链接</a></p><p>建议使用CNKI翻译。</p><h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h2><p>可使用<a href="https://werss.app/">WERSS</a>订阅公众号，并使用<a href="https://github.com/yang991178/fluent-reader">Fluent reader</a>获得纯净的阅读体验。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>软件学习</category>
-      
-      <category>生信无关</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>文献</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>分面点图优化</title>
     <link href="/2023/06/02/Dotplot-Split/"/>
     <url>/2023/06/02/Dotplot-Split/</url>
@@ -48,35 +21,6 @@
     
     
     <tags>
-      
-      <tag>技术</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>WGCNA</title>
-    <link href="/2023/05/22/WGCNA/"/>
-    <url>/2023/05/22/WGCNA/</url>
-    
-    <content type="html"><![CDATA[<p>WGCNA文献和hdWGCNA文献阅读</p><span id="more"></span><h1 id="WGCNA介绍"><a href="#WGCNA介绍" class="headerlink" title="WGCNA介绍"></a>WGCNA介绍</h1><p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-9-559">WGCNA 文献</a></p><p><a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/">WGCNA 教程页面</a></p><p><a href="https://peterlangfelder.com/articles/">作者 Peter Langfelder 博客</a></p><h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h2><p>Weighted correlation network analysis （WGCNA）是一种系统生物学方法，用于描述bulk RNA-seq中基因之间的相关性模式。WGCNA可用于寻找高度相关基因的聚类(module)，使用模块的特征基因或模块内hub基因对基因聚类情况进行汇总，将模块相互关联并与外部样本性状(使用特征基因网络方法)相关联，计算模块隶属度指标（模块与性状的关联）。该方法为基于网络的基因筛选方法提供了便利，可用于识别候选生物标志物或治疗靶点。这些方法已成功应用于多种生物背景，如癌症、小鼠遗传学、酵母遗传学、脑成像数据分析等。WGCNA R软件包是R函数的综合集合，包括网络构建、模块检测、基因选择、拓扑性质计算、数据模拟、可视化以及与外部软件接口等功能。</p><p>流程图<br><img src="/2023/05/22/WGCNA/P1.png"></p><ol><li>构建基因共表达矩阵网络：计算基因间相关性<ul><li>基于Spearman method计算基因的相关性矩阵(<strong>Similarity Matrix</strong>)</li><li>将相关性矩阵转化为邻接矩阵(<strong>Adjacency Matrix</strong>)；Similarity Matrix被认为是undirected, weighted gene network，因此从Similarity Matrix转换到Adjacency Matrix的过程，被认为是从无向加权网络转移到scale-free network的过程。<ul><li>此步骤需要选择网络的类型(官方更推荐Signed或者Signed hybrid)<ul><li>Unsigned: Genes are similar if they are strongly correlated</li><li>Signed: Only applied to genes that are similar if they are <strong>positively correlated</strong></li><li>Signed hybrid: Negative associations are all treated as zero. (与signed network类似，与Signed network的差异可以很小)</li></ul></li><li>根据两个标准，选择<strong>soft thresholding β值</strong> (Power selected)；soft thresholding β值用于将Similarity Matrix转换到Adjacency Matrix<ul><li>Scale independence, 该图的点的纵坐标越高，越接近scale free network。</li><li>Mean Connectivity；由于在scale free network中，大多数节点的连通性较差，因此平均连通性越低，越接近scale free network。<br> <img src="/2023/05/22/WGCNA/P3.png"></li></ul></li></ul></li><li>根据Adjacency Matrix绘制TOM plot (<strong>topological overlap matrix</strong>)<ul><li>基因网络的拓扑重叠热图(Heatmap plot of topological overlap in the gene network)是对基因相似性的评估。</li><li>在热图中，每一行和每一列对应一个基因，浅色表示低拓扑重叠，渐变深的红色表示高拓扑重叠。如果基因在网络中与相似的一组基因相连，那么它们被认为具有高度的拓扑重叠。</li></ul></li></ul></li><li>模块寻找：基于矩阵的数值进行成对比较，进行层次聚类，并通过Dynamic tree cut对聚类树进行模块划分<ul><li>模块的特征向量值signed module eigengene (ME)，反映了节点在模块内的隶属度。然后对特征基因高度相关的模块进行合并。<br><img src="/2023/05/22/WGCNA/P4.png"></li></ul></li><li>将模块与表型相关联：寻找有生物学意义的模块<ul><li>具有高性状显著性的模块可能代表与样本性状相关的通路。</li></ul></li><li>模块间相关性研究（Optional）</li><li>寻找模块内部的key drivers（Optional）</li></ol><p>Tips:</p><p>Scale-free network 可轻易从无标度网络中寻找到hub genes（The highest-degree nodes）</p><p><img src="/2023/05/22/WGCNA/P2.png"></p><p>官方建议删除Counts很低的基因（例如，删除所有在 90% 以上的样本中计数小于 10 的基因），因为这种低表达的Feature往往反映噪声,且基于计数的相关性大多为零并没有真正意义。实际阈值应基于实验设计、测序深度和样本计数。</p><p>无论是使用 RPKM、FPKM 还是简单的归一化计数，只要所有样本都以相同的方式处理，对 WGCNA 分析并没有太大影响。</p><p><a href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html">WGCNA R包常见问题QA</a></p><h1 id="hdWGCNA-————适配单细胞数据的WGCNA。"><a href="#hdWGCNA-————适配单细胞数据的WGCNA。" class="headerlink" title="hdWGCNA ————适配单细胞数据的WGCNA。"></a>hdWGCNA ————适配单细胞数据的WGCNA。</h1><p><a href="https://smorabit.github.io/hdWGCNA/">github</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>软件算法</category>
-      
-      <category>生信</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>个人成长</tag>
       
       <tag>技术</tag>
       
@@ -157,64 +101,6 @@
       <category>软件算法</category>
       
       <category>生信</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>个人成长</tag>
-      
-      <tag>技术</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hexo常用命令</title>
-    <link href="/2023/05/19/Hexo-personal-design/"/>
-    <url>/2023/05/19/Hexo-personal-design/</url>
-    
-    <content type="html"><![CDATA[<p>本文保存常用的hexo配置与命令。</p><span id="more"></span><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h3 id="创建新的文章页面（名称为Hexo-personal-design）"><a href="#创建新的文章页面（名称为Hexo-personal-design）" class="headerlink" title="创建新的文章页面（名称为Hexo_personal_design）"></a>创建新的文章页面（名称为Hexo_personal_design）</h3><pre><code class="hljs">hexo new post Hexo_personal_design</code></pre><h3 id="在-config-yml中进行如下配置，可在"><a href="#在-config-yml中进行如下配置，可在" class="headerlink" title="在_config.yml中进行如下配置，可在"></a>在_config.yml中进行如下配置，可在</h3><pre><code class="hljs">post_asset_folder: truemarked:    prependRoot: true    postAsset: true#在/source/_posts/Hexo_personal_design文件夹中存放background.jpg文件夹并通过如下命令进行调用。![](backgroud.jpg)</code></pre><h3 id="在文章修改完成后使用命令进行推送到git-使用cmd"><a href="#在文章修改完成后使用命令进行推送到git-使用cmd" class="headerlink" title="在文章修改完成后使用命令进行推送到git(使用cmd)"></a>在文章修改完成后使用命令进行推送到git(使用cmd)</h3><pre><code class="hljs">hexo cleanhexo deploy</code></pre><h3 id="存放全局image的位置（主页背景等）"><a href="#存放全局image的位置（主页背景等）" class="headerlink" title="存放全局image的位置（主页背景等）"></a>存放全局image的位置（主页背景等）</h3><pre><code class="hljs">C:\Users\liu\my_blog\public\img</code></pre><h3 id="将Hexo从C盘迁移到D盘"><a href="#将Hexo从C盘迁移到D盘" class="headerlink" title="将Hexo从C盘迁移到D盘"></a>将Hexo从C盘迁移到D盘</h3><pre><code class="hljs">d:cd D:\my_blog</code></pre><h3 id="如果遇到问题-可通过查询Hexo官网以及Hexo-Fluid进行查找。"><a href="#如果遇到问题-可通过查询Hexo官网以及Hexo-Fluid进行查找。" class="headerlink" title="如果遇到问题, 可通过查询Hexo官网以及Hexo Fluid进行查找。"></a>如果遇到问题, 可通过查询<a href="https://hexo.io/zh-cn/docs/">Hexo官网</a>以及<a href="https://fluid-dev.github.io/hexo-fluid-docs/guide/#%E5%85%B3%E4%BA%8E%E6%8C%87%E5%8D%97">Hexo Fluid</a>进行查找。</h3>]]></content>
-    
-    
-    <categories>
-      
-      <category>软件学习</category>
-      
-      <category>生信无关</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>个人成长</tag>
-      
-      <tag>技术</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>基于hexo和github page搭建博客</title>
-    <link href="/2023/05/17/blog-build-remark/"/>
-    <url>/2023/05/17/blog-build-remark/</url>
-    
-    <content type="html"><![CDATA[<p>本文是基于hexo和github page搭建博客的安装指南，主要介绍了基于Scoop对win10系统的软件进行管理，hexo的安装与Hexo Fluid主题配置。</p><span id="more"></span><h1 id="使用github-page搭建blog"><a href="#使用github-page搭建blog" class="headerlink" title="使用github page搭建blog"></a>使用github page搭建blog</h1><h2 id="1-基于Windows10系统，使用Scoop进行软件安装与管理-Scoop"><a href="#1-基于Windows10系统，使用Scoop进行软件安装与管理-Scoop" class="headerlink" title="1 基于Windows10系统，使用Scoop进行软件安装与管理 Scoop"></a>1 基于Windows10系统，使用Scoop进行软件安装与管理 <a href="https://sspai.com/post/52496">Scoop</a></h2><p>在 PowerShell 中输入下面内容，保证允许本地脚本的执行：</p><pre><code class="hljs">set-executionpolicy remotesigned -scope currentuser</code></pre><p>然后执行下面的命令安装 Scoop：</p><pre><code class="hljs">iex (new-object net.webclient).downloadstring(&#39;https://get.scoop.sh&#39;)</code></pre><p>静待脚本执行完成就可以了，安装成功后，让我们尝试一下：</p><pre><code class="hljs">scoop help</code></pre><p>整体搭建流程基于<a href="https://xie.infoq.cn/article/ac51ce1f6e9434779c35cbb6c">教程</a></p><pre><code class="hljs"># 安装Gitscoop install git # 安装 nvmscoop install nvm # 查看可用的 NodeJS 版本，这里建议使用 LTS 版本nvm list available # 安装 NodeJS，我这里安装的是最新 LTS 版本 18.16.0nvm install 18.16.0 #先使用 scoop 安装 sudo 这个工具scoop install sudo# NodeJS 版本使用 18.16.0，注意这里需要管理员权限sudo nvm use 18.16.0 </code></pre><h2 id="2-安装Hexo"><a href="#2-安装Hexo" class="headerlink" title="2. 安装Hexo"></a>2. 安装<a href="https://hexo.io/zh-cn/docs/#%E5%AE%89%E8%A3%85-Hexo">Hexo</a></h2><pre><code class="hljs">#一键安装Hexo npm install -g hexo-cli#创建项目并初始化hexo init my_blogcd my_blognpm install#3. 生成网页文件 &amp;本地启动hexo generate # 生成页面，此命令可以简写为 `hexo g`hexo server # 本地启动，可简写为 `hexo s`</code></pre><h2 id="3-修改Hexo主题为fluid"><a href="#3-修改Hexo主题为fluid" class="headerlink" title="3.修改Hexo主题为fluid"></a>3.修改Hexo主题为<a href="https://github.com/fluid-dev/hexo-theme-fluid">fluid</a></h2><pre><code class="hljs">#在博客根路径下（C:\Users\liu\my_blog）将git上的_config.yml文件复制过去并重命名为_config.fluid.yml#对根目录的_config.yml文件进行如下修改：heme: fluid  # 指定主题language: zh-CN  # 指定语言，会影响主题显示的语言，按需修改</code></pre><h2 id="4-创建【关于页】"><a href="#4-创建【关于页】" class="headerlink" title="4.创建【关于页】"></a>4.创建【关于页】</h2><p>hexo的<a href="https://fluid-dev.github.io/hexo-fluid-docs/guide/#%E5%BD%92%E6%A1%A3%E9%A1%B5">用户手册</a></p><pre><code class="hljs">hexo new page about</code></pre><p>创建成功后修改 &#x2F;source&#x2F;about&#x2F;index.md，添加 layout 属性。修改后的文件示例如下：<br>    —<br>    title: 标题<br>    layout: about<br>    —<br>    这里写关于页的正文，支持 Markdown, HTML</p><p><strong>注意</strong>：在对关于页进行修改后，需要重新启动hexo</p><pre><code class="hljs">hexo cleanhexo ghexo s</code></pre><h2 id="5-创建文章"><a href="#5-创建文章" class="headerlink" title="5.创建文章"></a>5.创建文章</h2><p>修改 _config.yml 文件。这项配置是为了在生成文章的同时，生成一个同名的资源目录用于存放图片等资源文件。</p><pre><code class="hljs">#将第43行的false改为truepost_asset_folder: true</code></pre><p>创建文件名为 blog_build_remark 文章。<br>    hexo new post blog_build_remark</p><h1 id="发布-GitHub-Pages"><a href="#发布-GitHub-Pages" class="headerlink" title="发布 GitHub Pages"></a>发布 GitHub Pages</h1><p>安装 hexo-deployer-git</p><pre><code class="hljs">npm install hexo-deployer-git --save</code></pre><p>修改站点配置</p><pre><code class="hljs">deploy:    type: git    repo: https://github.com/XUAN-98-L/XUAN-98-L.github.io</code></pre><p>默认会将数据推送到github的master branch,可以直接通过链接进行访问 <a href="https://xuan-98-l.github.io/">https://xuan-98-l.github.io/</a></p><p>设置完成后使用命令进行推送(使用cmd)<br>    hexo clean<br>    hexo deploy</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>软件学习</category>
-      
-      <category>生信无关</category>
       
     </categories>
     

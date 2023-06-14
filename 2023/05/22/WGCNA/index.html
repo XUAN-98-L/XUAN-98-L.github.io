@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P4.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P2.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-13T07:26:41.418Z">
+<meta property="article:modified_time" content="2023-06-14T09:14:39.256Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          2.2k words
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          15 mins
+          19 mins
         
       </span>
     
@@ -328,7 +328,13 @@
 <p>官方建议删除Counts很低的基因（例如，删除所有在 90% 以上的样本中计数小于 10 的基因），因为这种低表达的Feature往往反映噪声,且基于计数的相关性大多为零并没有真正意义。实际阈值应基于实验设计、测序深度和样本计数。</p>
 <p>无论是使用 RPKM、FPKM 还是简单的归一化计数，只要所有样本都以相同的方式处理，对 WGCNA 分析并没有太大影响。</p>
 <p><a target="_blank" rel="noopener" href="https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/faq.html">WGCNA R包常见问题QA</a></p>
-<h1 id="hdWGCNA-————适配单细胞数据的WGCNA。"><a href="#hdWGCNA-————适配单细胞数据的WGCNA。" class="headerlink" title="hdWGCNA ————适配单细胞数据的WGCNA。"></a>hdWGCNA ————适配单细胞数据的WGCNA。</h1><p><a target="_blank" rel="noopener" href="https://smorabit.github.io/hdWGCNA/">github</a></p>
+<h1 id="hdWGCNA-适配单细胞数据的WGCNA"><a href="#hdWGCNA-适配单细胞数据的WGCNA" class="headerlink" title="hdWGCNA 适配单细胞数据的WGCNA"></a>hdWGCNA 适配单细胞数据的WGCNA</h1><p><a target="_blank" rel="noopener" href="https://smorabit.github.io/hdWGCNA/">github</a><br><a target="_blank" rel="noopener" href="https://smorabit.github.io/hdWGCNA/articles/hdWGCNA.html">Tutorial</a></p>
+<h2 id="与WGCNA-R包的区别："><a href="#与WGCNA-R包的区别：" class="headerlink" title="与WGCNA R包的区别："></a>与WGCNA R包的区别：</h2><ol>
+<li>使用WGCNA分析scRNA数据时，需要提取表达量矩阵进行分析。hdWGCNA可直接对接Seurat R包，直接基于Seurat结果进行下游分析：每个clusters随机抽取20%的细胞，可以选择使用全部的基因或者仅使用seurat挑选出来的高变基因，以及不同的降维方式和维度数，用于共表达模块的WGCNA检测，选取软阈值。中间部分与WGCNA无区别。最后，在单细胞空间中计算不同模块的平均表达式，并绘制降维图。生成所有模块的图表示，并可选择进行对应的GO富集分析。</li>
+<li>hdWGCNA定义了”Pseudocells”的概念，在这里，从2594个小鼠E15.5单细胞转录组中共构建了513个假细胞。以2967个顶端变异基因作为输入，我们得到了1248个具有显著共表达动态的基因，分布在19个大小和相似性不同的共表达模块上(图2B )。</li>
+<li>基于data数据进行分析。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/37937a27c77e">https://www.jianshu.com/p/37937a27c77e</a></p>
 
                 
               </div>
@@ -423,29 +429,6 @@
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/06/02/Dotplot-Split/" title="分面点图优化">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">分面点图优化</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/05/22/SCENIC/" title="基于SCENIC的转录因子分析原理讲解与实操">
-                        <span class="hidden-mobile">基于SCENIC的转录因子分析原理讲解与实操</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
