@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p17.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p18.png">
 <meta property="article:published_time" content="2023-05-22T05:16:50.000Z">
-<meta property="article:modified_time" content="2023-06-07T08:04:17.662Z">
+<meta property="article:modified_time" content="2023-06-16T07:06:42.396Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
@@ -419,7 +419,7 @@ showDatabaseCategory(CellChatDB.human)
 <p><img src="/2023/05/22/Cellchat/p2.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="信号通路层面展示"><a href="#信号通路层面展示" class="headerlink" title="信号通路层面展示"></a>信号通路层面展示</h3><p>信号通路层面的展示，也就是对netp数据槽的展示。</p>
 <ul>
-<li>Hierarchy plot</li>
+<li>Hierarchy plot 层次图</li>
 </ul>
 <p>使用层次图可视化通信网络，请定义vertex.receiver，它是一个数字向量，给出作为第一个层次结构图中的目标的细胞组的索引。我们可以使用netVisual_aggregate来可视化信号路径的推断通信网络。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#信号通路展示</span><br>groupSize <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>idents<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><br>cellchat<span class="hljs-operator">@</span>netP<span class="hljs-operator">$</span>pathways<br>pathways.show <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;MIF&quot;</span><span class="hljs-punctuation">)</span> <br>levels<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>meta<span class="hljs-operator">$</span>celltype<span class="hljs-punctuation">)</span><br><span class="hljs-comment"># 层次图 Hierarchy plot</span><br>vertex.receiver <span class="hljs-operator">=</span> seq<span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span><br>netVisual_aggregate<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> vertex.receiver <span class="hljs-operator">=</span> vertex.receiver<span class="hljs-punctuation">,</span> layout <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hierarchy&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
@@ -428,7 +428,7 @@ showDatabaseCategory(CellChatDB.human)
 <p>Tips:<a target="_blank" rel="noopener" href="https://rdrr.io/github/sqjin/CellChat/man/netVisual_aggregate.html">netVisual_aggregate函数介绍</a></p>
 <p><img src="/2023/05/22/Cellchat/p3.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/22/Cellchat/p4.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li><p>Circle plot：netVisual_circle</p>
+<li><p>Circle plot 环状图</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R">par<span class="hljs-punctuation">(</span>mfrow<span class="hljs-operator">=</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>netVisual_aggregate<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> layout <span class="hljs-operator">=</span> <span class="hljs-string">&quot;circle&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <p><img src="/2023/05/22/Cellchat/p5.png" srcset="/img/loading.gif" lazyload></p>
 </li>
