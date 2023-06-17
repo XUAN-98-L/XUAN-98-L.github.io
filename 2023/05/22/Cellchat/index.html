@@ -50,10 +50,10 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p17.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p18.png">
 <meta property="article:published_time" content="2023-05-22T05:16:50.000Z">
-<meta property="article:modified_time" content="2023-06-16T07:06:42.396Z">
+<meta property="article:modified_time" content="2023-06-17T05:20:01.565Z">
 <meta property="article:author" content="Xuan Liu">
-<meta property="article:tag" content="个人成长">
 <meta property="article:tag" content="技术">
+<meta property="article:tag" content="个人成长">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat1.png">
   
@@ -354,7 +354,7 @@ showDatabaseCategory(CellChatDB.human)
 <h2 id="CellphoneDB"><a href="#CellphoneDB" class="headerlink" title="CellphoneDB"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41596-020-0292-x">CellphoneDB</a></h2><h3 id="CellphoneDB-简介"><a href="#CellphoneDB-简介" class="headerlink" title="CellphoneDB 简介"></a>CellphoneDB 简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/ventolab/CellphoneDB">CellphoneDB github</a></p>
 <p>CellPhoneDB 构建了一个公开的物种为<strong>人类</strong>的经过人工注释的受体、配体及其相互作用的数据，并配有相应的R包和python包来对单细胞转录组学数据进行分析。</p>
 <p>与cellchat相似，cellphoneDB考虑到了异聚复合物。在存在多个亚基时，表达量是按照最低的亚基进行计算，也就是说cellchat和cellphoneDB都会因为多聚体的任何一个亚基表达量为0而导致多聚体的表达量按0进行计算。cellphoneDB的相互作用注释也比较全面，有两千多种相互作用，同时也支持自定义受配体相互作用。 </p>
-<p>与Cellchat v3相比，Cellchat v4.1版本的可信度更强，因为它不再从外部资源导入交互，而是增加了更多的人工注释条目，并考虑了非蛋白分子作为配体的情况。由于开始支持python，运行速度也得到了大幅提升。</p>
+<p>与CellPhoneDB v3相比，CellPhoneDB v4.1版本的可信度更强，因为它不再从外部资源导入交互，而是增加了更多的人工注释条目，并考虑了非蛋白分子作为配体的情况。由于开始支持python，运行速度也得到了大幅提升。</p>
 <h3 id="CellphoneDB原理"><a href="#CellphoneDB原理" class="headerlink" title="CellphoneDB原理"></a>CellphoneDB原理</h3><p>CellphoneDB要求输入normalized后的矩阵(data矩阵)，在给定表达矩阵和细胞注释之后，对于细胞群中的每个基因，在数据集中的所有原细胞分群之间执行成对比较，计算表达该基因的细胞百分比和基因表达的实际平均值。</p>
 <p>然后，随机排列所有细胞的细胞类型标记，形成新的细胞群（默认随机排列1000次），计算随机排列后细胞群中配体的平均表达水平和与其相互作用的细胞类型中受体的平均表达水平的平均值。通过这种方式，在两种细胞类型之间的每对配对比较中为每个配体-受体对生成一个零分布(null distribution)。</p>
 <p>生成零分布之后，根据计算平均值等于或高于实际平均值的比例推测该受体-配体对在这两种细胞类型中可能的显著性P值。</p>
@@ -541,9 +541,9 @@ showDatabaseCategory(CellChatDB.human)
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
-      
         <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
       
     </div>
   
