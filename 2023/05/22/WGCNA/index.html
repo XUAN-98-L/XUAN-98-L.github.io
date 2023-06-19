@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P7.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/P8.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-19T09:13:14.807Z">
+<meta property="article:modified_time" content="2023-06-19T09:15:37.939Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -385,7 +385,7 @@
 <p>ME矩阵存储为矩阵，其中每行是一个细胞，每列是一个模块。可以使用<em>GetMEs</em>函数从Seurat对象中提取该矩阵，该函数在默认检索<strong>hMEs</strong>。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment"># harmonized module eigengenes:</span><br>hMEs <span class="hljs-operator">&lt;-</span> GetMEs<span class="hljs-punctuation">(</span>seurat_obj<span class="hljs-punctuation">)</span><br><br><span class="hljs-comment"># module eigengenes:</span><br>MEs <span class="hljs-operator">&lt;-</span> GetMEs<span class="hljs-punctuation">(</span>seurat_obj<span class="hljs-punctuation">,</span> harmonized<span class="hljs-operator">=</span><span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="4-2-计算连通性"><a href="#4-2-计算连通性" class="headerlink" title="#4.2 计算连通性"></a>#4.2 计算连通性</h2><p>在共表达网络分析中，我们通常希望关注hub-gene，即在每个模块中连通性高的基因。因此，我们希望<strong>确定每个基因的基于MEs的连通性，也称为kME</strong>。hdWGCNA使用<em>ModuleConnectivity</em>函数来计算完整的单细胞数据集中的kME值，而不是元细胞数据集。</p>
+<h3 id="4-2-计算连通性"><a href="#4-2-计算连通性" class="headerlink" title="4.2 计算连通性"></a>4.2 计算连通性</h3><p>在共表达网络分析中，我们通常希望关注hub-gene，即在每个模块中连通性高的基因。因此，我们希望<strong>确定每个基因的基于MEs的连通性，也称为kME</strong>。hdWGCNA使用<em>ModuleConnectivity</em>函数来计算完整的单细胞数据集中的kME值，而不是元细胞数据集。</p>
 <p>这个函数本质上计算基因和模块特征基因之间的两两相关性。可以为数据集中的所有细胞计算kME，但我们建议在运行ConstructNetwork后的celltype或group中计算kME。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment"># compute eigengene-based connectivity (kME):</span><br>seurat_obj <span class="hljs-operator">&lt;-</span> ModuleConnectivity<span class="hljs-punctuation">(</span><br>  seurat_obj<span class="hljs-punctuation">,</span><br>  group.by <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;cell_type&#x27;</span><span class="hljs-punctuation">,</span> group_name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;INH&#x27;</span><br><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 
