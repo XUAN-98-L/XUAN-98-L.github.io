@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/test_DME_lollipop.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/test_DME_volcano2.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-21T07:36:57.616Z">
+<meta property="article:modified_time" content="2023-06-26T11:32:49.807Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -389,7 +389,7 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs R">TOM <span class="hljs-operator">&lt;-</span> GetTOM<span class="hljs-punctuation">(</span>seurat_obj<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="4-模块特征基因与连通性"><a href="#4-模块特征基因与连通性" class="headerlink" title="4. 模块特征基因与连通性"></a>4. 模块特征基因与连通性</h2><h3 id="4-1-计算模块特征基因"><a href="#4-1-计算模块特征基因" class="headerlink" title="4.1 计算模块特征基因"></a>4.1 计算模块特征基因</h3><p>Module Eigengenes (MEs，模块特征基因)是一种用于度量整个共表达模块的基因表达谱的方式。简而言之，通过对包含每个模块的基因表达矩阵的子集执行(PCA)来计算模块特征基因。每个PCA矩阵的第一个PC是MEs。直观地说，它是一个“被合成的基因”，它是该模块中所有基因的最佳代表。</p>
-<p>函数<em>ModuleEigengenes</em>用于计算单个细胞中的模块特征基因。此外，我们允许用户对MEs应用Harmony批量校正，从而产生harmonized module eigengenes(hMEs)。下面的代码使用group.by.vars参数执行由原始样本协调的模块特征基因计算。</p>
+<p>函数<em>ModuleEigengenes</em>用于计算单个细胞中的模块特征基因。此外，我们允许用户对MEs应用Harmony批量校正，从而产生harmonized module eigengenes(hMEs)。下面的代码使用group.by.vars参数执行由基于Sampleid进行Harmony的模块特征基因计算。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment"># need to run ScaleData first or else harmony throws an error:</span><br>seurat_obj <span class="hljs-operator">&lt;-</span> ScaleData<span class="hljs-punctuation">(</span>seurat_obj<span class="hljs-punctuation">,</span> features<span class="hljs-operator">=</span>VariableFeatures<span class="hljs-punctuation">(</span>seurat_obj<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment"># compute all MEs in the full single-cell dataset</span><br>seurat_obj <span class="hljs-operator">&lt;-</span> ModuleEigengenes<span class="hljs-punctuation">(</span><br> seurat_obj<span class="hljs-punctuation">,</span><br> group.by.vars<span class="hljs-operator">=</span><span class="hljs-string">&quot;Sample&quot;</span><br><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 
 <p>ME矩阵存储为矩阵，其中每行是一个细胞，每列是一个模块。可以使用<em>GetMEs</em>函数从Seurat对象中提取该矩阵，该函数在默认检索<strong>hMEs</strong>。</p>
