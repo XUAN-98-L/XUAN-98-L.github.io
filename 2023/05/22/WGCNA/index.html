@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/test_DME_lollipop.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/test_DME_volcano2.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-27T08:55:46.219Z">
+<meta property="article:modified_time" content="2023-06-27T09:03:07.034Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -253,7 +253,7 @@
         
         
         
-          139 mins
+          141 mins
         
       </span>
     
@@ -493,9 +493,10 @@
 <p>绘图</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs R">p <span class="hljs-operator">&lt;-</span> PlotDMEsVolcano<span class="hljs-punctuation">(</span><br>  seurat_obj<span class="hljs-punctuation">,</span><br>  DMEs_all<span class="hljs-punctuation">,</span><br>  wgcna_name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;tutorial&#x27;</span><span class="hljs-punctuation">,</span><br>  plot_labels<span class="hljs-operator">=</span><span class="hljs-literal">FALSE</span><span class="hljs-punctuation">,</span><br>  show_cutoff<span class="hljs-operator">=</span><span class="hljs-literal">FALSE</span><br><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment"># facet wrap by each cell type</span><br>p <span class="hljs-operator">+</span> facet_wrap<span class="hljs-punctuation">(</span><span class="hljs-operator">~</span>group<span class="hljs-punctuation">,</span> ncol<span class="hljs-operator">=</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
 <p><img src="/2023/05/22/WGCNA/test_DME_volcano2.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="hdWGCNA与WGCNA-R包的区别"><a href="#hdWGCNA与WGCNA-R包的区别" class="headerlink" title="hdWGCNA与WGCNA R包的区别"></a>hdWGCNA与WGCNA R包的区别</h1><ol>
+<h1 id="hdWGCNA与WGCNA-R包比较"><a href="#hdWGCNA与WGCNA-R包比较" class="headerlink" title="hdWGCNA与WGCNA R包比较"></a>hdWGCNA与WGCNA R包比较</h1><ol>
 <li>使用WGCNA分析scRNA数据时，需要提取表达量矩阵进行分析。hdWGCNA可直接对接Seurat R包，直接基于Seurat结果进行下游分析：每个clusters随机抽取20%的细胞，可以选择使用全部的基因或者仅使用seurat挑选出来的高变基因，以及不同的降维方式和维度数，用于共表达模块的WGCNA检测，选取软阈值。中间部分与WGCNA无区别。最后，在单细胞空间中计算不同模块的平均表达式，并绘制降维图。生成所有模块的图表示，并可选择进行对应的GO富集分析。</li>
 <li>基于metacells重新进行normalize后的数据进行分析,考虑到单细胞矩阵稀疏的特点，增加了数据的稳健性。</li>
+<li>下游可视化形式更加丰富，除了WGCNA经典的模块与性状相关性热图，模块识别聚类树图等，增加了结合Seurat进行可视化，网络分析，差异模块特征基因（类似差异分析）分析，富集分析（图片有点丑），将生成的模块信息投影到其他数据集（可以将单细胞数据生成的模块信息投影到ATAC-seq,空转或者其他物种的单细胞数据集中）的内容。</li>
 </ol>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/37937a27c77e">参考链接</a></p>
 
