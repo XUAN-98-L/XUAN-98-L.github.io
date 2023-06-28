@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/test_DME_volcano2.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/WGCNA/ME_Trait_correlation_fdr.png">
 <meta property="article:published_time" content="2023-05-22T14:54:15.000Z">
-<meta property="article:modified_time" content="2023-06-27T09:45:16.078Z">
+<meta property="article:modified_time" content="2023-06-28T09:15:44.443Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -254,7 +254,7 @@
         
         
         
-          155 mins
+          158 mins
         
       </span>
     
@@ -518,7 +518,18 @@
 <li>使用WGCNA分析scRNA数据时，需要提取表达量矩阵进行分析。hdWGCNA可直接对接Seurat R包，直接基于Seurat结果进行下游分析：每个clusters随机抽取20%的细胞，可以选择使用全部的基因或者仅使用seurat挑选出来的高变基因，以及不同的降维方式和维度数，用于共表达模块的WGCNA检测，选取软阈值。中间部分与WGCNA无区别。最后，在单细胞空间中计算不同模块的平均表达式，并绘制降维图。生成所有模块的图表示，并可选择进行对应的GO富集分析。</li>
 <li>基于metacells重新进行normalize后的数据进行分析,考虑到单细胞矩阵稀疏的特点，增加了数据的稳健性。</li>
 <li>下游可视化形式更加丰富，除了WGCNA经典的模块与性状相关性热图，模块识别聚类树图等，增加了结合Seurat进行可视化，网络分析，差异模块特征基因（类似差异分析）分析，富集分析（图片有点丑），将生成的模块信息投影到其他数据集（可以将单细胞数据生成的模块信息投影到ATAC-seq,空转或者其他物种的单细胞数据集中）的内容。</li>
+<li>hdWGCNA中的TOM图可视化需要手动实现。</li>
+<li>hdWGCNA主要集中在对模块特征基因的展示，并以umap形式提供模块中全部基因的展示（与WGCNA生成的聚类图箱线图和柱状图相比，在细胞数和基因数较多时可视化方式更友好）。</li>
 </ol>
+<h1 id="hdWGCNA耗时统计"><a href="#hdWGCNA耗时统计" class="headerlink" title="hdWGCNA耗时统计"></a>hdWGCNA耗时统计</h1><p>demo数据 36601基因，36671细胞</p>
+<ul>
+<li>SetUpForWGCN初始化设置耗时：1.690009 mins</li>
+<li>Meta细胞构建: 6.070287 mins</li>
+<li>SetDatExpr运行时间: 0.6600406 secs</li>
+<li>软阈值选择: 50.69805 secs</li>
+<li>构建共表达网络耗时：5.24069 mins</li>
+<li><strong>模块特征基因</strong>： 1.20085 hours</li>
+</ul>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/37937a27c77e">参考链接</a></p>
 
                 
