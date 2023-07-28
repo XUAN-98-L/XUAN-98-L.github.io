@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>kubernetes和Docker学习笔记</title>
+    <link href="/2023/07/28/k8s-docker/"/>
+    <url>/2023/07/28/k8s-docker/</url>
+    
+    <content type="html"><![CDATA[<p>kubernetes和Docker学习笔记</p><span id="more"></span><h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><p>Kubernetes 是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 <a href="https://kubernetes.io/zh-cn/docs/concepts/overview/">Kubernetes</a> 拥有一个庞大且快速增长的生态，其服务、支持和工具的使用范围相当广泛。</p><p>Kubernetes 这个名字源于希腊语，意为“舵手”或“飞行员”。k8s 这个缩写是因为 k 和 s 之间有八个字符的关系。 </p><p><img src="/2023/07/28/k8s-docker/container_evolution.svg"></p><h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程相关</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>技术</tag>
+      
+      <tag>个人成长</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>音乐剧杂谈</title>
     <link href="/2023/06/20/%E9%9F%B3%E4%B9%90%E5%89%A7202306/"/>
     <url>/2023/06/20/%E9%9F%B3%E4%B9%90%E5%89%A7202306/</url>
