@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p20.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/SCENIC/p21.png">
 <meta property="article:published_time" content="2023-05-22T08:30:03.000Z">
-<meta property="article:modified_time" content="2023-08-08T15:12:31.316Z">
+<meta property="article:modified_time" content="2023-08-08T15:15:16.635Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -376,10 +376,7 @@
 <p><img src="/2023/05/22/SCENIC/p14.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果需要对AUC进行二值化，可以使用runSCENIC_4_aucell_binarize。使用该函数会在int文件夹下生成以4开头的rds文件及output文件夹下的Step4系列文件 。可以看到这次生成的文件就是二值化的AUC矩阵。 如果AUC值小于计算得来的阈值，则判定为该Regulons在该细胞中未开放，即未发挥调控作用。最终获得每个Regulons在每个细胞中的开放性热图。这里我们不进行展示了。</p>
 <p>Tips: regulon有两种写法，第一种是TF名称+extended+靶基因数目，即转录因子与所有靶基因组成的基因调控网络。第二种是TF名称+靶基因数目：转录因子与高可信度靶基因组成的表达网络。</p>
-<h2 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h2><ul>
-<li>结合Seurat对SCENIC的结果进行图片展示</li>
-</ul>
-<p>可视化的方式比较多，但使用到的都是生成的3.4 regulonAUC.rds的矩阵。</p>
+<h2 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h2><h3 id="结合Seurat对SCENIC的结果进行图片展示"><a href="#结合Seurat对SCENIC的结果进行图片展示" class="headerlink" title="结合Seurat对SCENIC的结果进行图片展示"></a>结合Seurat对SCENIC的结果进行图片展示</h3><p>可视化的方式比较多，但使用到的都是生成的3.4 regulonAUC.rds的矩阵。</p>
 <ol>
 <li>按照celltype分组绘制regulon平均活性的热图。<br>先把seurat对象的Idents改成meta.data里想要的分组变量列，我们这里是celltype。然后将分组信息以数据框dataframe的格式保存到CellInfo中。使用LoadInt加载AUC矩阵，使用onlyNonDuplicatedExtended对regulon进行过滤。然后我们对AUC矩阵分组计算平均AUC值，使用scale函数进行归一化，然后使用complexheatmap进行热图的绘制。</li>
 </ol>
@@ -390,16 +387,12 @@
 <li><p>小提琴和山脊图。<br>流程和之前类似，都是读入AUC矩阵，使用AddMetaData函数将AUC矩阵加回到seurat的metadata中。分别使用Ridgeplot和vlnplot绘制山脊图和小提琴图。<br><img src="/2023/05/22/SCENIC/p15.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ol>
-<ul>
-<li>Regulon specific score(RSS)<br><strong>Regulon specific score(RSS)预测了regulon与每种细胞类型的特定对应关系，RSS值越⾼表示该regulon在对应的细胞类型中特异性越⾼</strong>。<br><img src="/2023/05/22/SCENIC/p16.png" srcset="/img/loading.gif" lazyload><br>RSS需要两个vector进行计算，PR反应的是RAS在所有细胞中的分布。针对单个细胞，RAS就是选定regulon对应的AUC值，⽽针对每个细胞群，根据细胞的RAS，剔除细胞群中<br>活性得分超出中位值±3倍mad值的（异常值）细胞后，以平均值代表该细胞类型的RAS。对PR进行标准化。</li>
-</ul>
+<h3 id="Regulon-specific-score-RSS"><a href="#Regulon-specific-score-RSS" class="headerlink" title="Regulon specific score(RSS)"></a>Regulon specific score(RSS)</h3><p><strong>Regulon specific score(RSS)预测了regulon与每种细胞类型的特定对应关系，RSS值越⾼表示该regulon在对应的细胞类型中特异性越⾼</strong>。<br><img src="/2023/05/22/SCENIC/p16.png" srcset="/img/loading.gif" lazyload><br>RSS需要两个vector进行计算，PR反应的是RAS在所有细胞中的分布。针对单个细胞，RAS就是选定regulon对应的AUC值，⽽针对每个细胞群，根据细胞的RAS，剔除细胞群中<br>活性得分超出中位值±3倍mad值的（异常值）细胞后，以平均值代表该细胞类型的RAS。对PR进行标准化。</p>
 <p>然后用另一个vector PC来判断一个细胞是否属于一个特定的细胞类型，若属于则赋值为1，反之赋值为0。 这就是代表一种极端理想的情况，就是选择的regulon仅在这一个细胞类型中具有活性，也就是说是这种细胞类型独有的regulon。对pc同样进行标准化。</p>
 <p>然后计算JSD值来评估两个vector之间的差异。JSD的值在0到1之间，0表示两个vector代表的分布完全相同，1表示两个分布完全不同。RSS的计算公式如下。RSS值越大，JSD值越小，计算的regulon在选定的细胞类型中特异性越高。</p>
 <p><img src="/2023/05/22/SCENIC/p17.png" srcset="/img/loading.gif" lazyload><br>颜色深浅代表zscore值，点的大小代表rss评分。绘制只需根据seurat对象中的细胞类型信息，计算一下RSS值，然后使用PlotRSS函数就可以进行绘制了。由于我们采用的这个稳定版本的scenic没有内置aux_rss.R的函数（这个函数是封装在Pre-release，也就是内测版的scenic 1.3.0中），所以是使用source的方式进行R脚本的调用的。</p>
 <p>下图为RSS_ranking_plot，横坐标表示排名，纵坐标表示RSS得分。RSS越高的调控子可能与该细胞群特异性相关。<br><img src="/2023/05/22/SCENIC/p18.png" srcset="/img/loading.gif" lazyload><br>针对感兴趣的细胞类型查看细胞特异性Regulon。前面的绘图准备工作都和plotRSS是一致的，只不过这一步使用到的函数是plotRSS_onSet（可以从scenic的github查看，我们这里是直接把函数拆分了进行画图），输入rds，设置想要看到多少个细胞特异性regulon，我们这里是设置成了五个，然后使用setName设置感兴趣的细胞类型，绘图即可。</p>
-<ul>
-<li>Connection Specificity Index（CSI）<br>第二个在scenic分析中常用的指标是CSI， <strong>该指标用来划分regulon module，展示不同Regulon之间的关联性，同时具有较高CSI的Regulon可能共同调控下游基因，并共同负责细胞功能。</strong></li>
-</ul>
+<h3 id="Connection-Specificity-Index（CSI）"><a href="#Connection-Specificity-Index（CSI）" class="headerlink" title="Connection Specificity Index（CSI）"></a>Connection Specificity Index（CSI）</h3><p>第二个在scenic分析中常用的指标是CSI， <strong>该指标用来划分regulon module，展示不同Regulon之间的关联性，同时具有较高CSI的Regulon可能共同调控下游基因，并共同负责细胞功能。</strong></p>
 <p>CSI 的评估包括两个步骤，⾸先计算regulon配对的pearson correlation coefficient（PCC），接下来对于选定的⼀对regulon pair，假设A和B，得到A与B的PCC值，针对其他与A或B相关的配对，统计其中PCC值低于A与B之间PCC值的⽐例，这⼀⽐例就是A与B配对的CSI值，CSI值越⼤表示regulon 配对中的两个regulon相关性越⾼。最后，对所有regulon配对的CSI矩阵进⾏层次聚类（Hierarchical clustering），划分regulon module，对于每⼀个regulon module，其在每种细胞类型中的活性得分等于该细胞类型内所有细胞类型对于该module内所有regulon的RAS的平均值。</p>
 <p>各细胞群中CSI关联模块的活性热图。行表示根据CSI聚类热图进行手动划分的CSI模块，列表示不同细胞群。颜色由蓝变黄表示CSI模块活性由低到高。活性相似的CSI模块对应的细胞群可能具有相似的基因表达模式以及相似的调控网络。<br><img src="/2023/05/22/SCENIC/p19.png" srcset="/img/loading.gif" lazyload></p>
 <p>下图为Regulon模块的CSI关联性聚类热图，行列均表示regulon，颜色由蓝变黄表示CSI关联性值由低到高。CSI值都较高的regulon可能具有相似的细胞功能，共同调控下游基因。<br><img src="/2023/05/22/SCENIC/p20.png" srcset="/img/loading.gif" lazyload><br>美化后的Regulon模块的CSI关联性聚类热图如下图，<br><img src="/2023/05/22/SCENIC/p21.png" srcset="/img/loading.gif" lazyload></p>
