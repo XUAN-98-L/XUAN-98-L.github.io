@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion1.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/19/Monocle2/diffusion2.png">
 <meta property="article:published_time" content="2023-05-19T05:31:28.000Z">
-<meta property="article:modified_time" content="2023-06-05T08:45:48.106Z">
+<meta property="article:modified_time" content="2023-08-08T12:47:15.937Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -324,8 +324,12 @@
 <li>选择定义过程的基因: 在单细胞测序中，会出现很多低水平表达的基因，造成一个噪声的影响，因此我们在分析的时候不能选择使用全部的基因分析。推断单细胞的轨迹是一个机器学习的问题，轨迹推断的第一步就是选择monocle使用哪些基因作为轨迹推断的关键基因。也就是机器学习中的特征选择问题。</li>
 </ol>
 <p>Monocle2首先使用了”dpFeature”方法确认与生物过程相关的基因（这些基因在下游分析时被称为ordering gene），注意一下，这里与BEAM这个寻找分叉点相关基因的算法不同，dpFeatures找到的是全局的拟时相关基因，也就是拟时起点和终点相关的基因。</p>
-<p>2.每个细胞被表示为高维空间(x)中的一个点，其中每个维度对应一个基因的表达水平。数据从高维空间(X)被投影到低维空间(z)上，使用k - means聚类算法找到这些细胞的分群中心，然后通过反向图嵌入（默认是DDRTree）的流形学习算法，找到高维基因表达空间与低维空间的映射关系并构建最小生成树，将细胞投影到生成树上，并将找到的中心进行连接，构建初步的树形结构。</p>
-<p>基于新的细胞位置，更新细胞的分群中心和轨迹结构，将二维空间中的树（二维轨迹），重新投射到高维空间。迭代此过程，直至收敛（即获得稳定的树形结构，细胞轨迹可以反应原始数据的特征）。</p>
+<ol start="2">
+<li><p>每个细胞被表示为高维空间(x)中的一个点，其中每个维度对应一个基因的表达水平。数据从高维空间(X)被投影到低维空间(z)上，使用k - means聚类算法找到这些细胞的分群中心，然后通过反向图嵌入（默认是DDRTree）的流形学习算法，找到高维基因表达空间与低维空间的映射关系并构建最小生成树，将细胞投影到生成树上，并将找到的中心进行连接，构建初步的树形结构。</p>
+</li>
+<li><p>基于新的细胞位置，更新细胞的分群中心和轨迹结构，将二维空间中的树（二维轨迹），重新投射到高维空间。迭代此过程，直至收敛（即获得稳定的树形结构，细胞轨迹可以反应原始数据的特征）。</p>
+</li>
+</ol>
 <p>这里提到了两个关键词，dpFeature, 用于确认与生物过程相关的基因，也就是ordering gene。以及DDRTree，在monocle的reduceDimension函数中默认使用，用来推断基因表达动态变化，这两个算法是monocle2的主打点。</p>
 <p>其实目前monocle已经更新到3代了，但考虑到目前发表的文章还是使用monocle2的比较多，而且monocle3的下游可视化方式还有待开发，我们仍然使用monocle2进行讲解。</p>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>

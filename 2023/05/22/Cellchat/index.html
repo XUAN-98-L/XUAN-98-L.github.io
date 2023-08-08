@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p17.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p18.png">
 <meta property="article:published_time" content="2023-05-22T05:16:50.000Z">
-<meta property="article:modified_time" content="2023-08-07T02:48:48.419Z">
+<meta property="article:modified_time" content="2023-08-08T13:13:12.949Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="个人成长">
@@ -336,17 +336,17 @@ showDatabaseCategory(CellChatDB.human)
 <h3 id="Cellchat-分析原理"><a href="#Cellchat-分析原理" class="headerlink" title="Cellchat 分析原理"></a>Cellchat 分析原理</h3><p>我们要看细胞亚群之间的通讯作用，首先仍然是需要进行差异分析，计算哪些基因是在细胞群之间存在差异表达，这是通过<em>identifyOverExpressedGenes</em>函数实现的。cellchat使用Wilcoxon检验，在显著性水平为0.05的情况下，在所有细胞组中识别差异表达的信号基因。然后这些过表达基因所在的互作即过表达互作。通过<em>identifyOverExpressedInteractions</em>函数可以识别这些过表达互作，并将他们存于cellchat@LR$LRsig。</p>
 <p>第二步是对不同的细胞群计算一个平均表达水平（使用了基因表达分位数的方式，排除了异常值的影响，公式见文献）</p>
 <p>第三步也是最重要的一步，就是对每个配体受体对计算通信概率。</p>
-<p>配受体对表达情况计算：</p>
+<p><strong>配受体对表达情况计算：</strong></p>
 <p>Li代表配体L在细胞群i中的表达水平。如果配体L有多个亚基，计算的是几何平均数作为整体的表达水平：也就是任何一个亚基的零表达都会导致一个无活性的配体。</p>
 <p>Rj代表受体R在细胞群j中的表达水平。如果有多个亚基，仍然计算几何平均数。比较特殊的是，由于共刺激和共抑制膜结合受体能够通过控制受体激活来调节信号，因此在计算受体时，会将共刺激受体纳入考量。<br>对于具有多个共刺激受体的配体-受体对，我们计算了这些共刺激受体的平均表达量(用RA表示)，然后使用线性函数来建模对受体表达的正向调节(activating)。(1+RA)</p>
 <p>对于每个具有多个共抑制受体(RI)的配体-受体对，我们使用相同的线性函数方法对它们进行建模。(1+RI)</p>
 <p><img src="/2023/05/22/Cellchat/cellchat5.png" srcset="/img/loading.gif" lazyload></p>
-<p>通讯概率计算：</p>
-<p><font color=red>红色框中的部分即为使用Hill系数对受配体之间的相互作用进行建模，参数Kh的默认值设为0.5，因为输入数据的归一化范围从0到1。（<a target="_blank" rel="noopener" href="https://qinqianshan.com/biology/protein/hill-coe/">希尔系数</a>主要是用于研究蛋白质内部，如果是由多亚基组成，那么这一群亚基之间有怎样的作用关系，这里是取它的延伸作用。 Kh在希尔方程中常作为解离常数，来源于质量作用定律）</font></p>
-<p>来自发送细胞和接收细胞的胞外激动剂和拮抗剂能够直接或间接地调节配体-受体相互作用:</p>
-<p><font color=Orange>黄色框展示了对激动剂的建模。<br>对于含有多个激动剂的配体-受体对，我们计算了这些激动剂(agonist)的平均表达量(用AG表示)，然后使用Hill函数来模拟激动剂对配体-受体相互作用的正调节。</font></p>
-<p><font color=#008000>原理相似，绿色框中的部分为对拮抗剂的建模(antagonist)。</font></p>
-<p><font color=Blue>蓝色框这部分会将每个细胞群中细胞比例的影响也被纳入概率计算中，其中ni和nj分别为细胞群i和j中的细胞数量，n为给定数据集中的细胞总数。</font></p>
+<p><strong>通讯概率计算：</strong></p>
+<p><font color=red>红色框中的部分即为使用Hill系数对<strong>受配体之间的相互作用</strong>进行建模，参数Kh的默认值设为0.5，因为输入数据的归一化范围从0到1。（<a target="_blank" rel="noopener" href="https://qinqianshan.com/biology/protein/hill-coe/">希尔系数</a>主要是用于研究蛋白质内部，如果是由多亚基组成，那么这一群亚基之间有怎样的作用关系，这里是取它的延伸作用。 Kh在希尔方程中常作为解离常数，来源于质量作用定律）</font></p>
+<p><strong>来自发送细胞和接收细胞的胞外激动剂和拮抗剂能够直接或间接地调节配体-受体相互作用:</strong></p>
+<p><font color=Orange>黄色框展示了对<strong>激动剂</strong>的建模。<br>对于含有多个激动剂的配体-受体对，我们计算了这些激动剂(agonist)的平均表达量(用AG表示)，然后使用Hill函数来模拟激动剂对配体-受体相互作用的正调节。</font></p>
+<p><font color=#008000>原理相似，绿色框中的部分为对<strong>拮抗剂</strong>的建模(antagonist)。</font></p>
+<p><font color=Blue>蓝色框这部分会将每个细胞群中<strong>细胞比例的影响</strong>也被纳入概率计算中，其中ni和nj分别为细胞群i和j中的细胞数量，n为给定数据集中的细胞总数。</font></p>
 <p>这样我们就可以计算出来所有配体-受体对之间的所有细胞组之间的通信概率， 这个整体的通讯概率由一个三维array ( K × K × N)表示，其中K是cell group的数量，N是配体-受体对或信号通路的数量。</p>
 <p>我们比较关心在统计学上，这些通讯是否具有显著性呢？</p>
 <p>cellchat会基于置换检验的方法，将细胞标签打乱重排一百次， 生成零分布，计算p值。</p>
