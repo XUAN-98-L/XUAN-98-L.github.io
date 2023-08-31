@@ -27,8 +27,10 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/%E9%87%8D%E6%8E%92.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/algorithm-workflow.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/vdj_transcript_features.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/multi_outputs.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/why-use-multi.png">
 <meta property="article:published_time" content="2023-08-31T03:20:17.000Z">
-<meta property="article:modified_time" content="2023-08-31T08:10:56.763Z">
+<meta property="article:modified_time" content="2023-08-31T10:19:48.763Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="知识补充">
@@ -226,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.2k words
+          6.7k words
         
       </span>
     
@@ -237,7 +239,7 @@
         
         
         
-          36 mins
+          56 mins
         
       </span>
     
@@ -339,18 +341,66 @@
 </ul>
 <p>注：关于INKT及MAIT细胞的信息见<a target="_blank" rel="noopener" href="https://www.annualreviews.org/doi/abs/10.1146/annurev-immunol-032414-112008">链接</a></p>
 <ul>
-<li>consensus_annotations.csv：每个克隆型共有序列的高级和详细注释</li>
+<li>consensus_annotations.csv：每个克隆型共有序列(consensus sequence)的高级和详细注释。</li>
 </ul>
 <p>注：10X的Csv表格输出都是用于高级注释，每行有一个contig, consensus, 或者 clonotype.</p>
 <ul>
-<li><p>all_contig_annotations.csv：CSV 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注<br>释。</p>
+<li><p>all_contig_annotations.csv：CSV 格式的所有重叠群（contigs）（来自细胞和背景条形码）的高级和详细注释。</p>
 </li>
 <li><p>filtered_contig_annotations.csv：来自细胞相关barcodes的每个高置信度重叠群的高级注释。这是<br>一个all_contig_annotations.csv 子集.</p>
 </li>
+<li><p>all_contig_annotations.bed：BED 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注<br>释。</p>
+</li>
+</ul>
+<p>Browser Extensible Data，字面意思是“（基因组）浏览器可延展数据”）是一种基因组学中用于表示、标记基因组区域位置信息中的文件格式，与IGV等可视化工具一同使用。</p>
+<ul>
+<li>all_contig_annotations.json：JSON 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注<br>释。</li>
+</ul>
+<p>Json格式含有详细的注释，包括contig的完整序列，contig的具体坐标和氨基酸翻译序列。</p>
+<ul>
+<li><p>airr_rearrangement.tsv ： <a target="_blank" rel="noopener" href="https://docs.airr-community.org/en/stable/">AIRR格式</a>的带注释的重叠群和 V(D)J 重排的共有序列。</p>
+</li>
+<li><p>vloupe.vloupe: Loupe V(D)J Browser readable file</p>
+</li>
 </ul>
 <p>典型V（D）J转录的结构<br><img src="/2023/08/31/Immune/vdj_transcript_features.png" srcset="/img/loading.gif" lazyload><br>UTR：未翻译的区域;<br>FWR：框架区域（Framework region）;<br>CDR：互补性决定区域</p>
+<p>名词解释：</p>
+<ul>
+<li><p>contig：带有<strong>相同的 cell barcode</strong> 和 UMI 且比对到相同转录本序列的 reads 被组装为 contigs。（由组装产生的连续的碱基序列）</p>
+</li>
+<li><p>full-length: 如果重叠群与 V 基因的起始部分相匹配，继续下去，并最终与 J 基因的末端部分相匹配，则该contig是全长的。(可以没有d_gene)</p>
+</li>
+<li><p>Clonotype(克隆型): 一组适应性免疫细胞，是完全重组、未突变的共同祖先的克隆后代。T细胞克隆型通常由重排的TCR的核苷酸序列来区分，在大多数脊椎动物物种中，TCR不经历体细胞超突变(SHM)。如上所述，B细胞克隆型通常在核苷酸水平上彼此不同。由于这个原因，B细胞克隆型也经常包含多个精确的亚克隆型.</p>
+</li>
+</ul>
+<p>10X的判断方式：<br>优先考虑TRA和TRB所有cdr3_nt都匹配，分配到同一个clonotype。(所有的Exact subclonotype都匹配)</p>
+<p>若A细胞中只含有单一的TRA序列（该细胞不含TRB），该序列完全匹配到B细胞的TRA（B细胞可以含有TRA或TRB），则会为A细胞的TRA序列分配一个clonotype ID，且把B细胞全部分配到该Clonotype ID上.（A细胞中只有一个Exact subclonotype，且该Exact subclonotype与B细胞的Exact subclonotype匹配，即使B细胞存在其余Exact subclonotype，A和B细胞也会被分到同样的Clonotype ID）</p>
+<ul>
+<li><p>Exact subclonotype（精确亚克隆型）: 在核苷酸水平上具有相同免疫受体序列的克隆型细胞的一个亚群，横跨整个V、D和J基因以及V(D)J连接。精确的亚克隆型共享相同的V、D、J和C基因注释(例如，具有相同的V(D)J序列但不同的C基因或同型的细胞被分成不同的精确亚克隆型)。</p>
+</li>
+<li><p>Consensus（一致性序列）：给定clonotype ID的一致序列是该链在第一个精确亚克隆型的核苷酸序列。</p>
+</li>
+<li><p>productive（生产性）:<br>如果满足以下条件，则重叠群被称为生产性的（有prodictive 的TCR&#x2F;BCR才能翻译有功能的蛋白）：</p>
+</li>
+</ul>
+<ol>
+<li>full length: contig 与 V 基因的初始部分相匹配。contig 继续，最终匹配 J 基因的末端部分。</li>
+<li>可编码正常氨基酸：V片段的起始部分与config的起始密码子相匹配（在 10x Genomics 提供的人类和小<br>鼠参考序列中，每个 V 区段都以起始密码子开头。），也就是有起始密码子；V 片段起始和 J结尾之间没有终止密码子；J 停止减去 V 开始等于一模三。这只是说 V 和 J 片段上的密码子在框内（编码范围内没有移码突变）。</li>
+<li>CDR3：有一个带注释的 CDR3 序列。</li>
+<li>结构：令 VJ 表示 V 和 J 段的长度之和。让 len 表示 J 停止减去 V 开始，在重叠群上测量。那么 VJ -len 介于 -25 和 +25 之间，除了 IGH，它必须介于 -55 和 +25 之间。施加此条件是为了排除不太可能与功能蛋白相对应的异常结构变化。</li>
+</ol>
+<ul>
+<li>high_confidence contig(高质量contig):<br>有两个以上的UMI支持的productive contig为高质量的contig.</li>
+</ul>
 <h3 id="cellranger-multi"><a href="#cellranger-multi" class="headerlink" title="cellranger multi"></a>cellranger multi</h3><p>cellranger multi 从单个 GEM 孔中获取 5’ 基因表达、基因barcodes（抗体捕获、CRISPR Guide Capture和&#x2F;或抗原捕获）和 V（D）J 文库的任意组合的 FASTQ 文件 cellranger mkfastq bcl2fastq 。它对基因表达和&#x2F;或Feature Barcode (FB)执行比对、过滤、barcodes计数和 UMI 计数。它还对 V（D）J 文库执行序列组装和成对克隆型调用。此外，基因表达数据提供的cell call用于改进V（D）J文库推断的cell call。</p>
-<h4 id="分析结果解读：-1"><a href="#分析结果解读：-1" class="headerlink" title="分析结果解读："></a><strong>分析结果解读：</strong></h4><h3 id="cellranger-aggr"><a href="#cellranger-aggr" class="headerlink" title="cellranger aggr"></a>cellranger aggr</h3><p>Cellranger AGGR 整合来自多次运行 cellranger count cellranger vdj 、 或 cellranger multi 的输出。该管道将 aggr 单个基因表达和Feature Barcode (FB)运行规范化到相同的测序深度，重新计算feature barcodes矩阵并对组合数据进行分析。该pipeline还会重新计算组合数据的 V（D）J 克隆型分组。</p>
+<h4 id="分析结果解读：-1"><a href="#分析结果解读：-1" class="headerlink" title="分析结果解读："></a><strong>分析结果解读：</strong></h4><p><img src="/2023/08/31/Immune/multi_outputs.png" srcset="/img/loading.gif" lazyload><br><a target="_blank" rel="noopener" href="https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/output/overview-multi">10X官方解释链接</a></p>
+<p>该 cellranger multi pipeline通过丢弃在相应的 5’ 基因表达数据集中未调用的任何细胞来改进 V（D）J 数据集中的细胞调用。通过将 V（D）J 结果中调用但未在 5’ 基因表达结果中调用的细胞指定为 V（D）J 数据中的背景 GEM， cellranger multi 可以减轻 V（D）J 数据中可能出现的任何超调问题。这种改进的细胞调用只有在从同一样品中同时测序5’基因表达和V（D）J文库时才有可能。</p>
+<p>如下图所示，最终的 V（D）J 单元调用（交集区域）排除仅由 vdj 管道调用的单元（黄色区域）。（<strong>最终获得的细胞barcodes在VDJ数据和转录组数据中是一致的</strong>）</p>
+<p><img src="/2023/08/31/Immune/why-use-multi.png" srcset="/img/loading.gif" lazyload></p>
+<p>5’ 基因表达细胞调用不受 cellranger multi 管道影响。基因表达文库代表了每个GEM中捕获的整个聚腺苷酸化mRNA转录本库。然后选择性扩增基因表达文库中的VDJ-T或VDJ-B转录本以创建V（D）J文库。因此，与 V（D）J 文库相比，基因表达文库具有更强的检测含有细胞的 GEM 的能力。如果 cellranger multi 管道同时使用 5’ 基因表达和 V（D）J 数据运行，则从 V（D）J 细胞集中删除在 5’ 基因表达数据中未称为细胞的条形码。</p>
+<p>从Cell Ranger 7.0开始，multi可以自动估计或指定 expect-cells 预期的细胞数量（例如，复制先前的分析）(force cell)</p>
+<p>该 cellranger multi 管道允许用户分析富集为 gamma (TRG) 和 delta (TRD) 链的 TCR 库。但是，Gamma-delta 分析不是受支持的工作流程，并且无法保证算法性能。TRG&#x2F;D 输出位于 和 outs&#x2F;per_sample_outs&#x2F;mySample&#x2F;vdj_t_gd 文件夹中 outs&#x2F;multi&#x2F;vdj_t_gd 。文件夹中的 vdj_t_gd 输出文件与 的 vdj_t&#x2F;b 输出文件类似。</p>
+<h3 id="cellranger-aggr"><a href="#cellranger-aggr" class="headerlink" title="cellranger aggr"></a>cellranger aggr</h3><p>Cellranger AGGR 整合来自多次运行 cellranger count cellranger vdj 、 或 cellranger multi 的输出。该管道将 aggr 单个基因表达和Feature Barcode (FB)运行规范化到相同的测序深度，重新计算feature barcodes矩阵并对组合数据进行分析。该pipeline还会重新计算组合数据的 V（D）J 克隆型分组。</p>
 
                 
               </div>
