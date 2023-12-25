@@ -28,10 +28,11 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/vdj_transcript_features.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/multi_outputs.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/why-use-multi.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/vdg_aggr_input_csv.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/algorithm-workflow.png">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/Immune/what_is_a_clonotype.png">
 <meta property="article:published_time" content="2023-08-31T03:20:17.000Z">
-<meta property="article:modified_time" content="2023-09-04T09:53:14.539Z">
+<meta property="article:modified_time" content="2023-09-08T01:24:44.525Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="知识补充">
@@ -229,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.6k words
+          8.7k words
         
       </span>
     
@@ -240,7 +241,7 @@
         
         
         
-          72 mins
+          73 mins
         
       </span>
     
@@ -400,7 +401,7 @@
 <p>5’ 基因表达细胞调用不受 cellranger multi 管道影响。基因表达文库代表了每个GEM中捕获的整个聚腺苷酸化mRNA转录本库。然后选择性扩增基因表达文库中的VDJ-T或VDJ-B转录本以创建V（D）J文库。因此，与 V（D）J 文库相比，基因表达文库具有更强的检测含有细胞的 GEM 的能力。如果 cellranger multi 管道同时使用 5’ 基因表达和 V（D）J 数据运行，则从 V（D）J 细胞集中删除在 5’ 基因表达数据中未称为细胞的条形码。</p>
 <p>从Cell Ranger 7.0开始，multi可以自动估计或指定 expect-cells 预期的细胞数量（例如，复制先前的分析）(force cell)</p>
 <p>该 cellranger multi 管道允许用户分析富集为 gamma (TRG) 和 delta (TRD) 链的 TCR 库。但是，Gamma-delta 分析不是受支持的工作流程，并且无法保证算法性能。TRG&#x2F;D 输出位于 和 outs&#x2F;per_sample_outs&#x2F;mySample&#x2F;vdj_t_gd 文件夹中 outs&#x2F;multi&#x2F;vdj_t_gd 。文件夹中的 vdj_t_gd 输出文件与 的 vdj_t&#x2F;b 输出文件类似。</p>
-<h3 id="cellranger-aggr"><a href="#cellranger-aggr" class="headerlink" title="cellranger aggr"></a>cellranger aggr</h3><p>Cellranger AGGR 整合来自多次运行 cellranger count cellranger vdj 、 或 cellranger multi 的输出。该管道将 aggr 单个基因表达和Feature Barcode (FB)运行规范化到相同的测序深度，重新计算feature barcodes矩阵并对组合数据进行分析。该pipeline还会重新计算组合数据的 V（D）J 克隆型分组。</p>
+<h3 id="cellranger-aggr"><a href="#cellranger-aggr" class="headerlink" title="cellranger aggr"></a><a target="_blank" rel="noopener" href="https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/using/aggr">cellranger aggr</a></h3><p>Cellranger AGGR 整合来自多次运行 cellranger count cellranger vdj 、 或 cellranger multi 的输出。该管道将 aggr 单个基因表达和Feature Barcode (FB)运行规范化到相同的测序深度，重新计算feature barcodes矩阵并对组合数据进行分析。该pipeline还会重新计算组合数据的 V（D）J 克隆型分组。<br><img src="/2023/08/31/Immune/vdg_aggr_input_csv.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="Cellranger-VDJ算法概述"><a href="#Cellranger-VDJ算法概述" class="headerlink" title="Cellranger VDJ算法概述"></a>Cellranger VDJ算法概述</h2><p>cellranger vdj 针对FASTQ 文件执行序列组装和配对克隆型调用。该管道使用10x barcodes和 UMI 来组装每个细胞的 V（D）J 转录本。克隆型和CDR3序列作为 .vloupe 文件输出，可以加载到Loupe V（D）J浏览器中。</p>
 <p><img src="/2023/08/31/Immune/algorithm-workflow.png" srcset="/img/loading.gif" lazyload></p>
 <ol>
@@ -434,7 +435,7 @@
 <p>步骤：<br>(1) Exact subclonotype grouping精确的亚克隆型分组</p>
 <p>如果细胞具有相同的V（D）J转录本，则将其放入称为精确亚克隆型的组中。仅使用productive重叠群。精确亚克隆型必须具有相同数量的链。它们的V（D）J序列和恒定区域基因分配也必须相同。精确亚克隆型不需要具有相同的 5’ UTR。此外，该算法不会在 5’ UTR 或恒定区域中测试 SHM。</p>
 <p>（2）将精确亚克隆型连接成克隆型</p>
-<p>基于将每对精确亚克隆型相互比较而迭代合并为克隆型。具有共同差异和最小CDR3突变的两个细胞被认为是同一克隆型。此处简要介绍了合并条件。<br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/pages/auto/help.how.html">10X enclone 算法摘要</a><br><a target="_blank" rel="noopener" href="https://www.biorxiv.org/content/10.1101/2022.04.21.489084v2.full">10X enclone 算法文献</a><br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/">10X enclone 命令行版本（Beta版本）</a><br><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9731466/">相关文献</a><br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/pages/auto/default_filters.html">Cellranger中默认启动如下Enclone配置</a><br><a target="_blank" rel="noopener" href="https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/algorithms//glossary#origin">Cellranger术语表</a></p>
+<p>基于将每对精确亚克隆型相互比较而迭代合并为克隆型。具有共同差异和最小CDR3突变的两个细胞被认为是同一克隆型。此处简要介绍了合并条件。<br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/pages/auto/help.how.html">10X enclone 算法摘要</a><br><a target="_blank" rel="noopener" href="https://www.biorxiv.org/content/10.1101/2022.04.21.489084v2.full">10X enclone 算法文献</a><br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/">10X enclone 命令行版本（Beta版本）</a><br><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9731466/">相关文献</a><br><a target="_blank" rel="noopener" href="https://10xgenomics.github.io/enclone/pages/auto/default_filters.html">Cellranger中默认启动如下Enclone配置</a><br><a target="_blank" rel="noopener" href="https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/algorithms//glossary#origin">Cellranger术语表</a><br><a target="_blank" rel="noopener" href="https://kb.10xgenomics.com/hc/en-us/articles/4863509310093-Web-summary-metrics-for-V-D-J-Troubleshooting">Web summary metrics for V(D)J Troubleshooting</a><br><a target="_blank" rel="noopener" href="https://www.10xgenomics.com/resources/analysis-guides/immune-profiling-analysis-whats-next-after-cell-ranger">10X官方推荐下游分析软件</a></p>
 
                 
               </div>
