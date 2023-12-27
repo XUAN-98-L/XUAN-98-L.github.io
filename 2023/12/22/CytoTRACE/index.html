@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/12/22/CytoTRACE/F3.jpeg">
 <meta property="og:image" content="https://xuan-98-l.github.io/2023/12/22/CytoTRACE/F4.jpeg">
 <meta property="article:published_time" content="2023-12-22T06:46:31.000Z">
-<meta property="article:modified_time" content="2023-12-26T12:27:46.901Z">
+<meta property="article:modified_time" content="2023-12-27T02:44:13.711Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="文献">
@@ -302,12 +302,12 @@
 </ol>
 <ul>
 <li>训练集：使用由 9 个具有实验确认的分化轨迹作为金标准的 scRNA-seq 数据集作为训练集。选择这些数据集是为了优先考虑早期研究中常用的基准数据集，并确保从哺乳动物受精卵到终末分化细胞的发育状态的广泛采样。训练集包含涵盖 2个物种（人和小鼠），49 个表型的 3174 个单细胞、六个组织和三个 scRNA-seq 平台(CEL-seq,Fluidigm C1, Tang在2009年首次报道的scRNA-seq技术)。</li>
-<li>性能评估：使用 Spearman 相关性将每个基于 RNA 的基因（按表型平均）与已知的分化状态进行比较（图 1A）。然后，对九个训练数据集的结果进行平均，得出每个基因的最终分数和排名。图2B表明该方法揭示了许多已知的，和意想不到的分化状态相关性。<br>   <img src="/2023/12/22/CytoTRACE/F1.jpeg" srcset="/img/loading.gif" lazyload></li>
+<li>性能评估：使用 Spearman 相关性将每个基于 RNA 的基因（按表型平均）与已知的分化状态进行比较（图 1A）。然后，对九个训练数据集的结果进行平均，得出每个基因的最终分数和排名。图2B表明该方法揭示了许多已知的，和意想不到的分化状态相关性。<br>   <img src="/2023/12/22/CytoTRACE/F1.jpeg" srcset="/img/loading.gif" lazyload alt="图1"></li>
 <li><strong>结果</strong>：发现一个特征显示出显著的性能(104 of 18,711)：<strong>每个细胞可检测到的表达基因的数量（gene count）</strong>（可于上图中2B的蓝点中看到）。由于与成熟的干细胞特征相比，包括细胞周期和多能性基因 (14,15)，而且还显示出独特生物学的证据和更广泛的适用性（在cycling cells, noncycling cells, or published data from the earliest stages of human embryogenesis prior to the up-regulation of pluripotency factors中，基因计数都随着分化而减少）。基因计数可能超越孤立的实验系统，在不同细胞类型中概括发育潜力的全部范围。作者在秀丽隐杆线虫（图1D）和斑马鱼（表S4）中做了验证，表明<strong>gene count是细胞个体发育的一般特征</strong>。</li>
 <li><strong>补充验证</strong>：由于细胞的转录输出与其全基因组染色质谱相关，接下来测试了单细胞基因计数是否最终可以替代全局染色质可及性（全局染色质可及性已被证明会随着分化而减少）。将来自 scRNA-seq 数据的单细胞基因计数与从最近一项人类胚胎干细胞 (hESCs) 体外中胚层分化研究中获得的配对bulk <strong>ATAC-seq</strong>（图1E）进行比较，发现随着 hESC 分化为近轴中胚层和侧中胚层谱系，观察到全基因组染色质可及性逐渐降低。</li>
 </ul>
 <ol start="2">
-<li><strong>CytoTRACE 的开发</strong>：<br>   <img src="/2023/12/22/CytoTRACE/F2.jpeg" srcset="/img/loading.gif" lazyload></li>
+<li><strong>CytoTRACE 的开发</strong>：<br>   <img src="/2023/12/22/CytoTRACE/F2.jpeg" srcset="/img/loading.gif" lazyload alt="图2"></li>
 </ol>
 <ul>
 <li>已知：每个细胞的表达基因数量通常与RNA丰度呈现正相关，但在部分数据集中，例如 hESC 体外分化为原肠胚层的数据集，<strong>每个细胞表达的基因数量表现出相当大的表型内变异</strong>（见图2A左）。</li>
@@ -328,7 +328,7 @@
 <li>测试集：来自 26 项研究的 33 个额外 scRNA-seq 数据集。这些数据集代表了不同的发育和分化过程，由涵盖 266 个表型的 141,267 个单细胞、九个生物系统、五个物种 和 9 个 scRNA-seq 平台（三个droplet-based 和六个plate-based protocols）。</li>
 <li>结果：在单细胞水平上进行评估时，CytoTRACE 的表现优于验证队列中所有评估的基于 RNA 的特征（图 2B）。在组织类型、物种、分析的细胞数量、时间序列实验与发育状态、或基于板的技术与基于液滴的技术方面，没有观察到显着的性能偏差。</li>
 <li>与 RNA velocity的比较：两者数据集上表现相似，但 CytoTRACE 总体准确率更高（中位数分别为 74% 和 54%；图 S13C）。推测其可能是由于 RNA velocity模型假设的 mRNA 半衰期和发育时间尺度较短。 </li>
-<li>CytoTRACE 是否可以应用于做过去批次的scRNA-seq 数据集：作者利用<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41587-019-0113-3">Scanorama</a>中的最近邻和高斯核归一化技术合并了几个数据集。整合不同 scRNA-seq 平台上的数据集（图 3A）还是包含发育上不同的细胞类型的数据集（图 S14），Cytotrace的结果都是准确的。<br>  <img src="/2023/12/22/CytoTRACE/F3.jpeg" srcset="/img/loading.gif" lazyload></li>
+<li>CytoTRACE 是否可以应用于做过去批次的scRNA-seq 数据集：作者利用<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41587-019-0113-3">Scanorama</a>中的最近邻和高斯核归一化技术合并了几个数据集。整合不同 scRNA-seq 平台上的数据集（图 3A）还是包含发育上不同的细胞类型的数据集（图 S14），Cytotrace的结果都是准确的。<br>  <img src="/2023/12/22/CytoTRACE/F3.jpeg" srcset="/img/loading.gif" lazyload alt="图3"></li>
 </ul>
 <ol start="4">
 <li>寻找干细胞相关基因和谱系关系</li>
@@ -336,7 +336,7 @@
 <ul>
 <li>无需先验知识的情况下识别不成熟表型marker的潜力的验证：见补充文本</li>
 <li>与Monocle2的比较：当应用于 4442 个骨髓细胞时，Monocle 2 识别出 23 个可能的“root”，从中计算伪时间值（图 3B，左）。相比之下，CytoTRACE 无需用户输入即可轻松识别正确的root（图 3B，右侧，以及图 S16，A 和 B）。这些方法的整合促进了<strong>粒细胞、单核细胞和 B 细胞分化过程中谱系特异性调节因子和marker gene</strong>的自动识别（图 S16C）。<strong>小鼠肠细胞</strong>也获得了类似的结果（图 S16，D 至 F）</li>
-<li>CytoTRACE 可以区分循环干细胞和长期或静态干细胞与其下游祖细胞：尽管循环和静止造血干细胞 (HSC) 亚群被正确预测为分化程度较低(kiw diff)，但只有增殖性HSC 的排名显着高于早期祖细胞（图 3C）。通过可视化推断的RNA含量与CytoTRACE的函数(图3D，顶部)，我们观察到RNA丰度的存在明显的低谷， 且其CytoTRACE的值与Hoxb5的表达升高相吻合，Hoxb5是长期或静止hsc的标记物(图3D，底部)。由于这些细胞不能单独通过基因计数或RNA含量来鉴定，因此该分析证实了CytoTRACE的实用性，并展示了一种从scRNA-seq数据中阐明组织特异性干细胞的方法。</li>
+<li>CytoTRACE 可以区分循环干细胞和长期或静态干细胞与其下游祖细胞：尽管循环和静止造血干细胞 (HSC) 亚群被正确预测为分化程度较低(low diff)，但只有增殖性HSC 的排名显着高于早期祖细胞（图 3C）。通过可视化推断的RNA含量与CytoTRACE的函数(图3D，顶部)，我们观察到RNA丰度的存在明显的低谷， 且其CytoTRACE的值与Hoxb5的表达升高相吻合，Hoxb5是长期或静止hsc的标记物(图3D，底部)。由于这些细胞不能单独通过基因计数或RNA含量来鉴定，因此该分析证实了CytoTRACE的实用性，并展示了一种从scRNA-seq数据中阐明组织特异性干细胞的方法。</li>
 </ul>
 <ol start="5">
 <li>在肿瘤疾病中的应用</li>
