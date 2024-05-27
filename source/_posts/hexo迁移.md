@@ -2,6 +2,7 @@
 title: hexo迁移(win2mac)
 date: 2024-05-27 13:43:13
 tags:
+  - 生活
 ---
 hexo迁移到mac电脑
 <!-- more -->
@@ -62,3 +63,17 @@ deploy:
 
 # obsidian 和hexo连用
 https://itreefly.com/posts/e5113722.html
+
+obsidian将“文件与链接”中“使用wiki链接“关闭
+
+使用obsidian打开_posts作为仓库，并安装Custom Attachment Location插件
+设置Location for new attachment为：
+./${filename}
+并将rename attachment files打开
+
+# 将修改后的文件推送到git
+```
+git add .
+git commit -m “提交消息”
+git push
+```

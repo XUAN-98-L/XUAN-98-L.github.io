@@ -41,5 +41,3 @@ plot <- do.call(ggpubr::ggarrange, c(ggfeature, list(ncol = 2,
 
 ggsave("Dotplot.pdf",plot)
 ~~~
-
-![](Plot1.png)

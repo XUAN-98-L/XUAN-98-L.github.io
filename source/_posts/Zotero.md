@@ -10,7 +10,7 @@ hide: false
 
 <!-- more -->
 
-## ZotFile 附件管理
+## ZotFile 附件管理（建议改用官方拼车）
    
 结合360云盘进行pdf多端同步，用于管理文献附件，例如移动、重命名等。
 
@@ -29,6 +29,13 @@ hide: false
 [下载链接](https://github.com/windingwind/zotero-pdf-translate)
 
 建议使用CNKI翻译。
+
+## zotero期刊显示影响因子
+[参考教程](https://zhuanlan.zhihu.com/p/668106876)
+安装zotero style插件，搭配easyscholar使用
+
+## zotero搭配obsidian 使用
+安装BibTex for zotero
 
 ## Tips:
 

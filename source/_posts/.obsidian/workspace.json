@@ -1,0 +1,161 @@
+{
+  "main": {
+    "id": "453f6aff96bb01ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "22c034c2082e43d1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fcd14752795f33a9",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bdbe1d87c0bc76f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe0cce7590f34bba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0e288954cd0c730e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2dd26b286cc93c60",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5ba160c848cd61f8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8b2408bc8ed711d4",
+    "type": "split",
+    "children": [
+      {
+        "id": "2913f238d54e7c91",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0d3b716eac08fc69",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "98a534f4b9db52f7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "81825d1b65ea1b3e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "80280a7a5ce638d9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "fcd14752795f33a9",
+  "lastOpenFiles": [
+    "Zotero.md",
+    "WGCNA.md",
+    "VDJtools.md",
+    "snakemake.md",
+    "SCENIC.md",
+    "Scanpy.md",
+    "Project-management.md",
+    "k8s-docker.md",
+    "Immune.md",
+    "Hexo-personal-design.md",
+    "hexo迁移.md",
+    "Dotplot-Split.md",
+    "diversity.md",
+    "CytoTRACE.md",
+    "Cellchat.md",
+    "blog-build-remark.md",
+    "Bioinformatics-software.md"
+  ]
+}

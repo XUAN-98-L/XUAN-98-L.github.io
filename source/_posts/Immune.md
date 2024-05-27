@@ -134,18 +134,11 @@ cellranger vdj 从 cellranger mkfastq V（D）J 库中或 bcl2fastq 为 V（D）
 
 - all_contig_annotations.csv：CSV 格式的所有重叠群（contigs）（来自细胞和背景条形码）的高级和详细注释。
 
-- filtered_contig_annotations.csv：来自细胞相关barcodes的每个高置信度重叠群的高级注释。这是
-一个all_contig_annotations.csv 子集.
+- filtered_contig_annotations.csv：来自细胞相关barcodes的每个高置信度重叠群的高级注释。这是一个all_contig_annotations.csv 子集.
 
-- all_contig_annotations.bed：BED 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注
-释。
+- all_contig_annotations.bed：BED 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注释。Browser Extensible Data，字面意思是“（基因组）浏览器可延展数据”，是一种基因组学中用于表示、标记基因组区域位置信息中的文件格式，与IGV等可视化工具一同使用。
 
-Browser Extensible Data，字面意思是“（基因组）浏览器可延展数据”）是一种基因组学中用于表示、标记基因组区域位置信息中的文件格式，与IGV等可视化工具一同使用。
-
-- all_contig_annotations.json：JSON 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注
-释。
-
-Json格式含有详细的注释，包括contig的完整序列，contig的具体坐标和氨基酸翻译序列。
+- all_contig_annotations.json：JSON 格式的所有重叠群（来自细胞和背景条形码）的高级和详细注释。Json格式含有详细的注释，包括contig的完整序列，contig的具体坐标和氨基酸翻译序列。
 
 - airr_rearrangement.tsv ： [AIRR格式](https://docs.airr-community.org/en/stable/)的带注释的重叠群和 V(D)J 重排的共有序列。
 
@@ -175,13 +168,11 @@ CDR：互补性决定区域
 - productive（生产性）:
 如果满足以下条件，则重叠群被称为生产性的（有prodictive 的TCR/BCR才能翻译有功能的蛋白）：
 1. full length: contig 与 V 基因的初始部分相匹配。contig 继续，最终匹配 J 基因的末端部分。
-2. 可编码正常氨基酸：V片段的起始部分与config的起始密码子相匹配（在 10x Genomics 提供的人类和小
-鼠参考序列中，每个 V 区段都以起始密码子开头。），也就是有起始密码子；V 片段起始和 J结尾之间没有终止密码子；J 停止减去 V 开始等于一模三。这只是说 V 和 J 片段上的密码子在框内（编码范围内没有移码突变）。
+2. 可编码正常氨基酸：V片段的起始部分与config的起始密码子相匹配（在 10x Genomics 提供的人类和小鼠参考序列中，每个 V 区段都以起始密码子开头。），也就是有起始密码子；V 片段起始和 J结尾之间没有终止密码子；J 停止减去 V 开始等于一模三。这只是说 V 和 J 片段上的密码子在框内（编码范围内没有移码突变）。
 3. CDR3：有一个带注释的 CDR3 序列。
 4. 结构：令 VJ 表示 V 和 J 段的长度之和。让 len 表示 J 停止减去 V 开始，在重叠群上测量。那么 VJ -len 介于 -25 和 +25 之间，除了 IGH，它必须介于 -55 和 +25 之间。施加此条件是为了排除不太可能与功能蛋白相对应的异常结构变化。
 
-- high_confidence contig(高质量contig):
-有两个以上的UMI支持的productive contig为高质量的contig.
+- high_confidence contig(高质量contig): 有两个以上的UMI支持的productive contig为高质量的contig.
 
 ### cellranger multi 
 cellranger multi 从单个 GEM 孔中获取 5' 基因表达、基因barcodes（抗体捕获、CRISPR Guide Capture和/或抗原捕获）和 V（D）J 文库的任意组合的 FASTQ 文件 cellranger mkfastq bcl2fastq 。它对基因表达和/或Feature Barcode (FB)执行比对、过滤、barcodes计数和 UMI 计数。它还对 V（D）J 文库执行序列组装和成对克隆型调用。此外，基因表达数据提供的cell call用于改进V（D）J文库推断的cell call。
@@ -233,7 +224,7 @@ V（D）J重叠群注释的三个目标是：
 3. 细胞识别
 识别包含 T 或 B 细胞的barcodes/GEMs。
 
-4. 生成clonotype(克隆性)
+4. 生成clonotype(克隆型)
 将细胞相关barcodes分配到克隆型中并过滤掉一些细胞。
 
 主要从all_contig_annotations.json的Cell Ranger文件中获取其信息。
