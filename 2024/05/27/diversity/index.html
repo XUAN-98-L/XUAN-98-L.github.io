@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xuan Liu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Diversity指数学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="diversity">
+<meta property="og:url" content="https://xuan-98-l.github.io/2024/05/27/diversity/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Diversity指数学习笔记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171232875.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171304821.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171325965.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171357026.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171432780.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171459152.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171517523.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171539041.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171552117.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171603029.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171615623.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171628900.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171643644.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171700855.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171714329.png">
+<meta property="article:published_time" content="2024-05-27T04:44:57.000Z">
+<meta property="article:modified_time" content="2024-05-27T04:46:32.971Z">
+<meta property="article:author" content="Xuan Liu">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="个人成长">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xuan-98-l.github.io/2024/05/27/diversity/image-20240518171232875.png">
+  
+  
+  
+  <title>diversity - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuan-98-l.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xuan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="diversity"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-27 12:44" pubdate>
+          May 27, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">diversity</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Diversity指数学习笔记</p>
+<span id="more"></span>
+<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>假设：我们手中有肿瘤样本在某药物<strong>治疗前</strong>和<strong>治疗后</strong>的配对TCR数据，想比较药物对患者治疗前后的CDR3多样性的影响。我们需要考虑的的问题有以下两个：</p>
+<ul>
+<li>衡量治疗前和治疗后，<strong>对于相同样本</strong>，CDR3序列多样性（CDR3 repertoire）变化程度如何？是有很大差异，还是该药物没有对CDR3多样性造成影响？<br>  Alpha diversity（别名within sample diversity）</li>
+<li><strong>不同样本之间</strong>CDR3是相似，还是差距很大？<br>  Beta diversity</li>
+</ul>
+<h1 id="Alpha-diversity"><a href="#Alpha-diversity" class="headerlink" title="Alpha diversity"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tucm8y5xi88">Alpha diversity</a></h1><p><img src="/2024/05/27/diversity/image-20240518171232875.png" srcset="/img/loading.gif" lazyload><br>如上图：两个花园里花的种类一样丰富吗？<br>对于Alpha多样性，常用的指标&#x2F;指数是<a target="_blank" rel="noopener" href="https://mibwurrepo.github.io/Microbial-bioinformatics-introductory-course-Material-2018/alpha-diversities.html">Shannon, Inverse Simpson, Simpson, Gini, Observed and Chao1。</a></p>
+<p>这些指标一般由两个部分的度量组成：<br>用于衡量样本内有多少种unique CDR3数量的指标：<strong>丰富度（richness）</strong>。（每种CDR3是否存在，如下图，用1或0表示）<br>用于衡量样本内每种CDR3分布频率的指标：<strong>均匀度（evenness）</strong>。<br><img src="/2024/05/27/diversity/image-20240518171304821.png" srcset="/img/loading.gif" lazyload></p>
+<p>观察下面的两个树群：树群1和树群2的richness相同，但evenness不同。树群1的树种类分布要更加均衡，而树群2的diversity要更高。<br>高Evenness（范围为 0 到 1）意味着所有元素几乎均匀分布，而低均匀度则表明向某一群体偏斜。从下图可以看出，树群2的第三种树占据了70%的比例，因此树群2的evenness要更低，树群1的evenness更高。<br><img src="/2024/05/27/diversity/image-20240518171325965.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Shannon-entropy"><a href="#Shannon-entropy" class="headerlink" title="Shannon entropy"></a>Shannon entropy</h2><p><strong>Shannon entropy <a target="_blank" rel="noopener" href="https://linkinghub.elsevier.com/retrieve/pii/S0092867417311224">此指标同时考虑 richness和evenness， 但是更重视evenness</a>。该指数越高，说明样本中克隆的diversity越高。</strong></p>
+<p>根据<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7571402/">下图</a>展示的公式，我们需要如下信息来计算香农熵：</p>
+<ol>
+<li>CDR3的总数：n</li>
+<li>每种CDR3的频率：pi （一般我们是通过CDR3 counts来计算的）<br><img src="/2024/05/27/diversity/image-20240518171357026.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<p>按照公式对上面的树木分布计算香农熵，Community 1的值是1.39，Community 2的值是1.06。(由于树群1和树群2的richness相同，但树群1的evenness更高，所以树群1的shannon entropy要更高。)</p>
+<p>在实现上可以使用immunarch的<a target="_blank" rel="noopener" href="https://immunarch.com/reference/entropy.html">entropy函数</a>，为每个sample计算对应的shannon entropy<br>源码见：<br><a target="_blank" rel="noopener" href="https://github.com/immunomind/immunarch/blob/HEAD/R/info_theory.R">https://github.com/immunomind/immunarch/blob/HEAD/R/info_theory.R</a></p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mel">assay_metadata = data.table::<span class="hljs-keyword">fread</span>(metadata,header =T )<br>assay_metadata = assay_metadata %&gt;% <span class="hljs-keyword">rename</span>(Sample = sampleid ) %&gt;% as.data.frame()<br>rownames(assay_metadata) = assay_metadata$Sample<br><br>immdata = list() #an empty immdata list<br><br>vdj_profile = Sys.glob(<span class="hljs-keyword">file</span>.path(input_path,assay_metadata$Sample,<span class="hljs-string">&quot;outs&quot;</span>,<span class="hljs-string">&quot;per_sample_outs&quot;</span>,assay_metadata$Sample,type_path,<span class="hljs-string">&quot;filtered_contig_annotations.csv&quot;</span>))<br><br>immdata$data = repLoad(vdj_profile, .<span class="hljs-keyword">format</span> = <span class="hljs-string">&quot;10x&quot;</span>)<br><br>#针对样本<span class="hljs-number">1</span>进行测试，需要筛选只对Proportion进行计算<br>test = immdata$data[[<span class="hljs-number">1</span>]] %&gt;% as.data.frame() %&gt;% <span class="hljs-keyword">select</span>(Proportion)<br>#注意将base改为e<br>entropy(test, .base = <span class="hljs-keyword">exp</span>(<span class="hljs-number">1</span>), .norm = FALSE, .<span class="hljs-keyword">do</span>.norm = NA, .laplace = <span class="hljs-number">1e-12</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Simpson’s-Diversity-Index"><a href="#Simpson’s-Diversity-Index" class="headerlink" title="Simpson’s Diversity Index"></a><strong>Simpson’s Diversity Index</strong></h2><p><strong>Simpson index同时考虑Richness和Evenness</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/163688a0">公式</a>如下：<br><img src="/2024/05/27/diversity/image-20240518171432780.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们通常不直接用Simpson index（D）,它反映的是在同一个样本中随机的抽取2个个体，这两个个体来自同一个类的概率（以TCR为例，辛普森指数是从样本中随机选择的任意两个tcr具有不同克隆型的概率。）。故D值越大，多样性越低。这与直觉和逻辑不符。</p>
+<p>为了解决这个问题，通常会用以下两种形式来表示：<br>（1）1-D，即Gini-Simpson Diversity index<br>Gini-Simpson多样性指数表示在克隆群中随机选取两个克隆序列，两者属于不同种类克隆的概率。Gini-Simpson值越高，代表克隆的多样性越高。公式中，ni为第i个特异性克隆类型的氨基酸序列的总数，N为样本中总的序列数。（<strong>使用时有些地方也会将Gini-Simpson简化成Simpson，实际上这里是指Gini-Simpson，可根据公式区分</strong>，比如此处就直接缩写为simpson了：<a target="_blank" rel="noopener" href="https://geographyfieldwork.com/Simpson'sDiversityIndex.htm#:~:text=Simpson's%20Diversity%20Index%20is%20a,evenness%20increase%2C%20so%20diversity%20increases.&text=The%20value%20of%20D%20ranges%20between%200%20and%201.">示例</a>）</p>
+<p><img src="/2024/05/27/diversity/image-20240518171459152.png" srcset="/img/loading.gif" lazyload><br>可使用immunarch直接计算<br>div_div &lt;- repDiversity(immdata$data, “gini.simp”)</p>
+<p> <strong>数值接近0 表示没有多样性（即高度寡克隆），数值接近1就是diversity接近无穷（polyclonal repertoire with equivalent representation of each clone）</strong></p>
+<p>（2）1&#x2F;D，即Inverse-Simpson index<br>可使用immunarch直接计算<br>div_div &lt;- repDiversity(immdata$data, “inv.simp”)<br>逆辛普森多样性指数是辛普森指数的倒数，逆辛普森指数越大，表示克隆的多样性越高。侧重于反映高频克隆的多样性。</p>
+<h2 id="Hill-numbers"><a href="#Hill-numbers" class="headerlink" title="Hill numbers"></a>Hill numbers</h2><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0958166920301051?via=ihub">Hill number， 也叫effective numbers of species，有效物种数，通过它可以看出来数据集中不同克隆型的有效数量 (i.e. number of equally abundant sequences producing the given value of diversity)。</a></p>
+<p>hill number是一个比较广义的度量，公式如下：<br><img src="/2024/05/27/diversity/image-20240518171517523.png" srcset="/img/loading.gif" lazyload><br>如下图，可以看到横坐标是Q value。hill number量化了diversity。丰度分布的重要性随着希尔阶数（Q，也就是公式中的alpha，即阶数）的增加而增加。对于 Q&#x3D;0，希尔数是richness；对于 Q &#x3D;1，它其实就是Shannon entropy，就可以解释为常见或较丰富CDR3序列的有效数量 ；对于 q&#x3D;2，它是inverse Simpson index，可以解释为优势或高度丰富CDR3的有效数量。<br>因此，hill number就是比较在同样的diversity下，CDR3序列的数量在哪个样本中更高。<br><img src="/2024/05/27/diversity/image-20240518171539041.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Diversity-evenness-50-DE50"><a href="#Diversity-evenness-50-DE50" class="headerlink" title="Diversity evenness 50 (DE50)"></a>Diversity evenness 50 (DE50)</h2><p><strong>此指标仅考虑Evenness。</strong><br>DE50值越高，代表各克隆分布比较均匀，DE50值越低，克隆性越高，代表有一些特异性的克隆发生了扩增(这种特异性克隆扩增的情况可以形容为“更具寡克隆性”，oligoclonal）。<br><img src="/2024/05/27/diversity/image-20240518171552117.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式的计算方法为：将克隆序列按照频率从高到低排序，从最高开始累加，达到频率总和为50%的这些序列的克隆种类占总克隆种类的比例。（<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-018-19548-y">Diversity Evenness 50 (DE50) was calculated as the ratio of how many clonotypes amongst the most frequent were necessary to account for 50% of the total read counts divided by the total number of read counts present.</a>）</p>
+<p>此指标在immunarch中也叫D50，用repDiversity函数计算：<br>d50 is a recently developed immune diversity estimate. It calculates the minimum number of distinct clonotypes amounting to greater than or equal to 50 percent of a total of sequencing reads obtained following amplification and sequencing<br><img src="/2024/05/27/diversity/image-20240518171603029.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Pielou’s-index"><a href="#Pielou’s-index" class="headerlink" title="Pielou’s index"></a><em>Pielou’s</em> index</h2><p><strong>与D50一样，此指标仅考虑Evenness。</strong><br>Pielou 指数是衡量物种在群落中分布均匀程度的一种方法。 Pielou 指数值定义在 0 到 1 之间。1 代表具有完美均匀度的群落，随着物种的相对丰度偏离均匀度，该指数会降至零。<br>In parallel to DE50, clonal evenness of a repertoire can be calculated using Pielou’s index, which is itself derived from the ratio between the Shannon entropy and the maximization of the diversity distribution of species within a sample</p>
+<p>Pielou 指数是基于 Shannon entropy计算 ，使用 Shannon entropy 除以样本内的总克隆型的数量（N），计算公式如下：<br><img src="/2024/05/27/diversity/image-20240518171615623.png" srcset="/img/loading.gif" lazyload></p>
+<p>与Pielous指数相关的另一个概念是<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7571402/">“<strong>Clonality</strong>”</a>，克隆性:<br>计算Clonality可以使用1-Pielou 指数。<br>该数值越接近0，evenness越高；数值越接近1，即存在优势克隆（clonal dominance）,少数克隆出现在较高频率。<br>计算公式如下：<br><img src="/2024/05/27/diversity/image-20240518171628900.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://www.tandfonline.com/doi/full/10.1080/2162402X.2019.1652538">典型文献</a>是在对接受PD-1免疫治疗药物治疗的转移性黑色素瘤患者的外周和肿瘤 T 细胞克隆性时，强调了以 1-Pielou 指数为代表的克隆扩张与临床反应之间的关联。实验结果显示，在药物治疗后出现更高的克隆性的患者，具有更长的生存时间。</p>
+<h2 id="Gini-coefficient"><a href="#Gini-coefficient" class="headerlink" title="Gini coefficient"></a>Gini coefficient</h2><p><strong>此指标仅考虑Evenness。</strong><br><strong>注意gini coefficient（基尼系数） 与 Gini-Simpson不是同样的概念。</strong><br>与上面提到的Pielou 指数类似，gini coefficient也可以用作clonality的度量<br><strong>基尼系数的范围从 0（CDR3 repertoire的最大多样性,即每个序列的丰度相等) 到 1(即极端不平等, 出现对单个CDR3序列的高克隆性)</strong></p>
+<h2 id="Chao1"><a href="#Chao1" class="headerlink" title="Chao1"></a>Chao1</h2><p><strong>此指标仅考虑Richness。</strong><br>用来反应 clonotypes 的丰度，对稀有的物种很敏感。<br>Chao1 指数越高，clonotypes Richness越高，多样性越高。<br>受到Sample size的影响较大，在high diverse的群体中不准确，因此一般不单独使用，都是和其余指标联合使用。<br><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4528489/">多指数评估文献1</a><br><a target="_blank" rel="noopener" href="https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2022.1006136/full">典型文献</a></p>
+<h1 id="Beta-diversity"><a href="#Beta-diversity" class="headerlink" title="Beta diversity"></a>Beta diversity</h1><p><img src="/2024/05/27/diversity/image-20240518171643644.png" srcset="/img/loading.gif" lazyload></p>
+<p>如上图：两个花园里是否有相同的花？<br>β -多样性:衡量不同群体样本之间的差异，以确定整体群落组成和结构是否存在差异。</p>
+<h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="Jensen-Shannon-divergence"><a href="#Jensen-Shannon-divergence" class="headerlink" title="Jensen-Shannon divergence"></a>Jensen-Shannon divergence</h2><p>白板推导教程参考：<br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=bqjZK9tkWdk">https://www.youtube.com/watch?v=bqjZK9tkWdk</a></p>
+<p>除了对每个样本进行的diversity分析之外，TCR&#x2F;BCR 测序数据还需要进行相似性分析，以便比较 T-cell repertoires之间的重叠。JSD指数就是一个反应相似性的指数，**<a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.xcrm.2020.100141">JSD越低，repertoire stability越高</a>，也就是说两个CDR3氨基酸频率分布的差异越小（也可以说<a target="_blank" rel="noopener" href="https://journals.aai.org/jimmunol/article/209/2/238/234249/Analysis-of-Gene-Expression-and-TCR-B-Cell">V和J段的分布更相似</a>。)**</p>
+<p><a target="_blank" rel="noopener" href="https://linkinghub.elsevier.com/retrieve/pii/S2666379120301853">示例一</a>：<br><img src="/2024/05/27/diversity/image-20240518171700855.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面的例图展示了 PFS-9患者(药物治疗后疗效更好的患者组) 和 非PFS-9患者（药物治疗疗效较差的患者组） <strong>疫苗注射前(左)</strong> 或 <strong>疫苗注射后(右)</strong> 与基线(Pre-treatment)之间的TCRb CDR3序列的JSD值。如左侧箭头所示，低JSD值表示repertoire stability。黑线为中位数。p值来自双尾Student ‘s t检验。<br>本图使用<a target="_blank" rel="noopener" href="https://github.com/drostlab/philentropy">philentropy包</a>实现,此包可以实现两组比较的效果（由于JSD的对称特性，比较组不分先后）</p>
+<p><a target="_blank" rel="noopener" href="https://journals.aai.org/jimmunol/article/209/2/238/234249/Analysis-of-Gene-Expression-and-TCR-B-Cell">示例二</a>：<br><img src="/2024/05/27/diversity/image-20240518171714329.png" srcset="/img/loading.gif" lazyload></p>
+<p>本图使用immunarch实现（immunarch对所有输入的样本进行成对检验，出具热图）：<br><a target="_blank" rel="noopener" href="https://immunarch.com/articles/web_only/v5_gene_usage.html?q=divergence#gene-usage-analysis">https://immunarch.com/articles/web_only/v5_gene_usage.html?q=divergence#gene-usage-analysis</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>diversity</div>
+      <div>https://xuan-98-l.github.io/2024/05/27/diversity/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Xuan Liu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 27, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/22/CytoTRACE/" title="CytoTRACE文献阅读">
+                        <span class="hidden-mobile">CytoTRACE文献阅读</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xuan Liu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Cellchat的学习笔记及代码分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cellchat">
+<meta property="og:url" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Cellchat的学习笔记及代码分享">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat1.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat2.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat3.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat4.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat5.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellphoneDB_overview.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/code1.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/code2.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p1.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p2.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p3.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p4.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p5.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p6.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p7.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p8.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p9.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p10.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p11.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p12.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p13.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p14.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p15.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p16.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p17.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/p18.png">
+<meta property="article:published_time" content="2023-05-22T05:16:50.000Z">
+<meta property="article:modified_time" content="2024-05-24T09:07:37.308Z">
+<meta property="article:author" content="Xuan Liu">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="个人成长">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xuan-98-l.github.io/2023/05/22/Cellchat/cellchat1.png">
+  
+  
+  
+  <title>Cellchat - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xuan-98-l.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xuan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/Image/background1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Cellchat"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-22 13:16" pubdate>
+          May 22, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          123 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Cellchat</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Cellchat的学习笔记及代码分享</p>
+<span id="more"></span>
+<h2 id="细胞通讯背景介绍"><a href="#细胞通讯背景介绍" class="headerlink" title="细胞通讯背景介绍"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41576-020-00292-x">细胞通讯背景介绍</a></h2><p>细胞通讯主要由一个信号产生的细胞发出的信息，一般是通过一个介质，也就是配体，传递给靶细胞（如图Y就是受体）。配体和受体之间是特异性结合，靶细胞接触配体后就会产生一系列的生理生化效应。</p>
+<ol>
+<li><p>自分泌(Autocrine)<br>是指同一个细胞内的通讯，细胞通过分泌配体来诱导自身细胞反应。</p>
+</li>
+<li><p>旁分泌(Paracrine)<br>不需要细胞-细胞接触，而是依赖于分泌后信号分子从一个细胞扩散到另一个细胞。</p>
+</li>
+<li><p>近分泌(Juxtacrine)<br>细胞间通讯依靠缝隙连接或其他结构如膜纳米管直接在细胞间传递信号分子，需要细胞相互接触。信号分子不分泌到细胞外空间。</p>
+</li>
+<li><p>内分泌(Endocrine)<br>信号分子通过细胞外液(如血浆)被分泌并长距离传播；这种交流的典型介质是激素。</p>
+</li>
+</ol>
+<p>细胞通讯参与许多生物进程，理解细胞通讯可以帮助我们了解细胞与细胞之间的互作关系。通过选择不同时间点的样本或同类细胞的不同亚群可以揭示发育过程中各类细胞的相互作用。细胞通讯可以用于探索肿瘤免疫微环境，比如先从细胞亚群入手，通过对不同亚群进行受体-配体分析，挑选相互作用最强的亚群，然后探索该亚群与其他细胞类型的相互作用，揭示细胞亚群在肿瘤免疫微环境中的作用机制。也可以用于挖掘疾病治疗靶点等。</p>
+<p><img src="/2023/05/22/Cellchat/cellchat1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Cellchat"><a href="#Cellchat" class="headerlink" title="Cellchat"></a><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-021-21246-9">Cellchat</a></h2><h3 id="Cellchat简介"><a href="#Cellchat简介" class="headerlink" title="Cellchat简介"></a>Cellchat简介</h3><p><a target="_blank" rel="noopener" href="http://www.cellchat.org/index_inner.html">Cellchat官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sqjin/CellChat">Cellchat github</a></p>
+<p>单细胞领域，2021年美国加州大学开发出了cellchat软件用于分析细胞通讯分析。cellchat这个工具具有非常强大的灵活性，不仅可以对细胞通讯网络进行推断和分析，还具有丰富的可视化功能。</p>
+<ul>
+<li>使用单细胞表达谱与已知的细胞通讯数据库进行细胞通讯互作强度的计算。</li>
+<li>通过配体-受体的互作概率与扰动检验，识别显著互作的配体-受体关系对。</li>
+<li>通过加和细胞类型间显著互作的配体-受体关系对数量或者强度来计算和整合细胞间通讯网络。</li>
+</ul>
+<p>虽然同样是从scRNA-seq数据中推断细胞间通讯，但Cellchat与NicheNet等只使用一个配体&#x2F;受体基因对的软件不同，Cellchat将配体-受体+多聚体+辅助因子同时发挥作用的情况纳入考量。这就考虑到了比如细胞因子TGF β在TGFBR2&#x2F;TGFBR1二聚体的参与下调节细胞增殖这种常见的情况。<br><img src="/2023/05/22/Cellchat/cellchat2.png" srcset="/img/loading.gif" lazyload></p>
+<p>Cellchat强大之处在于它的数据库, CellChat 软件构建了一个配体、受体及其辅因子间相互作用的数据库——<strong>CellChatDB</strong>，cellchat数据库是人工注释的数据库，支持<strong>人和小鼠</strong>受配体互作推断，在其github里发现开发团队更新了斑马鱼的数据库，用户也可以根据自己获得或自己挑选的数据，用cellchat自带的功能对它的数据库更新并使用。这个代码可以帮助用户看的它的数据库组成，我们在后面进行分析时，可以根据需求筛选特定的数据库进行分析。根据通讯方式不同，可以将信号通路分为以下三种：Secreted signaling主要指的就是内分泌，自分泌和旁分泌；Cell-cell Contact主要对应近分泌；ECM受体主要是整合素等其他细胞表面相关成分，通过细胞与细胞外基质接触来介导细胞通讯（是一种特殊的近分泌）。</p>
+<p>提供了<a target="_blank" rel="noopener" href="http://www.cellchat.org/cellchatdb/">Web端</a>可用于搜索受配体</p>
+<p><img src="/2023/05/22/Cellchat/cellchat3.png" srcset="/img/loading.gif" lazyload></p>
+<pre><code class="hljs">#以human为例查看数据库构成
+showDatabaseCategory(CellChatDB.human) 
+</code></pre>
+<p><img src="/2023/05/22/Cellchat/cellchat4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Cellchat-分析原理"><a href="#Cellchat-分析原理" class="headerlink" title="Cellchat 分析原理"></a>Cellchat 分析原理</h3><p>我们要看细胞亚群之间的通讯作用，首先仍然是需要进行差异分析，计算哪些基因是在细胞群之间存在差异表达，这是通过<em>identifyOverExpressedGenes</em>函数实现的。cellchat使用Wilcoxon检验，在显著性水平为0.05的情况下，在所有细胞组中识别差异表达的信号基因。然后这些过表达基因所在的互作即过表达互作。通过<em>identifyOverExpressedInteractions</em>函数可以识别这些过表达互作，并将他们存于cellchat@LR$LRsig。</p>
+<p>第二步是对不同的细胞群计算一个平均表达水平（使用了基因表达分位数的方式，排除了异常值的影响，公式见文献）</p>
+<p>第三步也是最重要的一步，就是对每个配体受体对计算通信概率。</p>
+<p><strong>配受体对表达情况计算：</strong></p>
+<p>Li代表配体L在细胞群i中的表达水平。如果配体L有多个亚基，计算的是几何平均数作为整体的表达水平：也就是任何一个亚基的零表达都会导致一个无活性的配体。</p>
+<p>Rj代表受体R在细胞群j中的表达水平。如果有多个亚基，仍然计算几何平均数。比较特殊的是，由于共刺激和共抑制膜结合受体能够通过控制受体激活来调节信号，因此在计算受体时，会将共刺激受体纳入考量。<br>对于具有多个共刺激受体的配体-受体对，我们计算了这些共刺激受体的平均表达量(用RA表示)，然后使用线性函数来建模对受体表达的正向调节(activating)。(1+RA)</p>
+<p>对于每个具有多个共抑制受体(RI)的配体-受体对，我们使用相同的线性函数方法对它们进行建模。(1+RI)</p>
+<p><img src="/2023/05/22/Cellchat/cellchat5.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>通讯概率计算：</strong></p>
+<p><font color=red>红色框中的部分即为使用Hill系数对<strong>受配体之间的相互作用</strong>进行建模，参数Kh的默认值设为0.5，因为输入数据的归一化范围从0到1。（<a target="_blank" rel="noopener" href="https://qinqianshan.com/biology/protein/hill-coe/">希尔系数</a>主要是用于研究蛋白质内部，如果是由多亚基组成，那么这一群亚基之间有怎样的作用关系，这里是取它的延伸作用。 Kh在希尔方程中常作为解离常数，来源于质量作用定律）</font></p>
+<p><strong>来自发送细胞和接收细胞的胞外激动剂和拮抗剂能够直接或间接地调节配体-受体相互作用:</strong></p>
+<p><font color=Orange>黄色框展示了对<strong>激动剂</strong>的建模。<br>对于含有多个激动剂的配体-受体对，我们计算了这些激动剂(agonist)的平均表达量(用AG表示)，然后使用Hill函数来模拟激动剂对配体-受体相互作用的正调节。</font></p>
+<p><font color=#008000>原理相似，绿色框中的部分为对<strong>拮抗剂</strong>的建模(antagonist)。</font></p>
+<p><font color=Blue>蓝色框这部分会将每个细胞群中<strong>细胞比例的影响</strong>也被纳入概率计算中，其中ni和nj分别为细胞群i和j中的细胞数量，n为给定数据集中的细胞总数。</font></p>
+<p>这样我们就可以计算出来所有配体-受体对之间的所有细胞组之间的通信概率， 这个整体的通讯概率由一个三维array ( K × K × N)表示，其中K是cell group的数量，N是配体-受体对或信号通路的数量。</p>
+<p>我们比较关心在统计学上，这些通讯是否具有显著性呢？</p>
+<p>cellchat会基于置换检验的方法，将细胞标签打乱重排一百次， 生成零分布，计算p值。</p>
+<p>最后通过层次图(hierarchy plot),圈图(Circle plot),气泡图(bubble plot)等多种方式进行结果展示。</p>
+<h2 id="CellphoneDB"><a href="#CellphoneDB" class="headerlink" title="CellphoneDB"></a><a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41596-020-0292-x">CellphoneDB</a></h2><h3 id="CellphoneDB-简介"><a href="#CellphoneDB-简介" class="headerlink" title="CellphoneDB 简介"></a>CellphoneDB 简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/ventolab/CellphoneDB">CellphoneDB github</a></p>
+<p>CellPhoneDB 构建了一个公开的物种为<strong>人类</strong>的经过人工注释的受体、配体及其相互作用的数据，并配有相应的R包和python包来对单细胞转录组学数据进行分析。</p>
+<p>与cellchat相似，cellphoneDB考虑到了异聚复合物。在存在多个亚基时，表达量是按照最低的亚基进行计算，也就是说cellchat和cellphoneDB都会因为多聚体的任何一个亚基表达量为0而导致多聚体的表达量按0进行计算。cellphoneDB的相互作用注释也比较全面，有两千多种相互作用，同时也支持自定义受配体相互作用。 </p>
+<p>与CellPhoneDB v3相比，CellPhoneDB v4.1版本的可信度更强，因为它不再从外部资源导入交互，而是增加了更多的人工注释条目，并考虑了非蛋白分子作为配体的情况。由于开始支持python，运行速度也得到了大幅提升。</p>
+<h3 id="CellphoneDB原理"><a href="#CellphoneDB原理" class="headerlink" title="CellphoneDB原理"></a>CellphoneDB原理</h3><p>CellphoneDB要求输入normalized后的矩阵(data矩阵)，在给定表达矩阵和细胞注释之后，对于细胞群中的每个基因，在数据集中的所有原细胞分群之间执行成对比较，计算表达该基因的细胞百分比和基因表达的实际平均值。</p>
+<p>然后，随机排列所有细胞的细胞类型标记，形成新的细胞群（默认随机排列1000次），计算随机排列后细胞群中配体的平均表达水平和与其相互作用的细胞类型中受体的平均表达水平的平均值。通过这种方式，在两种细胞类型之间的每对配对比较中为每个配体-受体对生成一个零分布(null distribution)。</p>
+<p>生成零分布之后，根据计算平均值等于或高于实际平均值的比例推测该受体-配体对在这两种细胞类型中可能的显著性P值。</p>
+<p>之后，根据两种细胞类型中富集到的显著的配体-受体对的数量，对细胞群中显著的受配体进行排序，找到特异性的配受体，以便手动筛选出生物学相关的相互作用关系。这样，通过特异性的蛋白复合物，预测了细胞群之间可能的分子相互作用，产生了细胞群间潜在的通讯网络，这些网络可以通过直观的表格和图表进行可视化。</p>
+<p>CellphoneDB的下游可视化相比cellchat要少，可以将生成的表格导入Cytoscape进行网络图的可视化。</p>
+<p><img src="/2023/05/22/Cellchat/cellphoneDB_overview.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="CellphoneDB与Cellchat比较"><a href="#CellphoneDB与Cellchat比较" class="headerlink" title="CellphoneDB与Cellchat比较"></a>CellphoneDB与Cellchat比较</h3><p>CellphoneDB:</p>
+<ol>
+<li>基于 人 开发，可通过同源转换应用于小鼠</li>
+<li>考虑二聚体</li>
+<li>CellphoneDB数据库包含将近3000种相互作用。</li>
+<li>考虑200多种涉及带注释的非肽分子（即不由基因编码），例如类固醇激素，的相互作用。</li>
+<li>CellphoneDB v3支持空间信息</li>
+<li>只有表达受体和配体基因的细胞占比超过指定的阈值时（默认为10%），该配体-受体对才会被纳入分析。</li>
+<li>基于Shuffle，运行速度相对较慢（v4.1基于python, 运行速度提升）</li>
+</ol>
+<p>Cellchat:</p>
+<ol>
+<li>基于 人 和 小鼠 开发</li>
+<li>考虑二聚体和<strong>拮抗剂等</strong></li>
+<li>数据库中含有2021种已验证的相互作用，其中60%为分泌信号，48%的相互作用需要二聚体复合体参与。</li>
+<li>Cellchat v1.6.0支持空间信息</li>
+<li>基于R开发</li>
+<li>可以通过结合网络分析、模式识别和流形学习方法，使用集成方法定量表征和比较推断的细胞间通信网络。</li>
+</ol>
+<h2 id="Cellchat-代码详解"><a href="#Cellchat-代码详解" class="headerlink" title="Cellchat 代码详解"></a>Cellchat 代码详解</h2><h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><p>首先要准备分析数据，也就是构建cellchat对象。我们需要表达矩阵和对应的标识信息两种数据，我们用常见的seurat对象为例，这里用的是我们自己的示例数据，只用于展示分析步骤和产生的结果。</p>
+<p>在读取seurat对象之后，建议将我们需要用于推断互作关系的细胞类群对应的标签设置为seurat对象的ident方便后续转换。cellchat提供了不同的转换方式：</p>
+<p>方案一：我们可以从seurat对象中提取表达矩阵以及细胞对应的meta信息。之后通过createCellchat这个函数手动构建cellchat对象，运行了createCellchat函数之后终端会提示我们从数据矩阵构建的cellchat对象，并且提示我们采用的是哪些细胞类型进行细胞通讯分析。</p>
+<p>方案二：createCellchat这个函数也支持直接将seurat对象转换为cellchat对象。运行之后也可以看到终端提示我们构建数据的来源和即将进行分析的细胞类型。同时我们可以看到，我们之前给seurat对象设置的ident也被添加到cellchat对象的meta信息里了。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs R">seurat_ob <span class="hljs-operator">&lt;-</span> readRDS<span class="hljs-punctuation">(</span><span class="hljs-string">&quot;seurat_ob.rds&quot;</span><span class="hljs-punctuation">)</span><br>seurat_ob <span class="hljs-operator">&lt;-</span> SetIdent<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">,</span> value <span class="hljs-operator">=</span> <span class="hljs-string">&quot;celltype&quot;</span><span class="hljs-punctuation">)</span><br>levels<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#推荐：直接用seurat对象构建cellchat对象</span><br>cellchat <span class="hljs-operator">&lt;-</span> createCellChat<span class="hljs-punctuation">(</span>object <span class="hljs-operator">=</span> seurat_ob<span class="hljs-punctuation">,</span> group.by <span class="hljs-operator">=</span> <span class="hljs-string">&quot;celltype&quot;</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#Optional: 提取cellchat对象所需数据并构建cellchat对象（需要使用normalized data matrix）</span><br>data.input <span class="hljs-operator">&lt;-</span> GetAssayData<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">,</span> assay <span class="hljs-operator">=</span> <span class="hljs-string">&quot;RNA&quot;</span><span class="hljs-punctuation">,</span> slot <span class="hljs-operator">=</span> <span class="hljs-string">&quot;data&quot;</span><span class="hljs-punctuation">)</span>  <br>labels <span class="hljs-operator">&lt;-</span> Idents<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">)</span><br>meta <span class="hljs-operator">&lt;-</span> data.frame<span class="hljs-punctuation">(</span>celltype <span class="hljs-operator">=</span> labels<span class="hljs-punctuation">,</span> row.names <span class="hljs-operator">=</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>labels<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <br><span class="hljs-comment"># 构建cellchat对象 </span><br>cellchat <span class="hljs-operator">&lt;-</span> createCellChat<span class="hljs-punctuation">(</span>object <span class="hljs-operator">=</span> data.input<span class="hljs-punctuation">,</span> meta <span class="hljs-operator">=</span> meta<span class="hljs-punctuation">,</span> group.by <span class="hljs-operator">=</span> <span class="hljs-string">&quot;celltype&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/code1.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="设置数据库"><a href="#设置数据库" class="headerlink" title="设置数据库"></a>设置数据库</h3><p>进行细胞通讯分析需要先将数据库添加到cellchat对象中，根据我们样本物种选择对应的数据库，可以使用全部的数据进行计算，也可以根据需要筛选部分数据，将数据添加到cellchat对象的DB slot里。由于是demo数据演示，故只选取了动植物细胞中最常见的通讯方式，也就是分泌信号的数据库，在实操的时候可以改为完整的数据库，看看还有哪些信号通路被纳入分析。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">##设置配体-受体相互作用数据库</span><br>CellChatDB <span class="hljs-operator">&lt;-</span> CellChatDB.human <br><span class="hljs-comment"># use CellChatDB for cell-cell communication analysis</span><br>CellChatDB.use <span class="hljs-operator">&lt;-</span> CellChatDB<br><span class="hljs-comment"># use a subset of CellChatDB for cell-cell communication analysis</span><br>CellChatDB.use <span class="hljs-operator">&lt;-</span> subsetDB<span class="hljs-punctuation">(</span>CellChatDB<span class="hljs-punctuation">,</span> search <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Secreted Signaling&quot;</span><span class="hljs-punctuation">)</span> <span class="hljs-comment"># 分泌信号</span><br><br><span class="hljs-comment">#将database添加到cellchat对象中</span><br>cellchat<span class="hljs-operator">@</span>DB <span class="hljs-operator">&lt;-</span> CellChatDB.use<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/05/22/Cellchat/code2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>官方提示不管是不是需要提取cellchat子集都需要跑subsetdata这一步，其实这一步也是在对我们的数据本身的基因与数据库中的基因取交集并且将对应基因的表达矩阵保存到名为data.signaling 的slot里面，所以需要跑这一步来节约计算成本是必要的。在识别过表达基因（也就是差异分析）和过表达的受配体对之后，（鉴定与每个细胞组相关的过表达信号传导基因（var.features slot）、识别所用cellChatDB中过度表达的配体受体相互作用（对）（LR slot））。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#### 提取表达数据子集 cellchat@data.signaling </span><br><span class="hljs-comment">#即使使用全部的数据集，此步骤也是必须的。</span><br><span class="hljs-comment">#此步骤提取在subsetDB步骤中选取的关注的interaction database中的基因。</span><br><span class="hljs-comment">#此步骤过后，cellchat@data.signaling中提取到了基因的表达矩阵（data矩阵）。</span><br>cellchat <span class="hljs-operator">&lt;-</span> CellChat<span class="hljs-operator">::</span>subsetData<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span> <br><br><span class="hljs-comment">#识别过表达基因，储存在cellchat@var.features</span><br>cellchat <span class="hljs-operator">&lt;-</span> identifyOverExpressedGenes<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#### 识别过表达的受配体对，储存在cellchat@LR</span><br>cellchat <span class="hljs-operator">&lt;-</span> identifyOverExpressedInteractions<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="细胞通讯概率计算"><a href="#细胞通讯概率计算" class="headerlink" title="细胞通讯概率计算"></a>细胞通讯概率计算</h3><ol>
+<li><p>首先使用<em>computeCommunProb</em>函数计算任何相互作用的<strong>细胞群之间的通信概率&#x2F;强度</strong>，保存在<strong>net slot</strong>里面，里面包括细胞类型对和受体配体对相互作用的信息。此步骤运行稍微耗时。</p>
+</li>
+<li><p>在数据量较大的情况下，细胞两两配对的信息非常多，这里就需要一个筛选的过程，针对某个细胞群内细胞数目小于一定阈值，我们将与它相关的通讯过滤掉。这里使用<em>filterCommunication</em>函数并将阈值设定为10个细胞。</p>
+</li>
+<li><p>computeCommunProbPathway函数通过汇总所有相关配体&#x2F;受体来计算信号<strong>通路水平的通信概率</strong>，并保存在<strong>netP slot</strong>中。</p>
+</li>
+<li><p>最后使用aggregateNet函数通过计算通讯数量或汇总通信概率（强度）来计算聚合网络。还可以通过设置源来计算单元组子集之间的聚合网络。使用souce.use和targets.use。</p>
+</li>
+</ol>
+<p>所有配体-受体对之间的所有细胞组之间的通信概率由一个三维阵列P ( K × K × N)表示，其中K是cell group的数量，N是配体-受体对或信号通路的数量，这个array就是cellchat@net$prob。net由配体&#x2F;受体级别的所有推断细胞通信组成,而netP可以在信号通路级别访问推断的通信</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#### 基于受配体对计算通讯概率，并基于permutation test计算P值，推导通讯网络，将结果储存在 cellchat@net</span><br>cellchat <span class="hljs-operator">&lt;-</span> computeCommunProb<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br><span class="hljs-comment">#注意population.size = FALSE默认参数</span><br><br><span class="hljs-comment">#过滤掉细胞群内细胞数过少的细胞群之间的通讯</span><br>cellchat <span class="hljs-operator">&lt;-</span> filterCommunication<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> min.cells <span class="hljs-operator">=</span> <span class="hljs-number">10</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#基于信号通路水平推断细胞之间的通讯储存在cellchat@netP</span><br>cellchat <span class="hljs-operator">&lt;-</span> computeCommunProbPathway<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#可以通过函数提取全部通讯网络作为dataframe格式</span><br>df.net <span class="hljs-operator">&lt;-</span> subsetCommunication<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span>slot.name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;netP&quot;</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">#指定信号通路</span><br>df.net <span class="hljs-operator">&lt;-</span> subsetCommunication<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;MIF&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">#查找指定受配体</span><br>df.net <span class="hljs-operator">&lt;-</span> subsetCommunication<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> sources.use <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;B_cell&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Monocyte&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> targets.use <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;CMP&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#计算聚合的细胞通讯网络，即统计细胞与细胞之间通讯的数量（受配体对数量）和强度（概率）</span><br>cellchat <span class="hljs-operator">&lt;-</span> aggregateNet<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Cellchat可视化"><a href="#Cellchat可视化" class="headerlink" title="Cellchat可视化"></a>Cellchat可视化</h2><h3 id="总体展示"><a href="#总体展示" class="headerlink" title="总体展示"></a>总体展示</h3><p>cellchat自带多种可视化的函数，整体来看各细胞类型直接的互作数量和强度，可以用网络图表示。</p>
+<ul>
+<li>Circle plot<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#使用circle plot显示任意两个细胞group之间的相互作用次数或总交互强度（比重）</span><br>groupSize <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>idents<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>par<span class="hljs-punctuation">(</span>mfrow <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">2</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> xpd<span class="hljs-operator">=</span><span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><br><br>netVisual_circle<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>net<span class="hljs-operator">$</span>count<span class="hljs-punctuation">,</span> vertex.weight <span class="hljs-operator">=</span> groupSize<span class="hljs-punctuation">,</span> weight.scale <span class="hljs-operator">=</span> <span class="hljs-built_in">T</span><span class="hljs-punctuation">,</span><br>                 label.edge<span class="hljs-operator">=</span> <span class="hljs-built_in">F</span><span class="hljs-punctuation">,</span> title.name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Number of interactions&quot;</span><span class="hljs-punctuation">)</span><br>netVisual_circle<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>net<span class="hljs-operator">$</span>weight<span class="hljs-punctuation">,</span> vertex.weight <span class="hljs-operator">=</span> groupSize<span class="hljs-punctuation">,</span> weight.scale <span class="hljs-operator">=</span> <span class="hljs-built_in">T</span><span class="hljs-punctuation">,</span> <br>                 label.edge<span class="hljs-operator">=</span> <span class="hljs-built_in">F</span><span class="hljs-punctuation">,</span> title.name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Interaction weights/strength&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<img src="/2023/05/22/Cellchat/p1.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p>par()函数，是R基础绘图系统中一个比较常见的函数，在CellChat中主要是为了排列多个图形，例如这里的mfrow参数的形式就为c(nr, nc)，表示将后续绘制的图形按照nr行nc列排布，而mfrow表示先横向后纵向，对应的也有mfcol表示先纵向后横向。xpd &#x3D; True是设置允许在作图区域外作图，防止文字显示不全。使用netVisual_circle函数绘制的图展现在右侧，上图左侧展示了通讯的数量，右侧展示了通讯的强度，也就是概率值相加的结果。</p>
+<p>可以看到我们设置了groupSize这个对象，反映了idents，也就是我们的分组变量，celltype的数量。因此，图上的圆圈大小就反应每个细胞类型里的细胞数的多少，线条的粗细反应了通讯的数量或者强度。</p>
+<p>Tips: 单独展示</p>
+<p>分别展示每个细胞类型与其他细胞类群的互作，采用的方式是将不包含该细胞类型的互作数量或者强度设置为0，在图片上就不会显示出来了。可以看”单独展示”这部分的代码。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#单独展示</span><br>mat <span class="hljs-operator">&lt;-</span> cellchat<span class="hljs-operator">@</span>net<span class="hljs-operator">$</span>weight<br>par<span class="hljs-punctuation">(</span>mfrow <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">5</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> xpd<span class="hljs-operator">=</span><span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><br><span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span><span class="hljs-operator">:</span>nrow<span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">&#123;</span><br>mat2 <span class="hljs-operator">&lt;-</span> matrix<span class="hljs-punctuation">(</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> nrow <span class="hljs-operator">=</span> nrow<span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> ncol <span class="hljs-operator">=</span> ncol<span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> <span class="hljs-built_in">dimnames</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">dimnames</span><span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>mat2<span class="hljs-punctuation">[</span>i<span class="hljs-punctuation">,</span> <span class="hljs-punctuation">]</span> <span class="hljs-operator">&lt;-</span> mat<span class="hljs-punctuation">[</span>i<span class="hljs-punctuation">,</span> <span class="hljs-punctuation">]</span><br>netVisual_circle<span class="hljs-punctuation">(</span>mat2<span class="hljs-punctuation">,</span> vertex.weight <span class="hljs-operator">=</span> groupSize<span class="hljs-punctuation">,</span> weight.scale <span class="hljs-operator">=</span> <span class="hljs-built_in">T</span><span class="hljs-punctuation">,</span> edge.weight.max <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span><span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> title.name <span class="hljs-operator">=</span> rownames<span class="hljs-punctuation">(</span>mat<span class="hljs-punctuation">)</span><span class="hljs-punctuation">[</span>i<span class="hljs-punctuation">]</span><span class="hljs-punctuation">)</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号通路层面展示"><a href="#信号通路层面展示" class="headerlink" title="信号通路层面展示"></a>信号通路层面展示</h3><p>信号通路层面的展示，也就是对netp数据槽的展示。</p>
+<ul>
+<li>Hierarchy plot 层次图</li>
+</ul>
+<p>使用层次图可视化通信网络，请定义vertex.receiver，它是一个数字向量，给出作为第一个层次结构图中的目标的细胞组的索引。我们可以使用netVisual_aggregate来可视化信号路径的推断通信网络。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#信号通路展示</span><br>groupSize <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">as.numeric</span><span class="hljs-punctuation">(</span>table<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>idents<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><br>cellchat<span class="hljs-operator">@</span>netP<span class="hljs-operator">$</span>pathways<br>pathways.show <span class="hljs-operator">&lt;-</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;MIF&quot;</span><span class="hljs-punctuation">)</span> <br>levels<span class="hljs-punctuation">(</span>cellchat<span class="hljs-operator">@</span>meta<span class="hljs-operator">$</span>celltype<span class="hljs-punctuation">)</span><br><span class="hljs-comment"># 层次图 Hierarchy plot</span><br>vertex.receiver <span class="hljs-operator">=</span> seq<span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">3</span><span class="hljs-punctuation">)</span><br>netVisual_aggregate<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> vertex.receiver <span class="hljs-operator">=</span> vertex.receiver<span class="hljs-punctuation">,</span> layout <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hierarchy&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+
+<p>在层次图中，实体圆和空心圆分别表示源和目标。圆的大小与每个细胞组的细胞数成比例。边缘颜色与信源一致。线越粗，信号越强。这里我们展示了一个MIF信号网络的例子。所有重要的信号通路名称都可以通过cellchat@netP$pathways访问。</p>
+<p>Tips:<a target="_blank" rel="noopener" href="https://rdrr.io/github/sqjin/CellChat/man/netVisual_aggregate.html">netVisual_aggregate函数介绍</a></p>
+<p><img src="/2023/05/22/Cellchat/p3.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/22/Cellchat/p4.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>Circle plot 环状图</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R">par<span class="hljs-punctuation">(</span>mfrow<span class="hljs-operator">=</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>netVisual_aggregate<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> layout <span class="hljs-operator">=</span> <span class="hljs-string">&quot;circle&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p5.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Chord diagram 和弦图</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R">par<span class="hljs-punctuation">(</span>mfrow<span class="hljs-operator">=</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>netVisual_aggregate<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> layout <span class="hljs-operator">=</span> <span class="hljs-string">&quot;chord&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Heatmap 热图</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R">par<span class="hljs-punctuation">(</span>mfrow<span class="hljs-operator">=</span><span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-number">1</span><span class="hljs-punctuation">,</span><span class="hljs-number">1</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>netVisual_heatmap<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">,</span> color.heatmap <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Reds&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p7.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<p>图左侧已经标明了信号发出的细胞群，上方和右方的柱状图分别表示每一列和每一行数值的总和。</p>
+<h3 id="社会网络分析"><a href="#社会网络分析" class="headerlink" title="社会网络分析"></a>社会网络分析</h3><ul>
+<li>计算网络中心性评分</li>
+</ul>
+<p>对于细胞通讯网络进行系统分析，便于我们系统的解释这些复杂的网络。</p>
+<p>使用网络分析中的中心性度量来预测特定细胞类型的关键传入和传出信号，以及不同细胞类型之间的协调响应，可以方便地识别细胞间通信网络中的主要发送者sender、接收者receiver、中介者mediator和影响者influencer。基于计算的MIF信号网络的四个网络中心性指标，Heatmap显示了每个细胞群的相对重要性。</p>
+<p>首先对netp计算网络中心性评分。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs R">cellchat <span class="hljs-operator">&lt;-</span> netAnalysis_computeCentrality<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> slot.name <span class="hljs-operator">=</span> <span class="hljs-string">&quot;netP&quot;</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment"># 热图可视化</span><br>netAnalysis_signalingRole_network<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> pathways.show<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p8.png" srcset="/img/loading.gif" lazyload></p>
+<p>这块涉及到了<a target="_blank" rel="noopener" href="https://www.jstatsoft.org/article/view/v024i06">网络分析的一些概念</a>。Cellchat使用加权有向网络的测量方法，包括<strong>出度outdegree</strong>、<strong>入度indegree</strong>，<strong>中介中心性Betweenness</strong>和<strong>信息中心性Information</strong>，上图右侧的模式图是对这些概念的直观展现。</p>
+<p><strong>outdegree</strong>是对出度的衡量，对应着sender，计算的是发出信号的通信概率之和，直观展现就是从紫色圆圈发送信号到周围。</p>
+<p><strong>indegree</strong>是对入度的衡量，对应的是receiver, 橙色的圈接受从四周灰色的圈发出的信号。</p>
+<p><strong>betweenness centrality</strong>来衡量中介中心性,对应着mediator，可以直观的看到粉色圈圈承担了桥梁的作用，就是这个节点相当远一个闸，和它相连的节点想要到其他节点都得经过它。</p>
+<p><strong>Information</strong>这部分也是对中心性的一种度量方式，它使用接近中心性 和 特征向量中心性 的混合度量，综合考虑邻居节点多少和与旁边的节点有多接近，值越高反应对信息流的控制越强。</p>
+<ul>
+<li>热图可视化</li>
+</ul>
+<p>可以使用热图对特定的信号通路的入度和出度进行可视化，识别对某些细胞类群的输出和输入信号贡献最大的信号。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment"># 细胞聚合通讯网络上的信号角色分析</span><br>netAnalysis_signalingRole_scatter<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br><span class="hljs-comment"># 热图</span><br>ht1 <span class="hljs-operator">&lt;-</span> netAnalysis_signalingRole_heatmap<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;outgoing&quot;</span><span class="hljs-punctuation">)</span><br>ht2 <span class="hljs-operator">&lt;-</span> netAnalysis_signalingRole_heatmap<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;incoming&quot;</span><span class="hljs-punctuation">)</span><br>ht1 <span class="hljs-operator">+</span> ht2<br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p9.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="通讯模式分析"><a href="#通讯模式分析" class="headerlink" title="通讯模式分析"></a>通讯模式分析</h3><p>除了探索单个通路的详细通讯外，一个重要的问题是多个细胞群和信号通路如何协调运作。</p>
+<p>Cellchat调用了<strong>nmf包</strong>用于对信号通路和细胞群划分模式，功能相似的通路或者信号通路会被归类为同一种模式，通过pattern连接相应的细胞群和信号通路。随着模式数量的增加，可能会出现冗余模式，这使得解释通信模式变得困难。在出度的模式下，我们使用函数selectk来推断模式的数量，包括Cophenetic（共表型系数）和Silhouette（轮廓系数）。这两个度量标准都是基于共识矩阵的层次聚类来衡量特定数量模式的稳定性。</p>
+<p>对于一系列模式的数量，一个合适的模式数量是Cophenetic和Silhouette值开始突然下降的前一个。这里我们来识别一下，这两个系数都是在6的时候明显下降，所以nPatterns应该设置为5，运行这个识别通信模式的函数，我们可以看到，类群和信号都被分为了五部分。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#调用NMF包</span><br>suppressWarnings<span class="hljs-punctuation">(</span>library<span class="hljs-punctuation">(</span>NMF<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">#识别所有信号通路中的关键信号和潜在的通讯模式（选择模式数量）</span><br>selectK<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;outgoing&quot;</span><span class="hljs-punctuation">)</span> <span class="hljs-comment"># incoming</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p10.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#查看通讯模式</span><br>identifyCommunicationPatterns<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;outgoing&quot;</span><span class="hljs-punctuation">,</span> k <span class="hljs-operator">=</span> nPatterns<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p11.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以用桑基图和气泡图进行可视化，更直观的看到他们直接的联系。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#桑基图 river plot</span><br>netAnalysis_river<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;outgoing&quot;</span><span class="hljs-punctuation">)</span> <br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p12.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们这里设置pattern 等于outgoing，用于显示输出模式，也就是展示作为信号发送器的细胞如何相互协调，以及它们如何与某些信号通路协调以输出信号。selectK(cellchat, pattern &#x3D; “outgoing”)<br>如果想看输入模式，也就是作为信号接收器的细胞如何相互协调，以及它们如何与某些信号通路协调以响应输入信号，只需要把参数patten 改为 &#x3D;“incoming”即可</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#气泡图 dot plot</span><br>netAnalysis_dot<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> pattern <span class="hljs-operator">=</span> <span class="hljs-string">&quot;outgoing&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p13.png" srcset="/img/loading.gif" lazyload></p>
+<p>Tips:<br>正常的桑基图如下图，也就是左侧展示了cell group信息，每个细胞群属于哪个pattern,右侧灰色的地方是信号通路，展示了信号通路属于哪个pattern。（查看我们绘制的通讯模式热图可知, 由于数据集没有识别到在pattern 4和pattern 5 中输出模式下贡献度明显升高的信号通路，因此pattern &#x3D; 3可能是更好的选择。Cophenetic和Silhouette只是辅助我们进行parttern数量的选择）<br><img src="/2023/05/22/Cellchat/p14.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="基因表达情况分析"><a href="#基因表达情况分析" class="headerlink" title="基因表达情况分析"></a>基因表达情况分析</h3><ul>
+<li>信号通路相关基因的表达模式</li>
+</ul>
+<p>探索了信号通路之后，我们可以再去细致的挖掘，信号通路相关的基因的表达模式，可以使用小提琴图和气泡图可视化，<br>仍然以MIF信号通路为例，使用小提琴和气泡图进行该通路下通路相关基因的表达情况。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#信号通路相关基因的表达模式</span><br><span class="hljs-comment">#小提琴图</span><br>plotGeneExpression<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> <span class="hljs-string">&quot;MIF&quot;</span><span class="hljs-punctuation">,</span> type <span class="hljs-operator">=</span> <span class="hljs-string">&quot;violin&quot;</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#气泡图</span><br>plotGeneExpression<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span>signaling <span class="hljs-operator">=</span> <span class="hljs-string">&quot;MIF&quot;</span><span class="hljs-punctuation">,</span> type <span class="hljs-operator">=</span> <span class="hljs-string">&quot;dot&quot;</span><span class="hljs-punctuation">,</span> color.use <span class="hljs-operator">=</span> <span class="hljs-string">&quot;red&quot;</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p15.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>整体气泡图</li>
+</ul>
+<p>我们也可以对由多个受配体或信号通路介导的细胞间通讯<strong>整体</strong>进行可视化，气泡图绘制了（全部配体-受体及相关信号通路）</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#可视化由多个受配体或信号通路介导的细胞间通讯（整体）</span><br><span class="hljs-comment">#气泡图</span><br>netVisual_bubble<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> remove.isolate <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">,</span> return.data <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p16.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>整体和弦图</li>
+</ul>
+<p>Tips:Chord diagram的两种模式</p>
+<p>netVisual_chord_cell可视化<strong>不同细胞群之间的</strong>细胞-细胞通信(其中弦图中的每个扇区是一个细胞群).</p>
+<p>netVisual_chord_gene可视化<strong>由多个配体-受体或信号通路介导的细胞-细胞通信</strong>(其中弦图中的每个扇区是一个配体、受体或信号通路)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#可视化由多个受配体或信号通路介导的细胞间通讯（整体）</span><br><span class="hljs-comment">#和弦图</span><br>netVisual_chord_gene<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> lab.cex <span class="hljs-operator">=</span> <span class="hljs-number">0.5</span><span class="hljs-punctuation">,</span>legend.pos.y <span class="hljs-operator">=</span> <span class="hljs-number">30</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p17.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="个性化绘图"><a href="#个性化绘图" class="headerlink" title="个性化绘图"></a>个性化绘图</h3><p>个性化绘制指定受配体或信号通路介导的细胞间通讯，比如我们将发出信号的细胞类型局限为T细胞，接收信号的细胞类型设置为monocyte, B细胞和pre B。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#可视化由指定受配体或信号通路介导的细胞间通讯（个性化）</span><br><span class="hljs-comment">#配受体写法 &quot;配体-受体&quot;</span><br><span class="hljs-comment"># 气泡图</span><br>netVisual_bubble<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> sources.use <span class="hljs-operator">=</span> <span class="hljs-string">&quot;T_cells&quot;</span><span class="hljs-punctuation">,</span> targets.use <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Monocyte&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;B_cell&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Pre-B_cell_CD34-&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> remove.isolate <span class="hljs-operator">=</span> <span class="hljs-literal">FALSE</span><span class="hljs-punctuation">)</span><br><br><span class="hljs-comment">#sources.use = NULL, targets.use = NULL, signaling = NULL, pairLR.use = NULL</span><br>pairLR.use <span class="hljs-operator">&lt;-</span> extractEnrichedLR<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> signaling <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;TNF&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;IL16&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br>netVisual_bubble<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> sources.use <span class="hljs-operator">=</span>  <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;T_cells&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Monocyte&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> targets.use <span class="hljs-operator">=</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span><span class="hljs-string">&quot;Monocyte&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;B_cell&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Pre-B_cell_CD34-&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-string">&quot;CMP&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">,</span> pairLR.use <span class="hljs-operator">=</span> pairLR.use<span class="hljs-punctuation">,</span> remove.isolate <span class="hljs-operator">=</span> <span class="hljs-literal">TRUE</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2023/05/22/Cellchat/p18.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="多组比较"><a href="#多组比较" class="headerlink" title="多组比较"></a>多组比较</h3><p>由于我们本次的数据集细胞数量较少，且细胞在组间分布不均匀，后续就不进行个性化展示。</p>
+<p>多组比较和之前的思路相似，先按组别进行拆分，然后分别对各组cellchat进行细胞通讯分析即可。使用netVisual_diffInteraction计算两组之间通讯概率的差值，并进行展示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs R"><span class="hljs-comment">#多组比较</span><br><span class="hljs-comment"># 根据orig.ident拆分seurat对象</span><br>sp <span class="hljs-operator">&lt;-</span> SplitObject<span class="hljs-punctuation">(</span>seurat_ob<span class="hljs-punctuation">,</span> split.by <span class="hljs-operator">=</span> <span class="hljs-string">&quot;orig.ident&quot;</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment"># 根据group创建cellchat对象</span><br>cellchat_A <span class="hljs-operator">&lt;-</span> createCellChat<span class="hljs-punctuation">(</span>object <span class="hljs-operator">=</span> sp<span class="hljs-punctuation">[[</span><span class="hljs-string">&quot;HNC01TIL&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> group.by <span class="hljs-operator">=</span> <span class="hljs-string">&quot;celltype&quot;</span><span class="hljs-punctuation">)</span><br>cellchat_B <span class="hljs-operator">&lt;-</span> createCellChat<span class="hljs-punctuation">(</span>object <span class="hljs-operator">=</span> sp<span class="hljs-punctuation">[[</span><span class="hljs-string">&quot;Tonsil2&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span> group.by <span class="hljs-operator">=</span> <span class="hljs-string">&quot;celltype&quot;</span><span class="hljs-punctuation">)</span><br><span class="hljs-comment">#由于分组之后Cellchat_B的部分celltype缺失细胞，故需要先droplevels处理</span><br>cellchat_B<span class="hljs-operator">@</span>meta<span class="hljs-operator">$</span>celltype <span class="hljs-operator">=</span> droplevels<span class="hljs-punctuation">(</span>cellchat_B<span class="hljs-operator">@</span>meta<span class="hljs-operator">$</span>celltype<span class="hljs-punctuation">)</span><br><br>cellchat_A<span class="hljs-operator">@</span>idents <span class="hljs-operator">=</span> droplevels<span class="hljs-punctuation">(</span>cellchat_A<span class="hljs-operator">@</span>idents<span class="hljs-punctuation">)</span><br>cellchat_B<span class="hljs-operator">@</span>idents <span class="hljs-operator">=</span> droplevels<span class="hljs-punctuation">(</span>cellchat_B<span class="hljs-operator">@</span>idents<span class="hljs-punctuation">)</span><br><br><br><span class="hljs-comment">#多组比较</span><br><span class="hljs-comment"># 分别对各组cellchat进行细胞通讯分析 ####</span><br>cellchat_list<span class="hljs-operator">=</span> <span class="hljs-built_in">list</span><span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><br><span class="hljs-keyword">for</span> <span class="hljs-punctuation">(</span>i <span class="hljs-keyword">in</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">(</span>cellchat_A<span class="hljs-punctuation">,</span>cellchat_B<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">&#123;</span><br>  cellchat <span class="hljs-operator">=</span> i<br>  name <span class="hljs-operator">=</span> unique<span class="hljs-punctuation">(</span>i<span class="hljs-operator">@</span>meta<span class="hljs-operator">$</span>orig.ident<span class="hljs-punctuation">)</span><br>  CellChatDB <span class="hljs-operator">&lt;-</span> CellChatDB.human <br>  CellChatDB.use <span class="hljs-operator">&lt;-</span> CellChatDB<br>  CellChatDB.use <span class="hljs-operator">&lt;-</span> subsetDB<span class="hljs-punctuation">(</span>CellChatDB<span class="hljs-punctuation">,</span> search <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Secreted Signaling&quot;</span><span class="hljs-punctuation">)</span><br>  cellchat<span class="hljs-operator">@</span>DB <span class="hljs-operator">&lt;-</span> CellChatDB.use<br>  cellchat <span class="hljs-operator">&lt;-</span> CellChat<span class="hljs-operator">::</span>subsetData<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span> <br>  cellchat <span class="hljs-operator">&lt;-</span> identifyOverExpressedGenes<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br>  cellchat <span class="hljs-operator">&lt;-</span> identifyOverExpressedInteractions<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br>  cellchat <span class="hljs-operator">&lt;-</span> computeCommunProb<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br>  cellchat <span class="hljs-operator">&lt;-</span> filterCommunication<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">,</span> min.cells <span class="hljs-operator">=</span> <span class="hljs-number">10</span><span class="hljs-punctuation">)</span><br>  cellchat <span class="hljs-operator">&lt;-</span> computeCommunProbPathway<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br>  cellchat <span class="hljs-operator">&lt;-</span> aggregateNet<span class="hljs-punctuation">(</span>cellchat<span class="hljs-punctuation">)</span><br>  cellchat_list<span class="hljs-punctuation">[[</span>name<span class="hljs-punctuation">]</span><span class="hljs-punctuation">]</span> <span class="hljs-operator">=</span> cellchat<br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-comment"># 合并cellchat list</span><br>cellchat <span class="hljs-operator">&lt;-</span> mergeCellChat<span class="hljs-punctuation">(</span>cellchat_list <span class="hljs-punctuation">,</span> add.names <span class="hljs-operator">=</span> <span class="hljs-built_in">names</span><span class="hljs-punctuation">(</span>cellchat_list<span class="hljs-punctuation">)</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95/" class="category-chain-item">软件算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95/%E7%94%9F%E4%BF%A1/" class="category-chain-item">生信</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Cellchat</div>
+      <div>https://xuan-98-l.github.io/2023/05/22/Cellchat/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Xuan Liu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 22, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/22/SCENIC/" title="基于SCENIC的转录因子分析原理讲解与实操">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基于SCENIC的转录因子分析原理讲解与实操</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/19/Monocle2/" title="Monocle2">
+                        <span class="hidden-mobile">Monocle2</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
