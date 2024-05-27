@@ -16,27 +16,21 @@
   <meta name="author" content="Xuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="10X免疫组知识补充（VDJtools）">
+    <meta name="description" content="hexo迁移到mac电脑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VDJtools">
-<meta property="og:url" content="https://xuan-98-l.github.io/2023/08/31/VDJtools/index.html">
+<meta property="og:title" content="hexo迁移(win2mac)">
+<meta property="og:url" content="https://xuan-98-l.github.io/2024/05/27/hexo%E8%BF%81%E7%A7%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="10X免疫组知识补充（VDJtools）">
+<meta property="og:description" content="hexo迁移到mac电脑">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/VDJtools/framework.png">
-<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/VDJtools/%E8%BE%93%E5%85%A5%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F.png">
-<meta property="og:image" content="https://xuan-98-l.github.io/2023/08/31/VDJtools/metadata.png">
-<meta property="article:published_time" content="2023-08-31T03:44:18.000Z">
-<meta property="article:modified_time" content="2024-05-27T05:38:15.062Z">
+<meta property="article:published_time" content="2024-05-27T05:43:13.000Z">
+<meta property="article:modified_time" content="2024-05-27T05:44:19.368Z">
 <meta property="article:author" content="Xuan Liu">
-<meta property="article:tag" content="技术">
-<meta property="article:tag" content="个人成长">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xuan-98-l.github.io/2023/08/31/VDJtools/framework.png">
   
   
   
-  <title>VDJtools - Hexo</title>
+  <title>hexo迁移(win2mac) - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="VDJtools"></span>
+            <span id="subtitle" data-typed-text="hexo迁移(win2mac)"></span>
           
         </div>
 
@@ -213,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-31 11:44" pubdate>
-          August 31, 2023 am
+        <time datetime="2024-05-27 13:43" pubdate>
+          May 27, 2024 pm
         </time>
       </span>
     
@@ -225,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          595 words
+          706 words
         
       </span>
     
@@ -236,7 +230,7 @@
         
         
         
-          5 mins
+          6 mins
         
       </span>
     
@@ -274,39 +268,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">VDJtools</h1>
+            <h1 style="display: none">hexo迁移(win2mac)</h1>
             
             
               <div class="markdown-body">
                 
-                <p>10X免疫组知识补充（VDJtools）</p>
+                <p>hexo迁移到mac电脑</p>
 <span id="more"></span>
-<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p><img src="/2023/08/31/VDJtools/framework.png" srcset="/img/loading.gif" lazyload><br>vdjtools 是一款基于 java 语言的， 借助 R 语言及相应的模块快速进行免疫组库分析软件(绘图都是基于R包)。<br><a target="_blank" rel="noopener" href="https://vdjtools-doc.readthedocs.io/en/master/index.html">vdjtools 官网链接</a></p>
-<h2 id="输入文件-Clonotype-tables"><a href="#输入文件-Clonotype-tables" class="headerlink" title="输入文件 Clonotype tables"></a>输入文件 Clonotype tables</h2><ul>
-<li>可变 ( V ) 段名称。</li>
-<li>D 段名称：一些受体链（TRB、TRD 和 IGH）的多样性 ( D ) 片段名称。如果不适用或未识别 D<br>段，设置为 . 或者 NA。</li>
-<li>加入 ( J ) 段名称。</li>
-<li>互补决定区 3 核苷酸序列 ( CDR3nt )。CDR3 以可变区参考点（保守的 Cys 残基）开始，以连接片<br>段参考点（保守的 PheTrp）结束。</li>
-<li>翻译后的 CDR3 序列 ( CDR3aa )。</li>
-<li>可变区段中的体细胞超突变 (SHM )（仅限抗体）</li>
+
+<h1 id="使用安装教程为mac安装homebrew："><a href="#使用安装教程为mac安装homebrew：" class="headerlink" title="使用安装教程为mac安装homebrew："></a>使用<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-homebrew-on-macos">安装教程</a>为mac安装homebrew：</h1><p>注意添加brew到系统路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>(<span class="hljs-built_in">echo</span>; <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;eval &quot;$(/opt/homebrew/bin/brew shellenv)&quot;&#x27;</span>) &gt;&gt; /Users/gloria/.zprofile<br><br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(/opt/homebrew/bin/brew shellenv)</span></span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+
+<h1 id="安装node-js和git"><a href="#安装node-js和git" class="headerlink" title="安装node.js和git"></a>安装node.js和git</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>brew install node.js<br><br>brew install git<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>npm install -g hexo-cli<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">安装 hexo-deployer-git</span><br>npm install hexo-deployer-git --save<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="从git上将过往博客clone到本地"><a href="#从git上将过往博客clone到本地" class="headerlink" title="从git上将过往博客clone到本地"></a>从git上将过往博客clone到本地</h1><ul>
+<li><p>在原来的电脑上创建hexo分支，并将全部文件夹都上传上去</p>
+</li>
+<li><p>在新电脑上配置<a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys">git ssh</a></p>
+</li>
 </ul>
-<p>克隆型丰度数据由 计数 和 频率 字段表示：</p>
-<ul>
-<li>计数：umis 数量</li>
-<li>频率：样本中克隆型的比例（umis 数量&#x2F;总 umis 数量）</li>
-</ul>
-<p>以下字段是可选的，但用于计算各种统计数据和可视化：</p>
-<ul>
-<li>Vend、Dstart、Dend 和 Jstart：标记CDR3核苷酸序列的V、D、J段边界</li>
-</ul>
-<p><strong>输入文件格式</strong><br><img src="/2023/08/31/VDJtools/%E8%BE%93%E5%85%A5%E6%96%87%E7%8C%AE%E6%A0%BC%E5%BC%8F.png" srcset="/img/loading.gif" lazyload></p>
-<p><strong>metadata表格(以tab键分割)</strong><br><img src="/2023/08/31/VDJtools/metadata.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li>file_name 和 sample_id两列是必须的。 其余列的名称将用于指定metadata 变量名。</li>
-<li>前两列应分别包含文件名和样本 ID。（文件名应为绝对路径或相对于metadata表格的相对路径；样本ID必须是唯一的）</li>
-<li>sample.id之后的列被视为 metadata 条目。后续作图时可以被调用。</li>
-</ul>
-<h2 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a><a target="_blank" rel="noopener" href="https://vdjtools-doc.readthedocs.io/en/master/modules.html">功能模块</a></h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">将hexo分支克隆到本地（注意克隆的时候一定要选择ssh而不是https）</span><br>git clone -b hexo git@github.com:XUAN-98-L/XUAN-98-L.github.io.git hexo<br></code></pre></td></tr></table></figure>
+
+<h1 id="hexo初始化"><a href="#hexo初始化" class="headerlink" title="hexo初始化"></a>hexo初始化</h1><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-meta">#需要进入到hexo文件夹内</span><br>npm install hexo --save<br><br><span class="hljs-meta">#修改_config.yml中deploy的部分，将其从https改为ssh</span><br><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> git@github.com:XUAN<span class="hljs-number">-98</span>-L/XUAN<span class="hljs-number">-98</span>-L.github.io.git<br></code></pre></td></tr></table></figure>
+
+<h1 id="obsidian-和hexo连用"><a href="#obsidian-和hexo连用" class="headerlink" title="obsidian 和hexo连用"></a>obsidian 和hexo连用</h1><p><a target="_blank" rel="noopener" href="https://itreefly.com/posts/e5113722.html">https://itreefly.com/posts/e5113722.html</a></p>
+
                 
               </div>
             
@@ -314,43 +302,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95/" class="category-chain-item">软件算法</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%AE%97%E6%B3%95/%E7%94%9F%E4%BF%A1/" class="category-chain-item">生信</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
-      
-        <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/">#个人成长</a>
-      
-    </div>
   
 </div>
 
@@ -360,8 +311,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>VDJtools</div>
-      <div>https://xuan-98-l.github.io/2023/08/31/VDJtools/</div>
+      <div>hexo迁移(win2mac)</div>
+      <div>https://xuan-98-l.github.io/2024/05/27/hexo迁移/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +324,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 31, 2023</div>
+          <div>May 27, 2024</div>
         </div>
       
       
@@ -405,18 +356,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/22/CytoTRACE/" title="CytoTRACE文献阅读">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CytoTRACE文献阅读</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/31/Immune/" title="免疫组(RepSeq)">
-                        <span class="hidden-mobile">免疫组(RepSeq)</span>
+                      <a href="/2024/05/27/diversity/" title="Diversity指数学习笔记">
+                        <span class="hidden-mobile">Diversity指数学习笔记</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
