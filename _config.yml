@@ -106,4 +106,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/XUAN-98-L/XUAN-98-L.github.io
+  repo: git@github.com:XUAN-98-L/XUAN-98-L.github.io.git
+  branch: master

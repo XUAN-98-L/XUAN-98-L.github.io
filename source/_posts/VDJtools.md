@@ -5,7 +5,7 @@ categories:
 - 软件算法
 - 生信
 tags: ['技术','个人成长']
-hide: ture
+hide: false
 ---
 10X免疫组知识补充（VDJtools）
 <!-- more -->
