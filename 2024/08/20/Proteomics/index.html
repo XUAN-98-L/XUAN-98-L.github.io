@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Proteomics info collection">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820102036138.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820133755140.png">
 <meta property="article:published_time" content="2024-08-20T00:11:39.000Z">
-<meta property="article:modified_time" content="2024-08-20T00:26:55.002Z">
+<meta property="article:modified_time" content="2024-08-20T03:37:58.453Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820102036138.png">
+<meta name="twitter:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820133755140.png">
   
   
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k words
+          3.7k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          23 mins
+          31 mins
         
       </span>
     
@@ -281,15 +281,21 @@
 
 <h1 id="Bottom-up-proteomics"><a href="#Bottom-up-proteomics" class="headerlink" title="Bottom-up proteomics"></a>Bottom-up proteomics</h1><p>The system-wide characterization of the proteome using mass spectrometry (MS), and more specifically on bottom-up proteomics where proteins are digested into smaller pieces called peptides, which are analysed by MS.</p>
 <p>MS-based proteomics can analyse the protein content of any material. Apart from mainstream sources such as cell lines, this encompasses clinically important, archived formalin-fixed paraffin-embedded (FFPE) biopsy tissues and even fossils that are hundreds of thousands of years old.</p>
-<h2 id="Data-acquisition"><a href="#Data-acquisition" class="headerlink" title="Data acquisition"></a>Data acquisition</h2><h3 id="DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics"><a href="#DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics" class="headerlink" title="DDA and DIA are the common data acquisition strategies in shotgun proteomics."></a><a target="_blank" rel="noopener" href="https://portlandpress.com/biochemist/article/42/5/64/226371/A-beginner-s-guide-to-mass-spectrometry-based">DDA and DIA are the common data acquisition strategies in shotgun proteomics.</a></h3><ul>
-<li><strong>data-dependent acquisition (DDA),</strong> meaning that the mass spectrometer follows <strong>a set of user-defined rules (such as m&#x2F;z, charge, intensity and cross-section)</strong> to select as many peptides as possible for acquiring MS&#x2F;MS spectra. However, this selection is partly stochastic as there are more peptides than analysis time, and it <strong>generates missing values</strong>. <strong>(Figure A)</strong></li>
-<li>In <strong>data-independent acquisition (DIA)</strong> methods, the quadrupole instead continuously cycles across <strong>the entire mass range while selecting relatively large m&#x2F;z values (20–40 m&#x2F;z)</strong>. This leads to very complex MS&#x2F;MS spectra since they contain the superimposed fragmentation patterns from co-isolated peptide ions. Modern software can deconvolute the spectra to identify the multiple peptides, usually by comparison to a previously acquired ‘peptide library’, but increasingly also without. <strong>(Figure B)</strong><br><img src="/2024/08/20/Proteomics/image-20240820102036138.png" srcset="/img/loading.gif" lazyload></li>
+<h2 id="Data-acquisition"><a href="#Data-acquisition" class="headerlink" title="Data acquisition"></a>Data acquisition</h2><h3 id="DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics-how-to-select-picks-from-MS1-spectrum"><a href="#DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics-how-to-select-picks-from-MS1-spectrum" class="headerlink" title="DDA and DIA are the common data acquisition strategies in shotgun proteomics.(how to select picks from MS1 spectrum)"></a><a target="_blank" rel="noopener" href="https://portlandpress.com/biochemist/article/42/5/64/226371/A-beginner-s-guide-to-mass-spectrometry-based">DDA and DIA are the common data acquisition strategies in shotgun proteomics.</a>(how to select picks from MS1 spectrum)</h3><ul>
+<li><strong>data-dependent acquisition (DDA),</strong> meaning that the mass spectrometer follows <strong>a set of user-defined rules (such as m&#x2F;z, charge, intensity and cross-section)</strong> to select as many peptides as possible for acquiring MS&#x2F;MS spectra. However, this selection is partly stochastic as there are more peptides than analysis time, and it <strong>generates missing values</strong>. </li>
+<li>In <strong>data-independent acquisition (DIA)</strong> methods, the quadrupole instead continuously cycles across <strong>the entire mass range while selecting relatively large m&#x2F;z values (20–40 m&#x2F;z)</strong>. This leads to very complex MS&#x2F;MS spectra since they contain the superimposed fragmentation patterns from co-isolated peptide ions. Modern software can deconvolute the spectra to identify the multiple peptides, usually by comparison to a previously acquired ‘peptide library’, but increasingly also without.<br><img src="/2024/08/20/Proteomics/image-20240820133755140.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <h2 id="Quantification-strategies-for-peptides"><a href="#Quantification-strategies-for-peptides" class="headerlink" title="Quantification strategies for peptides"></a>Quantification strategies for peptides</h2><ul>
-<li><strong>Label-free quantification (LFQ):</strong> the MS signals of the peptides (usually at the MS1 level) are extracted from the raw data, normalised and compared between the proteomic conditions of interest. It is experimentally the most straightforward and usually the most economical approach, providing great flexibility in project design. However, this strategy has higher quantification variance, and differences in peptide purity and instrument performance may impact comparisons between individual samples if sufficient care is not taken.<br>  <a target="_blank" rel="noopener" href="https://www.mcponline.org/article/S1535-9476(20)33310-7/fulltext">Accurate Proteome-wide Label-free Quantification by Delayed Normalization and Maximal Peptide Ratio Extraction, Termed MaxLFQ</a></li>
-<li><strong>label based:</strong> Label-based approaches use stable isotopes to encode different proteome states – the beauty is that the resulting peptides have exactly the same physiochemical behaviour, but have predictable differences in mass. The isotopes can be metabolically introduced, which also allows determination of protein turnover; however, chemical labelling with ‘readout’ at the MS&#x2F;MS level is now much more common. The latter is referred to as isobaric labelling and involves a clever trick in which the mass of the tag remains the same, but the distribution of isotopes in the tag is revealed after fragmentation. Within a set of 6–16 different tags, quantification variance is typically lower than in LFQ if samples are consistently and reproducibly labelled and combined. A major caveat of the typically used TMT (tandem mass tag) isobaric labelling method is that co-fragmented peptides can suppress quantitative differences (‘ratio compression’).</li>
+<li><strong>Label-free quantification (LFQ):</strong> the MS signals of the peptides (usually at the MS1 level) are extracted from the raw data, normalised and compared between the proteomic conditions of interest. It is experimentally the most straightforward and usually the most economical approach, providing great flexibility in project design. However, this strategy has <strong>higher quantification variance</strong>, and differences in peptide purity and instrument performance may impact comparisons between individual samples if sufficient care is not taken.<br>  <a target="_blank" rel="noopener" href="https://www.mcponline.org/article/S1535-9476(20)33310-7/fulltext">Accurate Proteome-wide Label-free Quantification by Delayed Normalization and Maximal Peptide Ratio Extraction, Termed MaxLFQ</a><br>  The MaxLFQ algorithm is integrated into MaxQuant and it is initially developed for DDA (and also can be used for DIA).<br>  <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1535947623000920#bib26">One reason for the popularity of MaxLFQ</a> is that it addresses major pitfalls in proteomics quantification by accounting for the fact that different peptides belonging to the same protein can have very different base intensities, for example, due to differing ionization efficiencies. In addition, it is robust against missing values for normalization (differing sample depths) and can reliably estimate protein intensities.</li>
+<li><strong>label based:</strong> Label-based approaches use stable isotopes to encode different proteome states – the beauty is that the resulting peptides have exactly the same physiochemical behaviour, but have predictable differences in mass. The isotopes can be metabolically introduced, which also allows determination of protein turnover; however, chemical labelling with ‘readout’ at the MS&#x2F;MS level is now much more common. The latter is referred to as isobaric labelling and involves a clever trick in which the mass of the tag remains the same, but the distribution of isotopes in the tag is revealed after fragmentation. Within a set of 6–16 different tags, quantification variance is typically lower than in LFQ if samples are consistently and reproducibly labelled and combined. A major caveat of the typically used TMT (tandem mass tag) isobaric labelling method is that co-fragmented peptides can suppress quantitative differences (‘ratio compression’). <strong>iTRAQ (Isobaric Tags for Relative and Absolute Quantitation) and TMT (Tandem Mass Tags)</strong> are two widely used peptide labeling techniques for quantitative proteomics.</li>
 </ul>
-
+<h1 id="tools-for-DDA-LFQ-analysis"><a href="#tools-for-DDA-LFQ-analysis" class="headerlink" title="tools for DDA LFQ analysis"></a>tools for DDA LFQ analysis</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/MonashBioinformaticsPlatform/LFQ-Analyst/tree/master">LFQ-Analyst</a>This is a software that supports Label-Free Proteomics Data Preprocessed with MaxQuant.</li>
+</ol>
+<h1 id="Normalisation-methods"><a href="#Normalisation-methods" class="headerlink" title="Normalisation methods"></a>Normalisation methods</h1><ol>
+<li>vsn: Huber W, Von Heydebreck A, Sültmann H, Poustka A, Vingron M. Variance stabilization applied to microarray data calibration and to the quantification of differential expression. Bioinformatics. 2002 Jul 1;18(suppl_1):S96–104.</li>
+</ol>
+<h1 id="MaxQuant-summer-school"><a href="#MaxQuant-summer-school" class="headerlink" title="MaxQuant summer school"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xfKS7h_eZIo&list=PL6yHRLjecpwAMJhXVCXFk9sso-MNhL7GX">MaxQuant summer school</a></h1>
                 
               </div>
             
