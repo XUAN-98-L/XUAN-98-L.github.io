@@ -16,24 +16,27 @@
   <meta name="author" content="Xuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Proteomics info collection">
+    <meta name="description" content="git 本地版本管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Proteomics">
-<meta property="og:url" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/index.html">
+<meta property="og:title" content="local_git">
+<meta property="og:url" content="https://xuan-98-l.github.io/2024/10/16/local-git/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Proteomics info collection">
+<meta property="og:description" content="git 本地版本管理">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820133755140.png">
-<meta property="article:published_time" content="2024-08-20T00:11:39.000Z">
-<meta property="article:modified_time" content="2024-08-20T03:37:58.453Z">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/10/16/local-git/image-20241016220312841.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/10/16/local-git/image-20241016223701670.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/10/16/local-git/image-20241016221846140.png">
+<meta property="og:image" content="https://xuan-98-l.github.io/2024/10/16/local-git/image-20241016222151629.png">
+<meta property="article:published_time" content="2024-10-16T11:29:07.000Z">
+<meta property="article:modified_time" content="2024-10-16T11:37:31.279Z">
 <meta property="article:author" content="Xuan Liu">
 <meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://xuan-98-l.github.io/2024/08/20/Proteomics/image-20240820133755140.png">
+<meta name="twitter:image" content="https://xuan-98-l.github.io/2024/10/16/local-git/image-20241016220312841.png">
   
   
   
-  <title>Proteomics - Hexo</title>
+  <title>local_git - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Proteomics"></span>
+            <span id="subtitle" data-typed-text="local_git"></span>
           
         </div>
 
@@ -210,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-20 10:11" pubdate>
-          August 20, 2024 am
+        <time datetime="2024-10-16 22:29" pubdate>
+          October 16, 2024 pm
         </time>
       </span>
     
@@ -222,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k words
+          1.4k words
         
       </span>
     
@@ -233,7 +236,7 @@
         
         
         
-          31 mins
+          12 mins
         
       </span>
     
@@ -271,31 +274,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Proteomics</h1>
+            <h1 style="display: none">local_git</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Proteomics info collection</p>
+                <p>git 本地版本管理</p>
 <span id="more"></span>
+<h1 id="详细教程"><a href="#详细教程" class="headerlink" title="详细教程"></a><a target="_blank" rel="noopener" href="https://zhangping.gitbooks.io/projectprepare/content/git/gitben_di_ban_ben_guan_li.html">详细教程</a></h1><h1 id="初始化一个本地仓库"><a href="#初始化一个本地仓库" class="headerlink" title="初始化一个本地仓库"></a>初始化一个本地仓库</h1><p>cd 到保存仓库的路径<br>使用git init创建本地仓库</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">git</span> init<br><span class="hljs-comment"># 当出现 &quot;Initialized empty Git repository in 文件夹名&quot; 时，初始化已成功</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/16/local-git/image-20241016220312841.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="给仓库配置用户名和用户邮箱"><a href="#给仓库配置用户名和用户邮箱" class="headerlink" title="给仓库配置用户名和用户邮箱"></a>给仓库配置用户名和用户邮箱</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 配置用户名</span><br>git config <span class="hljs-keyword">user</span>.name gloria<br><span class="hljs-comment"># 配置邮箱</span><br>git config <span class="hljs-keyword">user</span>.email xxxxxxx@hotmail.com<br><span class="hljs-comment"># 配置全局用户名和全局邮箱</span><br>git config --global <span class="hljs-keyword">user</span>.name gloria<br>git config --global <span class="hljs-keyword">user</span>.email xxxxxxx@hotmail.com<br><br><span class="hljs-comment"># 查看是否配置完成</span><br>git config <span class="hljs-keyword">user</span>.name<br>git config <span class="hljs-keyword">user</span>.email<br><span class="hljs-comment"># 配置全局的 user.name 和 user.email 会保存在 /Users/UserName/.gitconfig 文件中</span><br></code></pre></td></tr></table></figure>
+<h1 id="添加或修改文件"><a href="#添加或修改文件" class="headerlink" title="添加或修改文件"></a>添加或修改文件</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 查看当前仓库的状态(可以查看哪些文件没有被添加到仓库，哪些文件被修改了)</span><br><span class="hljs-attribute">git</span> status<br><br><span class="hljs-comment"># Untracked files 表示没有添加到仓库的文件</span><br><span class="hljs-comment"># modified 文件被修改</span><br><span class="hljs-comment"># Changes to be committed 需要提交到仓库</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="Bottom-up-proteomics"><a href="#Bottom-up-proteomics" class="headerlink" title="Bottom-up proteomics"></a>Bottom-up proteomics</h1><p>The system-wide characterization of the proteome using mass spectrometry (MS), and more specifically on bottom-up proteomics where proteins are digested into smaller pieces called peptides, which are analysed by MS.</p>
-<p>MS-based proteomics can analyse the protein content of any material. Apart from mainstream sources such as cell lines, this encompasses clinically important, archived formalin-fixed paraffin-embedded (FFPE) biopsy tissues and even fossils that are hundreds of thousands of years old.</p>
-<h2 id="Data-acquisition"><a href="#Data-acquisition" class="headerlink" title="Data acquisition"></a>Data acquisition</h2><h3 id="DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics-how-to-select-picks-from-MS1-spectrum"><a href="#DDA-and-DIA-are-the-common-data-acquisition-strategies-in-shotgun-proteomics-how-to-select-picks-from-MS1-spectrum" class="headerlink" title="DDA and DIA are the common data acquisition strategies in shotgun proteomics.(how to select picks from MS1 spectrum)"></a><a target="_blank" rel="noopener" href="https://portlandpress.com/biochemist/article/42/5/64/226371/A-beginner-s-guide-to-mass-spectrometry-based">DDA and DIA are the common data acquisition strategies in shotgun proteomics.</a>(how to select picks from MS1 spectrum)</h3><ul>
-<li><strong>data-dependent acquisition (DDA),</strong> meaning that the mass spectrometer follows <strong>a set of user-defined rules (such as m&#x2F;z, charge, intensity and cross-section)</strong> to select as many peptides as possible for acquiring MS&#x2F;MS spectra. However, this selection is partly stochastic as there are more peptides than analysis time, and it <strong>generates missing values</strong>. </li>
-<li>In <strong>data-independent acquisition (DIA)</strong> methods, the quadrupole instead continuously cycles across <strong>the entire mass range while selecting relatively large m&#x2F;z values (20–40 m&#x2F;z)</strong>. This leads to very complex MS&#x2F;MS spectra since they contain the superimposed fragmentation patterns from co-isolated peptide ions. Modern software can deconvolute the spectra to identify the multiple peptides, usually by comparison to a previously acquired ‘peptide library’, but increasingly also without.<br><img src="/2024/08/20/Proteomics/image-20240820133755140.png" srcset="/img/loading.gif" lazyload></li>
-</ul>
-<h2 id="Quantification-strategies-for-peptides"><a href="#Quantification-strategies-for-peptides" class="headerlink" title="Quantification strategies for peptides"></a>Quantification strategies for peptides</h2><ul>
-<li><strong>Label-free quantification (LFQ):</strong> the MS signals of the peptides (usually at the MS1 level) are extracted from the raw data, normalised and compared between the proteomic conditions of interest. It is experimentally the most straightforward and usually the most economical approach, providing great flexibility in project design. However, this strategy has <strong>higher quantification variance</strong>, and differences in peptide purity and instrument performance may impact comparisons between individual samples if sufficient care is not taken.<br>  <a target="_blank" rel="noopener" href="https://www.mcponline.org/article/S1535-9476(20)33310-7/fulltext">Accurate Proteome-wide Label-free Quantification by Delayed Normalization and Maximal Peptide Ratio Extraction, Termed MaxLFQ</a><br>  The MaxLFQ algorithm is integrated into MaxQuant and it is initially developed for DDA (and also can be used for DIA).<br>  <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1535947623000920#bib26">One reason for the popularity of MaxLFQ</a> is that it addresses major pitfalls in proteomics quantification by accounting for the fact that different peptides belonging to the same protein can have very different base intensities, for example, due to differing ionization efficiencies. In addition, it is robust against missing values for normalization (differing sample depths) and can reliably estimate protein intensities.</li>
-<li><strong>label based:</strong> Label-based approaches use stable isotopes to encode different proteome states – the beauty is that the resulting peptides have exactly the same physiochemical behaviour, but have predictable differences in mass. The isotopes can be metabolically introduced, which also allows determination of protein turnover; however, chemical labelling with ‘readout’ at the MS&#x2F;MS level is now much more common. The latter is referred to as isobaric labelling and involves a clever trick in which the mass of the tag remains the same, but the distribution of isotopes in the tag is revealed after fragmentation. Within a set of 6–16 different tags, quantification variance is typically lower than in LFQ if samples are consistently and reproducibly labelled and combined. A major caveat of the typically used TMT (tandem mass tag) isobaric labelling method is that co-fragmented peptides can suppress quantitative differences (‘ratio compression’). <strong>iTRAQ (Isobaric Tags for Relative and Absolute Quantitation) and TMT (Tandem Mass Tags)</strong> are two widely used peptide labeling techniques for quantitative proteomics.</li>
-</ul>
-<h1 id="tools-for-DDA-LFQ-analysis"><a href="#tools-for-DDA-LFQ-analysis" class="headerlink" title="tools for DDA LFQ analysis"></a>tools for DDA LFQ analysis</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/MonashBioinformaticsPlatform/LFQ-Analyst/tree/master">LFQ-Analyst</a>This is a software that supports Label-Free Proteomics Data Preprocessed with MaxQuant.</li>
-</ol>
-<h1 id="Normalisation-methods"><a href="#Normalisation-methods" class="headerlink" title="Normalisation methods"></a>Normalisation methods</h1><ol>
-<li>vsn: Huber W, Von Heydebreck A, Sültmann H, Poustka A, Vingron M. Variance stabilization applied to microarray data calibration and to the quantification of differential expression. Bioinformatics. 2002 Jul 1;18(suppl_1):S96–104.</li>
-</ol>
-<h1 id="MaxQuant-summer-school"><a href="#MaxQuant-summer-school" class="headerlink" title="MaxQuant summer school"></a><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xfKS7h_eZIo&list=PL6yHRLjecpwAMJhXVCXFk9sso-MNhL7GX">MaxQuant summer school</a></h1>
+<h1 id="将文件提交到仓库"><a href="#将文件提交到仓库" class="headerlink" title="将文件提交到仓库"></a>将文件提交到仓库</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># 将文件添加到 暂存区</span><br><span class="hljs-comment"># 添加单个文件</span><br>git <span class="hljs-built_in">add</span> 文件名<br><span class="hljs-comment"># 添加当前目录下的整个文件夹</span><br>git <span class="hljs-built_in">add</span> .<br><br><span class="hljs-comment"># 将文件添加到 对象存储区（仓库）</span><br>git commit -m <span class="hljs-string">&quot;本次对xxx进行了修改&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># 查看版本库的提交日志</span><br>git <span class="hljs-built_in">log</span><br><span class="hljs-comment"># 如果内容过多，可使用 空格键 下一页，Control + b 上一页，使用 j 下一行，使用 k 上一行</span><br><br><span class="hljs-comment"># 将仓库和工作目录代码回退到指定版本</span><br>git reset <span class="hljs-comment">--hard 版本号</span><br><span class="hljs-comment"># 例如</span><br>git reset <span class="hljs-comment">--hard 6af39d74db55da5b5fd60fb8f4ad6baab29ba801</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/16/local-git/image-20241016223701670.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># 如果对刚刚的回退操作不满意，可以查看之前的版本号</span><br>git reflog<br><span class="hljs-comment"># 然后使用reset再次会退到之前的版本号</span><br><span class="hljs-comment"># 例如</span><br>git reset <span class="hljs-comment">--hard aa6523c</span><br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/16/local-git/image-20241016221846140.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># 修改文件后可以使用diff查看文件改变</span><br>git <span class="hljs-keyword">diff</span><br><span class="hljs-keyword"></span><span class="hljs-comment"># + 表示添加了内容</span><br><span class="hljs-comment"># - 表示减少了内容</span><br><br><span class="hljs-comment">#将指定文件的修改撤销</span><br>git checkout 文件名<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/10/16/local-git/image-20241016222151629.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 忽略不想添加到仓库的文件</span><br><span class="hljs-comment"># 在开发过程中，有些文件我们不想提交到git仓库，需要将不想添加到git仓库的文件写入.gitignore文件</span><br><span class="hljs-built_in">touch</span> .gitignore<br></code></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">git init    <span class="hljs-comment"># 创建本地仓库</span><br>git config <span class="hljs-keyword">user</span>.name yourname   <span class="hljs-comment"># 配置用户名</span><br>git config <span class="hljs-keyword">user</span>.email youremail <span class="hljs-comment"># 配置用户邮箱</span><br>git config --global <span class="hljs-keyword">user</span>.name yourname      <span class="hljs-comment"># 配置全局的用户名</span><br>git config --global <span class="hljs-keyword">user</span>.email youremail    <span class="hljs-comment"># 配置全局的用户邮箱</span><br>git status       <span class="hljs-comment"># 查看仓库的状态</span><br>git <span class="hljs-keyword">add</span><span class="language-bash"> 文件名  <span class="hljs-comment"># 将文件添加到暂存区</span></span><br>git <span class="hljs-keyword">add</span><span class="language-bash"> .       <span class="hljs-comment"># 将当前目录的所有文件添加到暂存区</span></span><br>git commit      <span class="hljs-comment"># 将文件添加到 对象存储区(仓库)</span><br>git log         <span class="hljs-comment"># 查看版本库的提交日志</span><br>git reset --hard 版本号: <span class="hljs-comment"># 将仓库和工作目录代码回退到指定版本</span><br>git reflog      <span class="hljs-comment"># 可以看到每次的提交操作</span><br>git checkout 文件名 <span class="hljs-comment"># 将这个文件的的修改撤销</span><br></code></pre></td></tr></table></figure>
+
+
+
                 
               </div>
             
@@ -319,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Proteomics</div>
-      <div>https://xuan-98-l.github.io/2024/08/20/Proteomics/</div>
+      <div>local_git</div>
+      <div>https://xuan-98-l.github.io/2024/10/16/local-git/</div>
     </div>
     <div class="license-meta">
       
@@ -332,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 20, 2024</div>
+          <div>October 16, 2024</div>
         </div>
       
       
@@ -364,18 +369,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/16/local-git/" title="local_git">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">local_git</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/27/hexo%E8%BF%81%E7%A7%BB/" title="hexo迁移(win2mac)">
-                        <span class="hidden-mobile">hexo迁移(win2mac)</span>
+                      <a href="/2024/08/20/Proteomics/" title="Proteomics">
+                        <span class="hidden-mobile">Proteomics</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
